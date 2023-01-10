@@ -10,7 +10,7 @@ function NavBar() {
         <aside id="aside"> 
             <div id="logo-container">
                 <div id="iconBox">
-                    <p>
+                    <p> 
                         <BsFillKanbanFill />
                     </p>
                 </div>
