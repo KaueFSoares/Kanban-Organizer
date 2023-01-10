@@ -25,7 +25,7 @@ function App() {
           
           <NavBar />
 
-          <Routes>
+          <Routes id = "box">
 
             <Route path = "/" element = {<Home />} />
 
