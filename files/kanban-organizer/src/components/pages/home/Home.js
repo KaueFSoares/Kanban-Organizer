@@ -1,20 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import "./home.sass"
 
 function Home() {
 
-  const [selected, setSelected] = useState("login")
+  const [selected, setSelected] = useState("login-selected")
 
-  function changeToLogin() {
-    setSelected("login")
+  useEffect(() => {
     console.log(selected)
-  }
-
-  function changeToSignup(){
-    setSelected("signup")
-    console.log(selected)
-  }
+  }, [selected])
 
 
 
@@ -27,20 +21,22 @@ function Home() {
       <div id="sign-box">
         <header>
           <button
-            className="button"
-            id="login-button"
-            onClick={changeToLogin}
+            className="btn"
+            id="login"
+            onClick={() => setSelected("login")}
           >
             <p>Login</p>
           </button>
 
           <button
-            className="button"
-            id="signup-button"
-            onClick={changeToSignup}
+            className="btn"
+            id="signup"
+            onClick={() => setSelected("signup")}
           >
             <p>Sign up</p>
           </button>
+
+          <div className = "animation start-home"></div>
         </header>
       </div>
     </main>

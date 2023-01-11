@@ -104,6 +104,7 @@
         #content-box
             width: 40vw 
             height: 80vh
+            border-radius: variables.$large-border-radius
             background-color: variables.$bg-color-focus 
 
 
@@ -122,12 +123,41 @@
                 display: flex
                 padding: .3rem
                 justify-content: space-around
+                transition: background-color 300ms ease
+                position: relative
 
-                .button
+                button
+                    z-index: 1
                     font-weight: bold
                     font-size: 1.3rem
                     cursor: pointer
                     border: 0
-                    background-color: variables.$bg-color
-                    width: 45%
                     border-radius: variables.$small-border-radius
+                    background-color: variables.$bg-color
+                    position: relative
+                    height: 2rem
+
+                .animation
+                    height: 5px
+                    bottom: 0
+                    z-index: 0
+                    background-color: variables.$bg-color-focus
+                    border-radius: variables.$small-border-radius
+                    transition: all .5s ease 0s
+                    position: absolute
+                    margin-bottom: 1px
+
+                button:nth-child(1)
+                    width: 40%
+
+                .start-home, button:nth-child(1):hover~.animation
+                    width: 45%
+                    left: 5%
+
+                button:nth-child(2)
+                    width: 40%
+
+                button:nth-child(2):hover~.animation
+                    left: 50%
+
+    
