@@ -1,15 +1,52 @@
 @use "../../../styles/variables"
     
-#home-container
-    background-color: lightgray
-    padding: 3rem
-    font-size: 1.3rem
-    line-height: 2rem
-    text-align: justify
-    font-family: variables.$font-main
-    margin-left: 4rem
-    min-height: 100vh
-    width: 100%
+
+
+/* SMALL DEVICES < 600 PX */
+@media only screen and (max-width: 600px)
+    #home-container
+        background-color: lightgray
+        padding: 3rem
+        font-size: 1.3rem
+        line-height: 2rem
+        text-align: justify
+        font-family: variables.$font-main
+        min-height: 100vh
+        width: 100%
+    
+
+    h1
+        margin-bottom: 3rem
+        text-align: center
+
+
+/* LARGE PHONES AND SMALL TABLETS */
+@media only screen and (min-width: 600px)
+
+
+/* LARGE TABLETS AND SMALL LAPTOPS */
+@media only screen and (min-width: 768px)
+
+
+
+/* LARGE LAPTOPS */
+@media only screen and (min-width: 992px)
+
+
+
+
+/* EXTRA LARGE DEVICES */
+@media only screen and (min-width: 1200px)
+    #home-container
+        background-color: lightgray
+        padding: 3rem
+        font-size: 1.3rem
+        line-height: 2rem
+        text-align: justify
+        font-family: variables.$font-main
+        margin-left: 4rem
+        min-height: 100vh
+        width: 100%
     
 
     h1
