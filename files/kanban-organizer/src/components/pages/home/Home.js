@@ -4,7 +4,7 @@ import "./home.sass"
 
 function Home() {
 
-  const [selected, setSelected] = useState("login-selected")
+  const [selected, setSelected] = useState("login")
 
   useEffect(() => {
     console.log(selected)
@@ -19,7 +19,7 @@ function Home() {
       </div>
 
       <div id="sign-box">
-        <header>
+        <header id = {selected}>
           <button
             className="btn"
             id="login"
