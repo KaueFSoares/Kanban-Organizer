@@ -66,7 +66,7 @@ function SignForm() {
                         />
                     </div>
 
-                    {/* senha */}
+                    {/* password */}
                     <div id="password-box">
                         <p id = "lock-icon">
                             <AiOutlineLock />
@@ -89,7 +89,18 @@ function SignForm() {
                         </p>
                     </div>
                     {/* remember me / forgot password? */}
+                    <div id = "remember-me-box">
+                        <div id = "remember-me">
+                            <input type="checkbox" />
+                            <p>Remember me</p>
+                        </div>
 
+                        <div>
+                            <a href = "/" id = "forgot-password">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
                     {/* login button */}
 
                     {/* other login options */}
