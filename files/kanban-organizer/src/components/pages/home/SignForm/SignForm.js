@@ -13,7 +13,9 @@ function SignForm() {
 
     useEffect(() => {
         console.log(selected)
-    }, [selected])
+    }, [selected]) 
+
+    console.log(email, password)
 
     function changeInputType(){
         if (inputType === "login"){
