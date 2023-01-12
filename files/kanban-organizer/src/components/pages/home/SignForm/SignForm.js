@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { AiOutlineMail, AiOutlineLock, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
+import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa"
 
 import "./signform.sass"
 
@@ -111,6 +112,17 @@ function SignForm() {
                     </div>
 
                     {/* other login options */}
+                    <div id = "other-login-options-box">
+                        <p id = "label">
+                            Or login using 
+                        </p>
+
+                        <div id = "other-options">
+                            <p id = "facebook"><FaFacebookF /></p>
+                            <p id = "tt"><FaTwitter /></p>
+                            <p id = "google"><FaGoogle /></p>
+                        </div>
+                    </div>
 
                 </div>
             ) : (
