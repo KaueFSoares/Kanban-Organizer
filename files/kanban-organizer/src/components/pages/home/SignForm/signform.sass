@@ -201,6 +201,7 @@
             display: flex
             flex-direction: row
             justify-content: space-between
+            margin-bottom: 1rem
 
             #remember-me
                 display: flex
@@ -213,6 +214,32 @@
             #forgot-password
                 color: variables.$bg-color-focus
                 font-size: .9rem
+
+        
+        #login-button-box
+            height: 3.5rem
+            width: 40%
+
+            #login-button
+                height: 100%
+                width: 100%
+                background-color: variables.$bg-color-focus
+                border: none
+                border-radius: calc(2 * variables.$large-border-radius)
+                cursor: pointer
+                font-size: 1.2rem
+                font-family: variables.$font-icon
+                transition: all 200ms ease
+                
+                p
+                    color: variables.$text-color-focus
+                    opacity: .7
+
+                &:hover
+                    transform: scale(1.1)
+
+                    p
+                        opacity: 1    
 
                 
             

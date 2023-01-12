@@ -88,6 +88,7 @@ function SignForm() {
                             ))}
                         </p>
                     </div>
+
                     {/* remember me / forgot password? */}
                     <div id = "remember-me-box">
                         <div id = "remember-me">
@@ -101,7 +102,13 @@ function SignForm() {
                             </a>
                         </div>
                     </div>
+
                     {/* login button */}
+                    <div id = "login-button-box">
+                        <button id = "login-button">
+                                <p>Login</p>
+                        </button>
+                    </div>
 
                     {/* other login options */}
 
