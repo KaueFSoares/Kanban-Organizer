@@ -81,13 +81,13 @@ function SignForm() {
                             }}
                         />
 
-                        <p id = "eye-icon"onClick = {changeInputType}>
+                        <button id = "eye-icon"onClick = {changeInputType}>
                             {(inputType === "password" ? (
                                 <AiOutlineEye />
                             ) : (
                                 <AiOutlineEyeInvisible />
                             ))}
-                        </p>
+                        </button>
                     </div>
 
                     {/* remember me / forgot password? */}
@@ -118,9 +118,9 @@ function SignForm() {
                         </p>
 
                         <div id = "other-options">
-                            <p id = "facebook"><FaFacebookF /></p>
-                            <p id = "tt"><FaTwitter /></p>
-                            <p id = "google"><FaGoogle /></p>
+                            <button id = "facebook"><FaFacebookF /></button>
+                            <button id = "tt"><FaTwitter /></button>
+                            <button id = "google"><FaGoogle /></button>
                         </div>
                     </div>
 
