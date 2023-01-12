@@ -21,23 +21,6 @@
 
 
 /* LARGE PHONES AND SMALL TABLETS */
-@media only screen and (min-width: 600px)
-    #container
-        background-color: variables.$bg-color
-        padding: 3rem
-        font-size: 1.3rem
-        line-height: 2rem
-        text-align: justify
-        font-family: variables.$font-main
-        min-height: 100vh
-        width: 100%
-    
-
-        h1
-            margin-bottom: 3rem
-            text-align: center
-
-/* LARGE TABLETS AND SMALL LAPTOPS */
 @media only screen and (min-width: 768px)
     #container
         background-color: variables.$bg-color
@@ -46,38 +29,19 @@
         line-height: 2rem
         text-align: justify
         font-family: variables.$font-main
-        margin-left: 4rem
         min-height: 100vh
         width: 100%
-    
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
 
-        h1
-            margin-bottom: 3rem
-            text-align: center
 
-
-/* LARGE LAPTOPS */
-@media only screen and (min-width: 992px)
-    #container
-        background-color: variables.$bg-color
-        padding: 3rem
-        font-size: 1.3rem
-        line-height: 2rem
-        text-align: justify
-        font-family: variables.$font-main
-        margin-left: 4rem
-        min-height: 100vh
-        width: 100%
-    
-
-        h1
-            margin-bottom: 3rem
-            text-align: center
 
 
 
 /* EXTRA LARGE DEVICES */
-@media only screen and (min-width: 1200px)
+@media only screen and (min-width: 768px)
     #home-container
         background-color: variables.$bg-color
         padding: 3rem
@@ -109,101 +73,5 @@
             opacity: 0
 
 
-        #sign-box
-            width: 30vw
-            height: 70vh
-            background-color: variables.$bg-color-focus   
-            border-radius: variables.$large-border-radius 
-            padding: 2rem
-            
-            #login
-                width: 100%
-                border-radius: variables.$small-border-radius
-                height: 3rem
-                background-color: variables.$bg-color
-                display: flex
-                padding: .3rem
-                justify-content: space-around
-                transition: background-color 300ms ease
-                position: relative
-
-                button
-                    z-index: 1
-                    font-weight: bold
-                    font-size: 1.3rem
-                    cursor: pointer
-                    border: 0
-                    border-radius: variables.$small-border-radius
-                    background-color: variables.$bg-color
-                    position: relative
-                    height: 2rem
-
-                .animation
-                    height: 6px
-                    bottom: 0
-                    z-index: 0
-                    background-color: variables.$bg-color-focus
-                    border-radius: variables.$small-border-radius
-                    transition: all .5s ease 0s
-                    position: absolute
-                    margin-bottom: 2px
-                    width: 30%
-
-                button:nth-child(1)
-                    width: 40%
-
-                .start-home, button:nth-child(1):hover~.animation
-                    left: 11%
-
-                button:nth-child(2)
-                    width: 40%
-
-                button:nth-child(2):hover~.animation
-                    left: 60%
-
-            #signup
-                width: 100%
-                border-radius: variables.$small-border-radius
-                height: 3rem
-                background-color: variables.$bg-color
-                display: flex
-                padding: .3rem
-                justify-content: space-around
-                transition: background-color 300ms ease
-                position: relative
-
-                button
-                    z-index: 1
-                    font-weight: bold
-                    font-size: 1.3rem
-                    cursor: pointer
-                    border: 0
-                    border-radius: variables.$small-border-radius
-                    background-color: variables.$bg-color
-                    position: relative
-                    height: 2rem
-
-                .animation
-                    height: 6px
-                    bottom: 0
-                    z-index: 0
-                    background-color: variables.$bg-color-focus
-                    border-radius: variables.$small-border-radius
-                    transition: all .5s ease 0s
-                    position: absolute
-                    margin-bottom: 2px
-                    width: 30%
-
-                button:nth-child(1)
-                    width: 40%
-
-                button:nth-child(1):hover~.animation
-                    left: 11%
-
-                button:nth-child(2)
-                    width: 40%
-
-                .start-home, button:nth-child(2):hover~.animation
-                    left: 60%
 
     
