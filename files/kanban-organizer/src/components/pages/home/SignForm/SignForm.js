@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import LoginForm from "./LoginForm/LoginForm"
 
 
@@ -10,9 +10,6 @@ function SignForm() {
     const [selected, setSelected] = useState("login")
 
 
-    useEffect(() => {
-        console.log(selected)
-    }, [selected])
 
 
 

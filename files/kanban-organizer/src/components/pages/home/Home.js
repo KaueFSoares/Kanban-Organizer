@@ -5,6 +5,12 @@ import SignForm from "./SignForm/SignForm"
 
 function Home() {
 
+  function backToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
 
 
 
@@ -24,11 +30,12 @@ function Home() {
       </section>
 
       <section id="back-to-top-box">
-
+        <h2>Did you like it?</h2>
+        <button onClick={backToTop}>Sign up!</button>
       </section>
 
       <footer>
-        <ul id = "icon-list">
+        <ul id="icon-list">
           <li className="icon-box">
             <FaFacebook className="icon" />
           </li>
