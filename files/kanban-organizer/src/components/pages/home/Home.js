@@ -9,13 +9,15 @@ function Home() {
 
 
   return (
-    <main id="home-container">
-      <div id="content-box">
+    <main id = "home-container">
+      <div id="top">
+        <div id="content-box">
 
-      </div> 
+        </div>
 
-      <SignForm />
+        <SignForm />
 
+      </div>
     </main>
   )
 }

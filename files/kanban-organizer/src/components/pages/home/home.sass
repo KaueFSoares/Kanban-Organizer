@@ -1,10 +1,8 @@
 @use "../../../styles/variables"
-    
-
 
 /* SMALL DEVICES < 600 PX */
 @media only screen and (max-width: 600px)
-    #container
+    #top
         background-color: variables.$bg-color
         padding: 3rem
         font-size: 1.3rem
@@ -13,65 +11,41 @@
         font-family: variables.$font-main
         min-height: 100vh
         width: 100%
-    
 
         h1
             margin-bottom: 3rem
             text-align: center
 
-
 /* LARGE PHONES AND SMALL TABLETS */
-@media only screen and (min-width: 768px)
-    #container
-        background-color: variables.$bg-color
-        padding: 3rem
-        font-size: 1.3rem
-        line-height: 2rem
-        text-align: justify
-        font-family: variables.$font-main
-        min-height: 100vh
-        width: 100%
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-
-
-
 
 
 /* EXTRA LARGE DEVICES */
 @media only screen and (min-width: 768px)
     #home-container
-        background-color: variables.$bg-color
-        padding: 3rem
-        font-size: 1.3rem
-        line-height: 2rem
-        text-align: justify
-        font-family: variables.$font-main
         margin-left: 4rem
-        height: 100vh
+        min-height: 200vh
         width: 100%
-        color: variables.$text-color
-        display: flex
-        flex-direction: row
-        justify-content: space-around
-        align-items: center
-    
+        background-color: variables.$bg-color
 
-        /* h1
-            margin-bottom: 2.8rem
-            text-align: center
-            color: variables.$text-color-focus
-            font-family: variables.$font-icon */
+        #top
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../../img/background-image-1-reformated.jpg")
+            background-position: center
+            background-size: cover
+            padding: 3rem
+            font-size: 1.3rem
+            line-height: 2rem
+            text-align: justify
+            font-family: variables.$font-main
+            height: 95vh
+            color: variables.$text-color
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+            align-items: center
 
-        #content-box
-            width: 40vw 
-            height: 80vh
-            border-radius: variables.$large-border-radius
-            background-color: variables.$bg-color-focus 
-            opacity: 0
-
-
-
-    
+            #content-box
+                width: 40vw
+                height: 80vh
+                border-radius: variables.$large-border-radius
+                background-color: variables.$bg-color-focus
+                opacity: 0
