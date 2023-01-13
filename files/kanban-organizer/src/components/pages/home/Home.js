@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
+import { BsFillKanbanFill } from "react-icons/bs"
 
 import "./home.sass"
 import SignForm from "./SignForm/SignForm"
@@ -18,7 +19,23 @@ function Home() {
     <main id="home-container">
       <section id="top">
         <div id="content-box">
+          {/* logo */}
+          <div id="logo-container">
+            <div id="iconBox">
+              <p>
+                <BsFillKanbanFill />
+              </p>
+            </div>
 
+            <div id="textBox">
+              <h1 id="text">Kanban <br />Organizer</h1>
+            </div>
+          </div>
+
+          <div id = "text-box">
+            <p>Streamline your workflow with <span>Kanban</span> - </p>
+            <p>Organized, efficient and user-friendly.</p>
+          </div>
         </div>
 
         <SignForm />
