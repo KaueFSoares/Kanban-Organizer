@@ -43,8 +43,6 @@ function SignUpForm() {
     } else {
       setRightPassord(true)
     }
-
-    console.log(rightPassword)
   }, [password, passwordConfirm, rightPassword])
 
 
@@ -52,7 +50,6 @@ function SignUpForm() {
     e.preventDefault()
   }
 
-  /* only for not getting warnings */
 
 
 

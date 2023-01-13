@@ -23,7 +23,7 @@
 @media only screen and (min-width: 768px)
     #home-container
         margin-left: 4rem
-        min-height: 200vh
+        min-height: 100vh
         width: 100%
         background-color: variables.$bg-color
 
@@ -49,3 +49,52 @@
                 border-radius: variables.$large-border-radius
                 background-color: variables.$bg-color-focus
                 opacity: 0
+
+        #seccond-box
+            height: 85vh
+            width: 100%
+
+
+        #back-to-top-box
+            height: 40vh
+            width: 100%
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../../img/back-to-top-bg.jpeg")
+            background-position: center
+            background-size: cover
+
+        footer
+            height: 15vh
+            width: 100%
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            color: variables.$bg-color-focus
+
+            #icon-list
+                list-style: none
+                display: flex
+                padding: 1rem
+
+                .icon-box
+                    margin: 0rem 1rem
+
+                    .icon
+                        font-size: 1.8rem 
+                        cursor: pointer
+                        &:hover
+                            color: variables.$text-color
+                            
+
+            #copyright
+                font-size: 1.2rem
+                font-family: variables.$font-main
+
+                span
+                    font-weight: bold
+                    color: variables.$bg-color-focus
+
+
+
+
+
