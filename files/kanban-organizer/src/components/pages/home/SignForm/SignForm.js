@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm/LoginForm"
 
 
 import "./signform.sass"
+import SignUpForm from "./SignUpForm/SignUpForm"
 
 function SignForm() {
 
@@ -43,11 +44,7 @@ function SignForm() {
             {(selected === "login") ? (
                 <LoginForm />
             ) : (
-                <div>
-                    {/* --- SIGN UP BOX --- */}
-
-
-                </div>
+                <SignUpForm />
             )}
         </div >
     )

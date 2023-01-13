@@ -1,7 +1,6 @@
 @use "../../../../../styles/variables"
 
-/* --- LOGIN FORM BOX --- */
-#login-box
+#signup-box
     width: 100%
     height: 87.5%
     background-color: variables.$bg-color
@@ -13,7 +12,34 @@
     align-items: center
     justify-content: center
 
-    /* Changing e-mail box properties */
+    #name-box
+        background-color: variables.$bg-color-focus
+        width: 90%
+        height: 4rem
+        border-radius: calc(2 * variables.$large-border-radius)
+        display: flex
+        padding: .5rem
+        padding-left: 1.3rem
+        justify-content: space-between
+        align-items: center
+        margin-bottom: .8rem
+
+        p
+            font-size: 2.5rem
+            color: variables.$text-color-focus
+            opacity: .7
+
+        input
+            background-color: variables.$bg-color-focus
+            border: none
+            font-size: 1rem
+            height: 80%
+            text-align: left
+            width: 85%
+            color: variables.$text-color-focus
+            &:focus
+                outline: none
+
     #email-box
         background-color: variables.$bg-color-focus
         width: 90%
@@ -24,7 +50,7 @@
         padding-left: 1.3rem
         justify-content: space-between
         align-items: center
-        margin-bottom: 1rem
+        margin-bottom: .8rem
 
         p
             font-size: 2.5rem
@@ -53,6 +79,7 @@
         padding-right: 1rem
         justify-content: space-between
         align-items: center
+        margin-bottom: .8rem
 
         #lock-icon
             font-size: 2.5rem
@@ -71,7 +98,7 @@
             &:focus
                 outline: none
 
-        #eye-icon
+        .eye-icon
             margin-right: .3rem
             font-size: 2rem
             color: variables.$text-color-focus
@@ -80,33 +107,59 @@
             border: none
             background-color: variables.$bg-color-focus
 
-    #remember-me-box
-        background-color: variables.$bg-color
-        width: 80%
-        font-size: .9rem
+    #passwordConfirm-box
+        background-color: variables.$bg-color-focus
+        width: 90%
+        height: 4rem
+        border-radius: calc(2 * variables.$large-border-radius)
         display: flex
-        flex-direction: row
+        padding: .5rem
+        padding-left: 1.4rem
+        padding-right: 1rem
         justify-content: space-between
-        margin-bottom: 1rem
+        align-items: center
 
-        #remember-me
-            display: flex
-            color: variables.$bg-color-focus
-            font-size: .9rem
+        #lock-icon
+            font-size: 2.5rem
+            color: variables.$text-color-focus
+            opacity: .7
 
-            p
-                margin-left: .2rem
+        input
+            background-color: variables.$bg-color-focus
+            border: none
+            font-size: 1rem
+            height: 80%
+            text-align: left
+            width: 85%
+            margin-left: .4rem
+            color: variables.$text-color-focus
+            &:focus
+                outline: none
 
-        #forgot-password
-            color: variables.$bg-color-focus
-            font-size: .9rem
+        .eye-icon
+            margin-right: .3rem
+            font-size: 2rem
+            color: variables.$text-color-focus
+            opacity: .7
+            cursor: pointer
+            border: none
+            background-color: variables.$bg-color-focus        
 
-    #login-button-box
+    #answer-box
+        font-size: .8rem
+        margin-top: -.4rem
+        height: 2rem
+
+        p
+            color: red
+            opacity: .7
+
+    #signup-button-box
         height: 3.5rem
         width: 40%
-        margin-bottom: 1rem
+        margin-bottom: .8rem
 
-        #login-button
+        #signup-button
             height: 100%
             width: 100%
             background-color: variables.$bg-color-focus
@@ -116,6 +169,7 @@
             font-size: 1.2rem
             font-family: variables.$font-icon
             transition: all 200ms ease
+            padding: .6rem
             font-weight: bold
 
             p
@@ -127,7 +181,7 @@
                 p
                     opacity: 1
 
-    #other-login-options-box
+    #other-signup-options-box
         width: 60%
         display: flex
         flex-direction: column
@@ -136,7 +190,7 @@
         #label
             font-size: 1rem
             text-align: center
-            margin-bottom: .8rem
+            margin-bottom: .3rem
 
         #other-options
             display: flex

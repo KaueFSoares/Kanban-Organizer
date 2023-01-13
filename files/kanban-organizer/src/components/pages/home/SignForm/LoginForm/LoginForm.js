@@ -11,12 +11,16 @@ function LoginForm() {
 
     function changeInputType(e) {
         e.preventDefault()
-        
-        if (inputType === "login") {
+
+        if (inputType === "text") {
             setInputType("password")
         } else {
-            setInputType("login")
+            setInputType("text")
         }
+    }
+
+    function buttonClick(e){
+        e.preventDefault()
     }
 
     /* only for not getting warnings */
@@ -80,7 +84,10 @@ function LoginForm() {
 
             {/* login button */}
             <div id="login-button-box">
-                <button id="login-button">
+                <button
+                    id="login-button"
+                    onClick={buttonClick}
+                >
                     <p>Login</p>
                 </button>
             </div>
