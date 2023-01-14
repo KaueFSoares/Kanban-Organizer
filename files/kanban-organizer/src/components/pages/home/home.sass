@@ -98,11 +98,17 @@
             display: flex
             justify-content: space-between
             align-items: center
+            flex-direction: column
 
             #first-content
                 padding: 3rem 0
+                display: flex
+                flex-direction: row
+                height: 85vh
+                width: 100%
+
                 #img-box
-                    height: 85vh
+                    height: 100%
                     width: 50%
                     display: flex
                     align-items: center
@@ -113,6 +119,19 @@
                         height: 80%
                         border: 5px solid variables.$bg-color-focus
                         border-radius: variables.$large-border-radius
+
+                #text
+                    height: 100%
+                    width: 50%
+                    padding: 3rem
+                    display: flex
+                    justify-content: center
+                    align-items: center
+
+            #seccond-content
+                height: 85vh
+                width: 100%
+                border-top: 1px solid black
 
         #back-to-top-box
             height: 40vh

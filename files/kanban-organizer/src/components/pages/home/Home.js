@@ -48,17 +48,26 @@ function Home() {
 
       {/* ----- SECCOND SECTION ----- */}
       <section id="seccond-box">
+
         <div id="first-content">
           <div id="img-box">
             <img src={require("../../../img/error-img.jpeg")} alt="features" />
           </div>
+          
           <div id="text">
-
+            <ul>
+              <li>um</li>
+              <li>um</li>
+              <li>um</li>
+            </ul>
           </div>
         </div>
+
+
         <div id = "seccond-content">
-          
+
         </div>
+
       </section>
 
 
