@@ -1,6 +1,4 @@
 @use "../../../styles/variables"
-    
-
 
 /* SMALL DEVICES < 600 PX */
 @media only screen and (max-width: 600px)
@@ -13,12 +11,10 @@
         font-family: variables.$font-main
         min-height: 100vh
         width: 100%
-    
 
         h1
             margin-bottom: 3rem
             text-align: center
-
 
 /* LARGE PHONES AND SMALL TABLETS */
 @media only screen and (min-width: 600px)
@@ -31,7 +27,6 @@
         font-family: variables.$font-main
         min-height: 100vh
         width: 100%
-    
 
         h1
             margin-bottom: 3rem
@@ -49,12 +44,10 @@
         margin-left: 4rem
         min-height: 100vh
         width: 100%
-    
 
         h1
             margin-bottom: 3rem
             text-align: center
-
 
 /* LARGE LAPTOPS */
 @media only screen and (min-width: 992px)
@@ -68,31 +61,35 @@
         margin-left: 4rem
         min-height: 100vh
         width: 100%
-    
 
         h1
             margin-bottom: 3rem
             text-align: center
 
-
-
 /* EXTRA LARGE DEVICES */
 @media only screen and (min-width: 1200px)
-    #container
+    #contact-container
         background-color: variables.$bg-color
         padding: 3rem
-        font-size: 1.3rem
-        line-height: 2rem
-        text-align: justify
         font-family: variables.$font-main
         margin-left: 4rem
         min-height: 100vh
         width: 100%
         color: variables.$text-color
-    
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
 
         h1
-            margin-bottom: 2.8rem
+            margin-bottom: 0rem
             text-align: center
             color: variables.$text-color-focus
             font-family: variables.$font-icon
+            font-size: 6rem
+            line-height: 7rem
+            text-align: center
+
+        #icon
+            font-size: 25rem
+            color: variables.$text-color-focus

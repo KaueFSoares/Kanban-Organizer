@@ -93,8 +93,26 @@
                             font-family: variables.$text-color
 
         #seccond-box
-            height: 85vh
+            min-height: 85vh
             width: 100%
+            display: flex
+            justify-content: space-between
+            align-items: center
+
+            #first-content
+                padding: 3rem 0
+                #img-box
+                    height: 85vh
+                    width: 50%
+                    display: flex
+                    align-items: center
+                    padding: 0 2rem
+                    padding-left: 5rem
+
+                    img
+                        height: 80%
+                        border: 5px solid variables.$bg-color-focus
+                        border-radius: variables.$large-border-radius
 
         #back-to-top-box
             height: 40vh

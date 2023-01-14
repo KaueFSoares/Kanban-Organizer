@@ -17,6 +17,8 @@ function Home() {
 
   return (
     <main id="home-container">
+
+      {/* ----- FIRST SECTION ----- */}
       <section id="top">
         <div id="content-box">
           {/* logo */}
@@ -32,7 +34,7 @@ function Home() {
             </div>
           </div>
 
-          <div id = "text-box">
+          <div id="text-box">
             <p>Streamline your workflow with <span>Kanban</span> - </p>
             <p>Organized, efficient and user-friendly.</p>
           </div>
@@ -42,15 +44,34 @@ function Home() {
 
       </section>
 
-      <section id="seccond-box">
 
+
+      {/* ----- SECCOND SECTION ----- */}
+      <section id="seccond-box">
+        <div id="first-content">
+          <div id="img-box">
+            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+          </div>
+          <div id="text">
+
+          </div>
+        </div>
+        <div id = "seccond-content">
+          
+        </div>
       </section>
 
+
+
+      {/* ----- BACK TO TOP SECTION ----- */}
       <section id="back-to-top-box">
         <h2>Did you like it?</h2>
         <button onClick={backToTop}>Sign up!</button>
       </section>
 
+
+
+      {/* ----- FOOTER ----- */}
       <footer>
         <ul id="icon-list">
           <li className="icon-box">
@@ -61,7 +82,7 @@ function Home() {
             <FaInstagram className="icon" />
           </li>
 
-          <li className="icon-box"> 
+          <li className="icon-box">
             <FaLinkedin className="icon" />
           </li>
         </ul>
