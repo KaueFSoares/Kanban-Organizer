@@ -63,10 +63,10 @@ function Home() {
 
           <li className="icon-box"> 
             <FaLinkedin className="icon" />
-          </li> 
-        </ul> 
+          </li>
+        </ul>
 
-        <p id="copyright"> 
+        <p id="copyright">
           <span>Kanban Organizer</span> &copy; 2023
         </p>
       </footer>
