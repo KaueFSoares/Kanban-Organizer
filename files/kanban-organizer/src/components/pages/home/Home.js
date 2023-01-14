@@ -62,14 +62,14 @@ function Home() {
           </li>
 
           <li className="icon-box"> 
-            <FaLinkedin className="icon" />  
+            <FaLinkedin className="icon" />
           </li>
-        </ul>  
+        </ul>
 
         <p id="copyright">
-          <span>Kanban Organizer</span> &copy; 2023  
-        </p> 
-      </footer> 
+          <span>Kanban Organizer</span> &copy; 2023
+        </p>
+      </footer>
     </main>
   )
 }
