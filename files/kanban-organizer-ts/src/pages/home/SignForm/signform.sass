@@ -1,0 +1,119 @@
+@use "../../../../styles/variables"
+
+#sign-box
+    width: 30vw
+    height: 80vh
+    background-color: rgba(variables.$bg-color-focus, .8)
+    border-radius: variables.$large-border-radius
+    padding: 1.5rem
+
+    /* --- LOGIN --- */
+    #login
+        width: 100%
+        border-radius: variables.$small-border-radius
+        height: 3rem
+        background-color: variables.$bg-color
+        display: flex
+        padding: .3rem
+        justify-content: space-around
+        transition: background-color 300ms ease
+        position: relative
+        margin-bottom: 1.5rem
+
+        button
+            z-index: 1
+            font-weight: bold
+            font-size: 1.3rem
+            cursor: pointer
+            border: 0
+            border-radius: variables.$small-border-radius
+            background-color: variables.$bg-color
+            position: relative
+            height: 2rem
+            color: variables.$text-color-focus
+            transition: all 300ms ease
+
+        .animation
+            height: 6px
+            bottom: 0
+            z-index: 0
+            background-color: variables.$bg-color-focus
+            border-radius: variables.$small-border-radius
+            transition: all .5s ease 0s
+            position: absolute
+            margin-bottom: 2px
+            width: 30%
+
+        button:nth-child(1)
+            width: 40%
+
+        .start-home, button:nth-child(1):hover~.animation
+            left: 11%
+
+        button:nth-child(2)
+            width: 40%
+
+        button:nth-child(2):hover~.animation
+            left: 60%
+
+        #signup
+            opacity: .7
+
+            &:hover
+                opacity: 1
+
+    /* --- SIGN UP --- */
+    #signup
+        width: 100%
+        border-radius: variables.$small-border-radius
+        height: 3rem
+        background-color: variables.$bg-color
+        display: flex
+        padding: .3rem
+        justify-content: space-around
+        transition: background-color 300ms ease
+        position: relative
+        margin-bottom: 1.5rem
+
+        button
+            z-index: 1
+            font-weight: bold
+            font-size: 1.3rem
+            cursor: pointer
+            border: 0
+            border-radius: variables.$small-border-radius
+            background-color: variables.$bg-color
+            position: relative
+            height: 2rem
+            transition: all 300ms ease
+
+        .animation
+            height: 6px
+            bottom: 0
+            z-index: 0
+            background-color: variables.$bg-color-focus
+            border-radius: variables.$small-border-radius
+            transition: all .5s ease 0s
+            position: absolute
+            margin-bottom: 2px
+            width: 30%
+
+        button:nth-child(1)
+            width: 40%
+ 
+        button:nth-child(1):hover~.animation
+            left: 11%
+
+        button:nth-child(2)
+            width: 40%
+
+        .start-home, button:nth-child(2):hover~.animation
+            left: 60%
+
+        #login
+            opacity: .7
+
+            &:hover
+                    opacity: 1
+
+

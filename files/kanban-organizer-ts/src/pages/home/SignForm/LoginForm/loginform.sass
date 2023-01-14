@@ -1,0 +1,201 @@
+@use "../../../../../styles/variables"
+
+/* --- LOGIN FORM BOX --- */
+#login-box
+    width: 100%
+    height: 87.5%
+    background-color: variables.$bg-color
+    position: relative
+    border-radius: variables.$medium-border-radius
+    padding: 1rem
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    /* Changing e-mail box properties */
+    #email-box
+        background-color: variables.$bg-color-focus
+        width: 90%
+        height: 4rem
+        border-radius: calc(2 * variables.$large-border-radius)
+        display: flex
+        padding: .5rem
+        padding-left: 1.3rem
+        justify-content: space-between
+        align-items: center
+        margin-bottom: 1rem
+
+        p
+            font-size: 2.5rem
+            color: variables.$text-color-focus
+            opacity: .7
+
+        input
+            background-color: variables.$bg-color-focus
+            border: none
+            font-size: 1rem
+            height: 80%
+            text-align: left
+            width: 85%
+            color: variables.$text-color-focus
+            &:focus
+                outline: none
+
+    #password-box
+        background-color: variables.$bg-color-focus
+        width: 90%
+        height: 4rem
+        border-radius: calc(2 * variables.$large-border-radius)
+        display: flex
+        padding: .5rem
+        padding-left: 1.4rem
+        padding-right: 1rem
+        justify-content: space-between
+        align-items: center
+
+        #lock-icon
+            font-size: 2.5rem
+            color: variables.$text-color-focus
+            opacity: .7
+
+        input
+            background-color: variables.$bg-color-focus
+            border: none
+            font-size: 1rem
+            height: 80%
+            text-align: left
+            width: 85%
+            margin-left: .4rem
+            color: variables.$text-color-focus
+            &:focus
+                outline: none
+
+        #eye-icon
+            margin-right: .3rem
+            font-size: 2rem
+            color: variables.$text-color-focus
+            opacity: .7
+            cursor: pointer
+            border: none
+            background-color: variables.$bg-color-focus
+
+    #remember-me-box
+        background-color: variables.$bg-color
+        width: 80%
+        font-size: .9rem
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        margin-bottom: 1rem
+        align-items: center
+
+        #remember-me
+            display: flex
+            color: variables.$bg-color-focus
+            font-size: .9rem
+
+            p
+                margin-left: .2rem
+
+        #forgot-password
+            color: variables.$bg-color-focus
+            font-size: .9rem
+
+    #login-button-box
+        height: 3.5rem
+        width: 40%
+        margin-bottom: 1rem
+
+        #login-button
+            height: 100%
+            width: 100%
+            background-color: variables.$bg-color-focus
+            border: none
+            border-radius: calc(2 * variables.$large-border-radius)
+            cursor: pointer
+            font-size: 1.2rem
+            font-family: variables.$font-icon
+            transition: all 200ms ease
+            font-weight: bold
+
+            p
+                color: variables.$text-color-focus
+                opacity: .7
+
+            &:hover
+                transform: scale(1.1)
+                p
+                    opacity: 1
+
+    #other-login-options-box
+        width: 60%
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+
+        #label
+            font-size: 1rem
+            text-align: center
+            margin-bottom: .8rem
+
+        #other-options
+            display: flex
+            justify-content: space-around
+
+        #facebook
+            border: none
+            cursor: pointer
+            background-color: #4267B2
+            border-radius: 50%
+            height: 2.5rem
+            width: 2.5rem
+            display: flex
+            align-items: center
+            justify-content: center
+            font-size: 1.8rem
+            color: white
+            transition: all 200ms ease
+            opacity: 0.7
+
+            &:hover
+                opacity: 1
+                transform: scale(1.2)
+
+        #tt
+            border: none
+            cursor: pointer
+            background-color: #1DA1F2
+            border-radius: 50%
+            height: 2.5rem
+            width: 2.5rem
+            display: flex
+            align-items: center
+            justify-content: center
+            font-size: 1.7rem
+            color: white
+            transition: all 200ms ease
+            opacity: 0.7
+
+            &:hover
+                opacity: 1
+                transform: scale(1.2)
+
+        #google
+            border: none
+            cursor: pointer
+            background-color: #DB4437
+            border-radius: 50%
+            height: 2.5rem
+            width: 2.5rem
+            display: flex
+            align-items: center
+            justify-content: center
+            font-size: 1.6rem
+            color: white
+            transition: all 200ms ease
+            opacity: 0.7
+
+            &:hover
+                opacity: 1
+                transform: scale(1.2)
