@@ -68,8 +68,8 @@ function Home() {
 
         <p id="copyright">
           <span>Kanban Organizer</span> &copy; 2023
-        </p>
-      </footer>
+        </p> 
+      </footer> 
     </main>
   )
 }
