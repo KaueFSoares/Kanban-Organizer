@@ -1,5 +1,6 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { BsFillKanbanFill } from "react-icons/bs"
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai"
 
 import "./home.sass"
 import SignForm from "./SignForm/SignForm"
@@ -9,6 +10,13 @@ function Home() {
   function backToTop() {
     window.scrollTo({
       top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  function backToBottom() {
+    window.scrollTo({
+      top: document.body.scrollHeight,
       behavior: 'smooth'
     });
   }
@@ -53,19 +61,46 @@ function Home() {
           <div id="img-box">
             <img src={require("../../../img/error-img.jpeg")} alt="features" />
           </div>
-          
+
           <div id="text">
+            <h3>Creating-boards</h3>
             <ul>
-              <li>um</li>
-              <li>um</li>
-              <li>um</li>
+              <li>Make your <span>own Kanban</span> Boards</li>
+              <li>Make as much work states as <span>you want</span></li>
+              <li>Set <span>coworkers</span> to work in your board</li>
             </ul>
           </div>
         </div>
 
 
-        <div id = "seccond-content">
+        <div id="seccond-content">
+          <div id="text">
+            <h3>Projects</h3>
+            <ul>
+              <li>Make your as many tables <span>as you want</span></li>
+              <li><span>Drag and drop</span> cards into the tables</li>
+              <li>Set a <span>limit of works</span> in progress</li>
+            </ul>
+          </div>
 
+          <div id="img-box">
+            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+          </div>
+        </div>
+
+        <div id="third-content">
+          <div id="img-box">
+            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+          </div>
+
+          <div id="text">
+            <h3>Calendar</h3>
+            <ul>
+              <li>Make your <span>own Calendar</span></li>
+              <li>Save all the appointments <span>you need</span></li>
+              <li><span>Share you calendar</span> with the team</li>
+            </ul>
+          </div>
         </div>
 
       </section>
@@ -100,6 +135,16 @@ function Home() {
           <span>Kanban Organizer</span> &copy; 2023
         </p>
       </footer>
+
+      <div id = "back-to-buttons">
+        <button id = "to-top-button" className="btn" onClick={backToTop}>
+          <AiOutlineArrowUp className="icon"/>
+        </button>
+
+        <button id = "to-bottom-button" className="btn" onClick={backToBottom}>
+          <AiOutlineArrowDown className="icon"/>
+        </button>
+      </div>
     </main>
   )
 }

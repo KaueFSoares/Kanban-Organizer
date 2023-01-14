@@ -25,6 +25,7 @@
         min-height: 100vh
         width: 100%
         background-color: variables.$bg-color
+        /* position: relative */
 
         #top
             background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../../../img/background-image-1-reformated.jpg")
@@ -123,15 +124,130 @@
                 #text
                     height: 100%
                     width: 50%
-                    padding: 3rem
+                    padding: 3rem 1rem
                     display: flex
                     justify-content: center
                     align-items: center
+                    flex-direction: column
+                    
+                    h3
+                        font-family: variables.$font-main
+                        font-size: 4rem
+                        color: variables.$text-color-focus
+                        margin-bottom: 2rem
+                        text-align: left
+                        width: 100%
+
+                    ul
+                        list-style-position: outside
+                        font-family: variables.$font-main
+                        font-size: 2.5rem
+                        color: variables.$text-color-focus
+
+                        span
+                            font-weight: bold
+                            color: variables.$text-color-focus
+                            font-size: 2.7rem
 
             #seccond-content
+                padding: 3rem 0
+                display: flex
+                flex-direction: row
                 height: 85vh
                 width: 100%
-                border-top: 1px solid black
+
+                #img-box
+                    height: 100%
+                    width: 45%
+                    display: flex
+                    align-items: center
+                    padding: 0 2rem
+                    padding-left: 3rem
+
+                    img
+                        height: 80%
+                        border: 5px solid variables.$bg-color-focus
+                        border-radius: variables.$large-border-radius
+
+                #text
+                    height: 100%
+                    width: 55%
+                    padding: 3rem 0
+                    padding-left: 5rem
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    flex-direction: column
+                    
+                    h3
+                        font-family: variables.$font-main
+                        font-size: 4rem
+                        color: variables.$text-color-focus
+                        margin-bottom: 2rem
+                        text-align: left
+                        width: 100%
+
+                    ul
+                        list-style-position: outside
+                        font-family: variables.$font-main
+                        font-size: 2.5rem
+                        color: variables.$text-color-focus
+
+                        span
+                            font-weight: bold
+                            color: variables.$text-color-focus
+                            font-size: 2.7rem
+
+
+
+            #third-content
+                padding: 3rem 0
+                display: flex
+                flex-direction: row
+                height: 85vh
+                width: 100%              
+
+
+                #img-box
+                    height: 100%
+                    width: 50%
+                    display: flex
+                    align-items: center
+                    padding: 0 2rem
+                    padding-left: 5rem
+
+                    img
+                        height: 80%
+                        border: 5px solid variables.$bg-color-focus
+                        border-radius: variables.$large-border-radius
+
+                #text
+                    height: 100%
+                    width: 50%
+                    padding: 3rem 1rem
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    flex-direction: column
+                    
+                    h3
+                        font-family: variables.$font-main
+                        font-size: 4rem
+                        color: variables.$text-color-focus
+                        margin-bottom: 2rem
+                        text-align: left
+                        width: 100%
+
+                    ul
+                        list-style-position: outside
+                        font-family: variables.$font-main
+                        font-size: 2.5rem
+                        color: variables.$text-color-focus
+
+                        span
+                            font-weight: bold
+                            color: variables.$text-color-focus
+                            font-size: 2.7rem
 
         #back-to-top-box
             height: 40vh
@@ -201,3 +317,23 @@
                 span
                     font-weight: bold
                     color: variables.$bg-color-focus
+
+        #back-to-buttons
+            position: fixed
+            top: 75vh
+            right: 1rem
+            display: flex
+            flex-direction: column
+
+            .btn
+                margin: 1rem
+                border: none
+                background-color: variables.$bg-color-focus
+                padding: .5rem
+                border-radius: variables.$small-border-radius
+                cursor: pointer
+
+                .icon
+                    font-size: 2.5rem
+                    color: variables.$bg-color
+
