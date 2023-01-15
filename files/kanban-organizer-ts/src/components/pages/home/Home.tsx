@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { BsFillKanbanFill } from "react-icons/bs"
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai"
-import ERRORIMG from "../../../img/error-img.jpeg"
+import IMG from "../../../img/error-img.jpeg"
 import React from "react"
 
 
@@ -62,7 +62,7 @@ function Home() {
 
         <div id="first-content">
           <div id="img-box">
-            <img src={ERRORIMG} alt="features" />
+            <img src={IMG} alt="features" />
           </div>
 
           <div id="text">
@@ -87,13 +87,13 @@ function Home() {
           </div>
 
           <div id="img-box">
-            <img src={ERRORIMG} alt="features" />
+            <img src={IMG} alt="features" />
           </div>
         </div>
 
         <div id="third-content">
           <div id="img-box">
-            <img src = {ERRORIMG} alt="features" />
+            <img src = {IMG} alt="features" />
           </div>
 
           <div id="text">
