@@ -1,0 +1,70 @@
+{
+    "projects": [
+        {
+            "project-id": "1",
+            "project-name": "test-project",
+            "user-id": "1",
+            "stages": [
+                {
+                    "stage-id": "1",
+                    "stage-name": "To-do",
+                    "itens": [
+                        {
+                            "item-id": "1",
+                            "item-name": "Start Diagramming"
+                        },
+                        {
+                            "item-id": "2",
+                            "item-name": "Talk to the boss"
+                        }
+                    ]
+                },
+                
+
+                {
+                    "stage-id": "2",
+                    "stage-name": "Doing",
+                    "itens":[
+                        {
+                            "item-id": "3",
+                            "item-name": "Pick programing languages"
+                        },
+
+
+                        {
+                            "item-id": "4",
+                            "item-name": "Talk to the client"
+                        }
+                    ]
+                },
+
+
+                {
+                    "stage-id": "2",
+                    "stage-name": "Done",
+                    "itens":[
+                        {
+                            "item-id": "5",
+                            "item-name": "Choose the project name"
+                        },
+
+
+                        {
+                            "item-id": "6",
+                            "item-name": "Design the home page"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
+    "users": [
+        {
+            "user-id": "1",
+            "user-name": "admin",
+            "user-email": "admin@admin.com.br",
+            "password": "admin"
+        }
+    ]
+}
