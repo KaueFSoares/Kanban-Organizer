@@ -6,6 +6,6 @@ BR: Um site desenvolvido a partir de uma ideia própria de criar uma plataforma 
 
 ## Running
 
-EN: You can run the project by downloading it and entering the command "npm run dev" in the terminal or see the current state of the project [here](kauesoares.website)
+EN: You can run the project by downloading it and entering the command "npm run dev" in the terminal or see the current state of the project [here](https://kauesoares.website)
 
-BR: Você pode executar o projeto baixando-o e inserindo o comando "npm run dev" no terminal ou ter um ver o estado atual no projeto [aqui](kauesoares.website) 
+BR: Você pode executar o projeto baixando-o e inserindo o comando "npm run dev" no terminal ou ter um ver o estado atual no projeto [aqui](https://kauesoares.website) 
