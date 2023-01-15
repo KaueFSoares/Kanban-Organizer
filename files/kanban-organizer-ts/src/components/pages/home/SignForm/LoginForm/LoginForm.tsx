@@ -5,11 +5,11 @@ import { useState } from "react"
 
 function LoginForm() {
 
-    const [email, setEmail] = useState("")
-    const [inputType, setInputType] = useState("password")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState<string>("")
+    const [inputType, setInputType] = useState<string>("password")
+    const [password, setPassword] = useState<string>("")
 
-    function changeInputType(e: any) {
+    function changeInputType(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault()
 
         if (inputType === "text") {
@@ -19,7 +19,7 @@ function LoginForm() {
         }
     }
 
-    function buttonClick(e: any){
+    function buttonClick(e: React.MouseEvent<HTMLButtonElement>){
         e.preventDefault()
     }
 

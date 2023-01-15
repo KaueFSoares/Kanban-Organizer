@@ -10,8 +10,6 @@ import SignForm from "./SignForm/SignForm"
 
 function Home() {
 
-  const imgPath: string = "../../../img/error-img.jpeg"
-
   function backToTop() {
     window.scrollTo({
       top: 0,
@@ -141,6 +139,7 @@ function Home() {
         </p>
       </footer>
 
+      {/* ----- UP AND BOTTOM BUTTONS ----- */}
       <div id="back-to-buttons">
         <button id="to-top-button" className="btn" onClick={backToTop}>
           <AiOutlineArrowUp className="icon" />

@@ -7,7 +7,7 @@ import SignUpForm from "./SignUpForm/SignUpForm"
 
 function SignForm() {
 
-    const [selected, setSelected] = useState("login")
+    const [selected, setSelected] = useState<string>("login")
 
 
 

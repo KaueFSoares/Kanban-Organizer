@@ -8,16 +8,16 @@ import "./signupform.sass"
 
 function SignUpForm() {
 
-  const [email, setEmail] = useState("")
-  const [name, setName] = useState("")
-  const [inputType, setInputType] = useState("password")
-  const [inputTypeConfirm, setInputTypeConfirm] = useState("password")
-  const [password, setPassword] = useState("")
-  const [passwordConfirm, setPasswordConfirm] = useState("")
-  const [rightPassword, setRightPassord] = useState(true)
+  const [email, setEmail] = useState<string>("")
+  const [name, setName] = useState<string>("")
+  const [inputType, setInputType] = useState<string>("password")
+  const [inputTypeConfirm, setInputTypeConfirm] = useState<string>("password")
+  const [password, setPassword] = useState<string>("")
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("")
+  const [rightPassword, setRightPassord] = useState<boolean>(true)
   console.log(name, email)
 
-  function changeInputType(e: any) {
+  function changeInputType(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
 
     if (inputType === "text") {
@@ -27,7 +27,7 @@ function SignUpForm() {
     }
   }
 
-  function changeInputTypeConfirm(e: any) {
+  function changeInputTypeConfirm(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
 
     if (inputTypeConfirm === "text") {
@@ -46,7 +46,7 @@ function SignUpForm() {
   }, [password, passwordConfirm, rightPassword])
 
 
-  function buttonClick(e: any) {
+  function buttonClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
   }
 
