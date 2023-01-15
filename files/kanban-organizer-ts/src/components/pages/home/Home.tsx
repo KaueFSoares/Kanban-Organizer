@@ -2,6 +2,8 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { BsFillKanbanFill } from "react-icons/bs"
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai"
 import ERRORIMG from "../../../img/error-img.jpeg"
+import React from "react"
+
 
 import "./home.sass"
 import SignForm from "./SignForm/SignForm"
