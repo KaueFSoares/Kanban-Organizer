@@ -158,9 +158,9 @@ function SignUpForm() {
         </p>
 
         <div id="other-options">
-          <button id="facebook"><FaFacebookF /></button>
-          <button id="tt"><FaTwitter /></button>
-          <button id="google"><FaGoogle /></button>
+          <button id="facebook" onClick={buttonClick}><FaFacebookF /></button>
+          <button id="tt" onClick={buttonClick}><FaTwitter /></button>
+          <button id="google" onClick={buttonClick}><FaGoogle /></button>
         </div>
       </div>
     </form>
