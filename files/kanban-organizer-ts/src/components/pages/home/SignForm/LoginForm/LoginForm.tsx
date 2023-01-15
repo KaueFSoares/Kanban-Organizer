@@ -9,7 +9,7 @@ function LoginForm() {
     const [inputType, setInputType] = useState("password")
     const [password, setPassword] = useState("")
 
-    function changeInputType(e) {
+    function changeInputType(e: any) {
         e.preventDefault()
 
         if (inputType === "text") {
@@ -19,7 +19,7 @@ function LoginForm() {
         }
     }
 
-    function buttonClick(e){
+    function buttonClick(e: any){
         e.preventDefault()
     }
 

@@ -17,7 +17,7 @@ function SignUpForm() {
   const [rightPassword, setRightPassord] = useState(true)
   console.log(name, email)
 
-  function changeInputType(e) {
+  function changeInputType(e: any) {
     e.preventDefault()
 
     if (inputType === "text") {
@@ -27,7 +27,7 @@ function SignUpForm() {
     }
   }
 
-  function changeInputTypeConfirm(e) {
+  function changeInputTypeConfirm(e: any) {
     e.preventDefault()
 
     if (inputTypeConfirm === "text") {
@@ -46,7 +46,7 @@ function SignUpForm() {
   }, [password, passwordConfirm, rightPassword])
 
 
-  function buttonClick(e) {
+  function buttonClick(e: any) {
     e.preventDefault()
   }
 

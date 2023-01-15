@@ -1,11 +1,14 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa"
 import { BsFillKanbanFill } from "react-icons/bs"
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai"
+import ERRORIMG from "../../../img/error-img.jpeg"
 
 import "./home.sass"
 import SignForm from "./SignForm/SignForm"
 
 function Home() {
+
+  const imgPath: string = "../../../img/error-img.jpeg"
 
   function backToTop() {
     window.scrollTo({
@@ -59,7 +62,7 @@ function Home() {
 
         <div id="first-content">
           <div id="img-box">
-            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+            <img src={ERRORIMG} alt="features" />
           </div>
 
           <div id="text">
@@ -84,13 +87,13 @@ function Home() {
           </div>
 
           <div id="img-box">
-            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+            <img src={ERRORIMG} alt="features" />
           </div>
         </div>
 
         <div id="third-content">
           <div id="img-box">
-            <img src={require("../../../img/error-img.jpeg")} alt="features" />
+            <img src = {ERRORIMG} alt="features" />
           </div>
 
           <div id="text">
@@ -136,13 +139,13 @@ function Home() {
         </p>
       </footer>
 
-      <div id = "back-to-buttons">
-        <button id = "to-top-button" className="btn" onClick={backToTop}>
-          <AiOutlineArrowUp className="icon"/>
+      <div id="back-to-buttons">
+        <button id="to-top-button" className="btn" onClick={backToTop}>
+          <AiOutlineArrowUp className="icon" />
         </button>
 
-        <button id = "to-bottom-button" className="btn" onClick={backToBottom}>
-          <AiOutlineArrowDown className="icon"/>
+        <button id="to-bottom-button" className="btn" onClick={backToBottom}>
+          <AiOutlineArrowDown className="icon" />
         </button>
       </div>
     </main>

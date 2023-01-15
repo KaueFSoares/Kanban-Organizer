@@ -1,0 +1,202 @@
+@use "../../../styles/variables"
+
+
+/* SMALL DEVICES < 600 PX */
+@media only screen and (max-width: 768px)
+    #aside
+        position: fixed
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        margin: 0
+        background: variables.$bg-color-focus
+        bottom: 0
+        width: 100%
+        height: 5rem
+
+        #logo-container
+            display: none
+
+        nav
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+
+            ul
+                list-style: none
+                display: flex
+                flex-direction: row
+                justify-content: space-around
+                height: 5rem
+                align-items: center
+                
+
+                li
+                    display: flex
+                    justify-content: space-around
+                    align-items: center
+                    width: 25vw
+
+                    .link
+                        justify-content: center
+                        color: variables.$text-color-focus
+                        display: flex
+                        align-items: center
+                        margin: 0
+                        padding: 0
+                        font-size: 4rem
+
+                        p
+                            display: none
+                            color: variables.$text-color-focus
+
+
+        #theme-changer-box
+            display: none
+
+                
+
+
+@media only screen and (min-width: 768px)
+    #aside
+        /* the nav bar witdh has been defined as 4rem by the margin on the app page */
+        position: fixed
+        display: flex
+        flex-direction: column
+        margin: 0
+        background: variables.$bg-color-focus
+        width: 4rem
+        height: 100vh
+        transition: width 200ms ease
+        color: variables.$text-color-focus
+        
+
+        /* fixing logo position */
+        #logo-container
+            margin: 0
+            width: 100%
+            display: flex
+            flex-direction: row
+            align-items: center
+            justify-content: center
+            margin-bottom: 3rem
+            font-family: variables.$font-icon
+
+            #iconBox
+                width: 100%
+                height: 4rem
+                display: flex
+                justify-content: center
+                align-items: center
+                
+
+                p
+                    font-size: 3rem
+
+            #textBox
+                display: none        
+
+        /* fixing buttons positon */
+
+        nav
+            display: flex
+            flex-direction: column
+            font-family: variables.$font-main
+            width: 100%
+
+            ul
+                display: flex
+                flex-direction: column
+                list-style: none
+                
+                .buttons
+                    display: flex
+                    flex-direction: row 
+                    padding: 1rem 0
+                    margin: .5rem 0
+                    justify-content: center
+                    align-items: center
+                    text-decoration: none
+
+                    .link
+                        display: flex
+                        flex-direction: row
+                        text-decoration: none
+                        align-items: center
+                        
+
+                        p
+                            display: none
+                            margin-left: .5rem
+                            color: variables.$text-color-focus
+                            font-size: 1.3rem
+                            color: variables.$text-color-focus
+
+                        .btn-icon
+                            font-size: 2rem
+                            color: variables.$text-color-focus
+
+        #theme-changer-box
+            margin-top: auto
+            width: 4rem
+            display: flex
+            align-items: center
+            justify-content: center
+            height: 4rem
+            color: variables.$text-color-focus
+
+            #theme-button
+                border: none
+                background-color: transparent
+
+                p
+                    font-size: 2rem
+                    cursor: pointer 
+                    color: variables.$text-color-focus
+
+
+
+
+        /* --- ON HOVER --- */
+        &:hover
+            width: 14rem
+            justify-content: left
+
+            /* logo on hover */
+            #logo-container
+                justify-content: left
+
+            
+                #textBox
+                    display: flex
+                    justify-content: left
+                    align-items: center
+                    margin-left: 0.2rem
+                    font-size: .75rem
+                    margin-right: .3rem
+
+            
+            /* buttons on hover */
+            nav
+                justify-content: left
+
+                ul
+                    justify-content: left
+
+                    .buttons
+                        display: flex
+                        flex-direction: row 
+                        justify-content: left
+                        margin-left: .3rem
+
+                        .link
+                            display: flex
+                            flex-direction: row
+
+
+                            p
+                                display: flex
+                
+            
+
+
