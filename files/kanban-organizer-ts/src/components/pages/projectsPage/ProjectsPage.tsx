@@ -3,6 +3,7 @@ import "./projectspage.sass"
 import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
 import { useContext } from "react"
 import MyContext from "../../../context/MyContext"
+import { toast } from "react-toastify"
 
 function ProjectsPage() {
 
@@ -11,7 +12,11 @@ function ProjectsPage() {
   return (
     <main id="projects-page-container">
       {user.logged ? (
-        <p>{`Olá, ${user.name}`}</p>
+        <div>
+          {toast.success(`Hello, ${user.name}!`, {
+            toastId: '',
+          })}
+        </div>
       ) : (
         <div id = "back-to-home-box">
           <h1>You are not <span>logged in!</span></h1>
