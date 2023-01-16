@@ -20,7 +20,7 @@ function Calendar() {
       ) : (
         <div id="back-to-home-calendar-box">
           <h1>You are not <span>logged in!</span></h1>
-          <p>Please log in to acess your projects!</p>
+          <p>Please log in to acess your calendar!</p>
           <BackToHomeButton />
         </div>
       )}
