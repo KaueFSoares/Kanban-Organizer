@@ -2,26 +2,40 @@
 
 #projects-page-container
     background-color: variables.$bg-color
-    padding: 3rem
     font-family: variables.$font-main
     margin-left: 4rem
     min-height: 100vh
     width: 100%
     color: variables.$text-color
     display: flex
-    flex-direction: column
     align-items: center
     justify-content: center
 
-    h1
-        margin-bottom: 0rem
-        text-align: center
-        color: variables.$text-color-focus
-        font-family: variables.$font-icon
-        font-size: 6rem
-        line-height: 7rem
-        text-align: center
+    padding: 3rem
 
-    #icon
-        font-size: 25rem
-        color: variables.$text-color-focus
+    #back-to-home-box
+        height: 60vh
+        width: 40vw
+        background-color: variables.$bg-color-focus
+        border-radius: variables.$large-border-radius
+        padding: 1rem
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+        h1
+            background-color: variables.$bg-color
+            padding: .5rem 1rem
+            border-radius: variables.$medium-border-radius
+            font-weight: normal
+            margin-bottom: 2rem
+            font-size: 2.7rem
+
+            span
+                font-weight: bold
+
+        p
+            font-size: 1.8rem
+            color: variables.$bg-color
+            margin-bottom: 4rem

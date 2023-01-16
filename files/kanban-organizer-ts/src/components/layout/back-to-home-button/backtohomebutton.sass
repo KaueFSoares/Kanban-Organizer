@@ -1,0 +1,24 @@
+@use "../../../styles/variables"
+
+#back-home-btn
+    border: none
+    border-radius: calc(3 * variables.$large-border-radius)
+    height: 6rem
+    width: 18rem
+    font-family: variables.$font-icon
+    background-color: variables.$bg-color
+    font-size: 1.4rem
+    font-weight: bold
+    opacity: .85
+    cursor: pointer
+    transition: all 200ms ease
+    text-decoration: none
+    color: variables.$bg-color-focus
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:hover
+        opacity: 1
+        transform: scale(1.1)
+
