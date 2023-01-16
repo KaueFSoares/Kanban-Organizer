@@ -1,57 +1,57 @@
 {
     "projects": [
         {
-            "project-id": "1",
-            "project-name": "test-project",
-            "user-id": "1",
+            "id": "1",
+            "projectName": "test-project",
+            "userId": "1",
             "stages": [
                 {
-                    "stage-id": "1",
-                    "stage-name": "To-do",
+                    "id": "1",
+                    "stageName": "To-do",
                     "itens": [
                         {
-                            "item-id": "1",
-                            "item-name": "Start Diagramming"
+                            "id": "1",
+                            "itemName": "Start Diagramming"
                         },
                         {
-                            "item-id": "2",
-                            "item-name": "Talk to the boss"
+                            "id": "2",
+                            "itemName": "Talk to the boss"
                         }
                     ]
                 },
                 
 
                 {
-                    "stage-id": "2",
-                    "stage-name": "Doing",
+                    "id": "2",
+                    "stageName": "Doing",
                     "itens":[
                         {
-                            "item-id": "3",
-                            "item-name": "Pick programing languages"
+                            "id": "3",
+                            "itemName": "Pick programing languages"
                         },
 
 
                         {
-                            "item-id": "4",
-                            "item-name": "Talk to the client"
+                            "id": "4",
+                            "itemName": "Talk to the client"
                         }
                     ]
                 },
 
 
                 {
-                    "stage-id": "2",
-                    "stage-name": "Done",
+                    "id": "2",
+                    "stageName": "Done",
                     "itens":[
                         {
-                            "item-id": "5",
-                            "item-name": "Choose the project name"
+                            "id": "5",
+                            "itemName": "Choose the project name"
                         },
 
 
                         {
-                            "item-id": "6",
-                            "item-name": "Design the home page"
+                            "id": "6",
+                            "itemName": "Design the home page"
                         }
                     ]
                 }
@@ -61,9 +61,9 @@
 
     "users": [
         {
-            "user-id": "1",
-            "user-name": "admin",
-            "user-email": "admin@admin.com.br",
+            "id": "admin",
+            "userName": "admin",
+            "userEmail": "admin@admin.com.br",
             "password": "admin"
         }
     ]

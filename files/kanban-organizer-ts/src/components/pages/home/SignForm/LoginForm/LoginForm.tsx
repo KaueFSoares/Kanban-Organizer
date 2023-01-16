@@ -2,14 +2,19 @@ import "./loginform.sass"
 import { AiOutlineMail, AiOutlineLock, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa"
 import { useState } from "react"
+import { toast } from 'react-toastify'
+import { useNavigate } from "react-router-dom"
+
 
 function LoginForm() {
+
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState<string>("")
     const [inputType, setInputType] = useState<string>("password")
     const [password, setPassword] = useState<string>("")
 
-    function changeInputType(e: React.MouseEvent<HTMLButtonElement>) {
+    function changeInputType(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
 
         if (inputType === "text") {
@@ -19,12 +24,54 @@ function LoginForm() {
         }
     }
 
-    function buttonClick(e: React.MouseEvent<HTMLButtonElement>){
+    function buttonClick(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
     }
 
-    /* only for not getting warnings */
-    console.log(email, password)
+    /* THE FOLLOWING METHOD IS UNSAFE AND NOT RECOMMENDED, IT WAS ONLY USED FOR FRONT-END DEVELOPMENT PURPOSES */
+    function login(e: React.MouseEvent<HTMLButtonElement>): void {
+        e.preventDefault()
+
+        if (checkNull() === false) {
+            fetch("http://localhost:5001/users/" + email).then((res) => {
+                return res.json()
+            }).then((resp) => {
+                if(Object.keys(resp).length === 0){
+                    toast.error("Incorrect e-mail, if you don't have an account, sign up!")
+                } else if (resp.password === password) {
+                    navigate("/projects", { state: {logged: true }})
+                } else {
+                    toast.error("Incorrect password!")
+                }
+
+
+            }).catch((err) => {
+                toast.error("Login failed due to: " + err.message)
+            })
+        }
+
+    }
+
+    function checkNull(): boolean {
+        let isNull: boolean = false
+
+        if (email === "" || password === "" || email === null || password === null) {
+            isNull = true
+            toast.warn("Please fill out all fields before proceeding!", {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        }
+
+        return isNull
+
+    }
 
     return (
         <form id="login-box">
@@ -38,6 +85,7 @@ function LoginForm() {
 
                 <input
                     type="email"
+                    name="userEmail"
                     placeholder="E-mail"
                     onChange={(e) => {
                         setEmail(e.target.value)
@@ -53,6 +101,7 @@ function LoginForm() {
 
                 <input
                     type={`${inputType}`}
+                    name="password"
                     placeholder="Password"
                     onChange={(e) => {
                         setPassword(e.target.value)
@@ -86,7 +135,7 @@ function LoginForm() {
             <div id="login-button-box">
                 <button
                     id="login-button"
-                    onClick={buttonClick}
+                    onClick={login}
                 >
                     <p>Login</p>
                 </button>
