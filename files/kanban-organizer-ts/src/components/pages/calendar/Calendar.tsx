@@ -1,25 +1,26 @@
 import "./calendar.sass"
 import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
-import { useLocation } from "react-router-dom"
+
+import { useContext } from "react"
+import MyContext from "../../../context/MyContext"
+import { TbFaceIdError } from "react-icons/tb"
+
 
 
 function Calendar() {
-  const location = useLocation()
+  const { user }: any = useContext(MyContext)
 
-  var logged: boolean = false
-
-  if (location.state) {
-      logged = location.state.logged
-  }
-  
   return (
-    <main id="projects-page-container">
-      {logged ? (
-        <></>
+    <main id="calendar-container">
+      {user.logged ? (
+        <>
+          <h1 id = "h1-logged">Work in <br />progress</h1>
+          <TbFaceIdError id="icon" />
+        </>
       ) : (
-        <div id = "back-to-home-box">
+        <div id="back-to-home-calendar-box">
           <h1>You are not <span>logged in!</span></h1>
-          <p>Please log in to acess your calendar!</p>
+          <p>Please log in to acess your projects!</p>
           <BackToHomeButton />
         </div>
       )}

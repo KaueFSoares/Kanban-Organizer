@@ -1,14 +1,17 @@
 import "./loginform.sass"
 import { AiOutlineMail, AiOutlineLock, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { toast } from 'react-toastify'
 import { useNavigate } from "react-router-dom"
+import MyContext from "../../../../../context/MyContext"
 
 
 function LoginForm() {
 
     const navigate = useNavigate()
+
+    const { user, setUser }: any = useContext(MyContext)
 
     const [email, setEmail] = useState<string>("")
     const [inputType, setInputType] = useState<string>("password")
@@ -33,21 +36,23 @@ function LoginForm() {
         e.preventDefault()
 
         if (checkNull() === false) {
-            fetch("http://localhost:5001/users/" + email).then((res) => {
-                return res.json()
-            }).then((resp) => {
-                if(Object.keys(resp).length === 0){
-                    toast.error("Incorrect e-mail, if you don't have an account, sign up!")
-                } else if (resp.password === password) {
-                    navigate("/projects", { state: {logged: true }})
-                } else {
-                    toast.error("Incorrect password!")
-                }
+            fetch("http://localhost:5001/users/" + email)
+                .then((res) => {
+                    return res.json()
+                }).then((resp) => {
+                    if (Object.keys(resp).length === 0) {
+                        toast.error("Incorrect e-mail, if you don't have an account, sign up!")
+                    } else if (resp.password === password) {
+                        setUser({ logged: true, name: resp.userName, id: resp.id })
+                        navigate("/projects")
+                    } else {
+                        toast.error("Incorrect password!")
+                    }
 
 
-            }).catch((err) => {
-                toast.error("Login failed due to: " + err.message)
-            })
+                }).catch((err) => {
+                    toast.error("Login failed due to: " + err.message)
+                })
         }
 
     }

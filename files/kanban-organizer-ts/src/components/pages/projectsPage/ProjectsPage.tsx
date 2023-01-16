@@ -1,21 +1,17 @@
-import { useLocation } from "react-router-dom"
+
 import "./projectspage.sass"
 import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
+import { useContext } from "react"
+import MyContext from "../../../context/MyContext"
 
 function ProjectsPage() {
-  
-  const location = useLocation()
 
-  var logged: boolean = false
+  const {user}: any = useContext(MyContext)
 
-  if (location.state) {
-      logged = location.state.logged
-  }
-  
   return (
     <main id="projects-page-container">
-      {logged ? (
-        <></>
+      {user.logged ? (
+        <p>{`Olá, ${user.name}`}</p>
       ) : (
         <div id = "back-to-home-box">
           <h1>You are not <span>logged in!</span></h1>
