@@ -16,7 +16,55 @@
         width: 100%
         box-sizing: border-box
         background-color: variables.$bg-color
+        padding: 3rem
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
 
+        #projects-page-header
+            width: 80%
+            height: 15vh
+            background-color: variables.$bg-color-focus
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 1vh
+            border-radius: variables.$large-border-radius
+            margin-bottom: 2rem
+
+            h1
+                font-size: 4rem
+                font-family: variables.$font-icon
+                margin-left: 2rem
+                color: variables.$text-color-focus
+
+            button
+                border: none
+                background-color: variables.$bg-color
+                font-family: variables.$font-icon
+                padding: 1rem
+                margin-right: 1rem
+                height: 90%
+                font-size: 1.5rem
+                display: flex
+                align-items: center
+                justify-content: center
+                border-radius: variables.$medium-border-radius
+                cursor: pointer
+                transition: all 200ms ease
+                opacity: .7
+
+                &:hover
+                    transform: scale(1.1)
+                    opacity: 1
+
+        #projects-page-body
+            min-height: calc(83vh - 8rem)
+            width: 80%
+            background-color: variables.$bg-color-focus
+            border-radius: variables.$large-border-radius
+    
 
     #back-to-home-box
         height: 60vh

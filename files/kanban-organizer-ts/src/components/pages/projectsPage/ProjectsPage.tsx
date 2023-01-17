@@ -7,9 +7,19 @@ import { toast } from "react-toastify"
 import { useLocation } from "react-router-dom"
 import Loading from "../../layout/loading/Loading"
 
+interface Iprojects {
+  id: number
+  projectName: string
+}
+
 function ProjectsPage() {
 
   const [removeLoading, setRemoveLoading] = useState<boolean>(false)
+  var allProjects = []
+
+  const [projects, setProjects] = useState<Iprojects[]>([])
+
+  var run: boolean = false
 
   const location = useLocation()
 
@@ -19,14 +29,41 @@ function ProjectsPage() {
     message = location.state.message
   }
 
-  const { user }: any = useContext(MyContext)
+  const { user }: any = useContext(MyContext) // chega "logado" e ID
 
   useEffect(() => {
     setTimeout(() => {
       setRemoveLoading(true)
 
+      if (run === false) {
+        run = true
+        // where the get request begins
 
-    }, 3000)
+        fetch(`http://localhost:5001/users/${user.id}`, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+          },
+        })
+          .then(resp => resp.json())
+          .then(data => {
+
+            // after fetch
+
+
+            allProjects = data.projects
+
+
+            console.log(allProjects)
+
+
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+
+    }, 1000)
   }, [])
 
   return (
@@ -42,7 +79,16 @@ function ProjectsPage() {
                 })
               }
 
+              <header id = "projects-page-header">
+                <h1>Projects</h1>
+                <button>
+                  New <br /> Project
+                </button>
+              </header>
 
+              <section id = "projects-page-body">
+
+              </section>
 
 
 

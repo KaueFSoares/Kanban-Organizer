@@ -14,7 +14,7 @@ interface IUser {
 
 function App() {
 
-  const [user, setUser] = useState<IUser>({logged: true, id: "Kauê"})
+  const [user, setUser] = useState<IUser>({logged: true, id: "kaue"})
 
   return (
     <div id="App">

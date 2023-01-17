@@ -1,5 +1,5 @@
 import "./loading.sass"
-import load from "./Eclipse-1s-200px.svg"
+import load from "./loading-svg.svg"
 
 function Loading() {
   return (
