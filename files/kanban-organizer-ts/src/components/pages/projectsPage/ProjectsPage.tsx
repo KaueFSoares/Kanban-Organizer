@@ -13,7 +13,7 @@ function ProjectsPage() {
     <main id="projects-page-container">
       {user.logged ? (
         <div>
-          {toast.success(`Hello, ${user.name}!`, {
+          {toast.success(`Hello, ${user.id}!`, {
             toastId: '',
           })}
         </div>

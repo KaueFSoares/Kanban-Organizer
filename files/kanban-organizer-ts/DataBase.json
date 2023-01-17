@@ -1,60 +1,60 @@
 {
-  "projects": [
-    {
-      "id": "1",
-      "projectName": "test-project",
-      "userId": "1",
-      "stages": [
-        {
-          "id": "1",
-          "stageName": "To-do",
-          "itens": [
-            {
-              "id": "1",
-              "itemName": "Start Diagramming"
-            },
-            {
-              "id": "2",
-              "itemName": "Talk to the boss"
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "stageName": "Doing",
-          "itens": [
-            {
-              "id": "3",
-              "itemName": "Pick programing languages"
-            },
-            {
-              "id": "4",
-              "itemName": "Talk to the client"
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "stageName": "Done",
-          "itens": [
-            {
-              "id": "5",
-              "itemName": "Choose the project name"
-            },
-            {
-              "id": "6",
-              "itemName": "Design the home page"
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "users": [
     {
       "id": "admin",
       "userEmail": "admin@admin.com.br",
-      "password": "admin"
+      "password": "admin",
+      "projects": [
+        {
+          "id": "1",
+          "projectName": "test-project",
+          "userId": "1",
+          "stages": [
+            {
+              "id": "1",
+              "stageName": "To-do",
+              "itens": [
+                {
+                  "id": "1",
+                  "itemName": "Start Diagramming"
+                },
+                {
+                  "id": "2",
+                  "itemName": "Talk to the boss"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "stageName": "Doing",
+              "itens": [
+                {
+                  "id": "3",
+                  "itemName": "Pick programing languages"
+                },
+                {
+                  "id": "4",
+                  "itemName": "Talk to the client"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "stageName": "Done",
+              "itens": [
+                {
+                  "id": "5",
+                  "itemName": "Choose the project name"
+                },
+                {
+                  "id": "6",
+                  "itemName": "Design the home page"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }

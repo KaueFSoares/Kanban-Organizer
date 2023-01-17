@@ -45,7 +45,7 @@ function LoginForm() {
                     if (Object.keys(resp).length === 0) {
                         toast.error("Incorrect e-mail, if you don't have an account, sign up!")
                     } else if (resp.password === password) {
-                        setUser({ logged: true, name: resp.id})
+                        setUser({ logged: true, id: resp.id})
                         navigate("/projects")
                     } else {
                         toast.error("Incorrect password!")

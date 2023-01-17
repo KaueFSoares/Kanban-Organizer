@@ -9,13 +9,12 @@ import { useState } from "react"
 
 interface IUser {
   logged: boolean
-  name: string
   id: string
 }
 
 function App() {
 
-  const [user, setUser] = useState<IUser>({logged: false, name: "", id: ""})
+  const [user, setUser] = useState<IUser>({logged: true, id: "Kauê"})
 
   return (
     <div id="App">
