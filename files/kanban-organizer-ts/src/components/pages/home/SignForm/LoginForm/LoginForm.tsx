@@ -1,5 +1,5 @@
 import "./loginform.sass"
-import { AiOutlineMail, AiOutlineLock, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
+import { AiOutlineUser, AiOutlineLock, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai"
 import { FaFacebookF, FaTwitter, FaGoogle } from "react-icons/fa"
 import { useContext, useState } from "react"
 import { toast } from 'react-toastify'
@@ -11,9 +11,9 @@ function LoginForm() {
 
     const navigate = useNavigate()
 
-    const { user, setUser }: any = useContext(MyContext)
+    const { setUser }: any = useContext(MyContext)
 
-    const [email, setEmail] = useState<string>("")
+    const [name, setName] = useState<string>("")
     const [inputType, setInputType] = useState<string>("password")
     const [password, setPassword] = useState<string>("")
 
@@ -35,15 +35,17 @@ function LoginForm() {
     function login(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
 
+        setUser({logged: false, name: ""})
+
         if (checkNull() === false) {
-            fetch("http://localhost:5001/users/" + email)
+            fetch("http://localhost:5001/users/" + name)
                 .then((res) => {
                     return res.json()
                 }).then((resp) => {
                     if (Object.keys(resp).length === 0) {
                         toast.error("Incorrect e-mail, if you don't have an account, sign up!")
                     } else if (resp.password === password) {
-                        setUser({ logged: true, name: resp.userName, id: resp.id })
+                        setUser({ logged: true, name: resp.id})
                         navigate("/projects")
                     } else {
                         toast.error("Incorrect password!")
@@ -60,7 +62,7 @@ function LoginForm() {
     function checkNull(): boolean {
         let isNull: boolean = false
 
-        if (email === "" || password === "" || email === null || password === null) {
+        if (name === "" || password === "" || name === null || password === null) {
             isNull = true
             toast.warn("Please fill out all fields before proceeding!", {
                 position: "top-center",
@@ -85,15 +87,16 @@ function LoginForm() {
             {/* email */}
             <div id="email-box">
                 <p>
-                    <AiOutlineMail />
+                    <AiOutlineUser />
                 </p>
 
                 <input
-                    type="email"
-                    name="userEmail"
-                    placeholder="E-mail"
+                    type="text"
+                    maxLength={100}
+                    name="userName"
+                    placeholder="User name"
                     onChange={(e) => {
-                        setEmail(e.target.value)
+                        setName(e.target.value)
                     }}
                 />
             </div>
@@ -107,6 +110,7 @@ function LoginForm() {
                 <input
                     type={`${inputType}`}
                     name="password"
+                    maxLength={100}
                     placeholder="Password"
                     onChange={(e) => {
                         setPassword(e.target.value)

@@ -4,18 +4,26 @@ import { AiOutlineUser, AiOutlineMail, AiOutlineLock, AiOutlineEyeInvisible, AiO
 import { useState, useEffect } from "react"
 
 import "./signupform.sass"
+import { toast } from "react-toastify"
+
+interface InewUser {
+  id: string
+  email: string
+  password: string
+}
 
 
 function SignUpForm() {
 
+  var newUser: InewUser= { id: "", email: "", password: "" }
   const [email, setEmail] = useState<string>("")
-  const [name, setName] = useState<string>("")
+  const [id, setId] = useState<string>("")
   const [inputType, setInputType] = useState<string>("password")
   const [inputTypeConfirm, setInputTypeConfirm] = useState<string>("password")
   const [password, setPassword] = useState<string>("")
   const [passwordConfirm, setPasswordConfirm] = useState<string>("")
   const [rightPassword, setRightPassord] = useState<boolean>(true)
-  console.log(name, email)
+
 
   function changeInputType(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
@@ -50,6 +58,83 @@ function SignUpForm() {
     e.preventDefault()
   }
 
+  function validation() {
+    let isValid: boolean = true
+
+    if (
+      email === "" || email === null ||
+      id === "" || id === null ||
+      password === "" || password === null ||
+      passwordConfirm === "" || passwordConfirm === null
+    ) {
+      isValid = false
+      toast.warn("Please fill out all fields before proceeding!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    } else if (rightPassword === false) {
+      isValid = false
+      toast.warn("The password confirmation most be equal to the password!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    } else {
+      newUser = { id: id, email: email, password: password }
+    }
+
+    return isValid
+
+  }
+
+  function signup(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault()
+
+    if (validation() === true) {
+
+      fetch("http://localhost:5001/users/" + id)
+        .then((res) => {
+          return res.json()
+        }).then((resp) => {
+          if (Object.keys(resp).length !== 0) {
+            toast.error("User name already in use, if you already have an account, log in!")
+          } else {
+            // after all the validations
+
+
+            fetch("http://localhost:5001/users", {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(newUser),
+            })
+              .then((resp) => resp.json())
+              .then(() => {
+
+                //redirect
+                toast.success(`Worked!`, {
+                  toastId: '',
+                })
+
+              })
+
+          }
+        })
+    }
+
+  }
 
 
 
@@ -62,10 +147,12 @@ function SignUpForm() {
         </p>
 
         <input
+          name="id"
+          maxLength={100}
           type="text"
-          placeholder="Name"
+          placeholder="User name"
           onChange={(e) => {
-            setName(e.target.value)
+            setId(e.target.value)
           }}
         />
       </div>
@@ -77,6 +164,8 @@ function SignUpForm() {
         </p>
 
         <input
+          name="userEmail"
+          maxLength={100}
           type="email"
           placeholder="E-mail"
           onChange={(e) => {
@@ -92,6 +181,8 @@ function SignUpForm() {
         </p>
 
         <input
+          name="password"
+          maxLength={100}
           type={`${inputType}`}
           placeholder="Password"
           onChange={(e) => {
@@ -117,6 +208,7 @@ function SignUpForm() {
 
         <input
           type={`${inputTypeConfirm}`}
+          maxLength={100}
           placeholder="Confirm password"
           onChange={(e) => {
             setPasswordConfirm(e.target.value)
@@ -145,7 +237,7 @@ function SignUpForm() {
       <div id="signup-button-box">
         <button
           id="signup-button"
-          onClick={buttonClick}
+          onClick={signup}
         >
           <p>Sign Up</p>
         </button>
@@ -160,7 +252,7 @@ function SignUpForm() {
         <div id="other-options">
           <button id="facebook" onClick={buttonClick}><FaFacebookF /></button>
           <button id="tt" onClick={buttonClick}><FaTwitter /></button>
-          <button id="google" onClick={buttonClick}><FaGoogle /></button>
+          <button id="google" onClick={buttonClick} ><FaGoogle /></button>
         </div>
       </div>
     </form>
