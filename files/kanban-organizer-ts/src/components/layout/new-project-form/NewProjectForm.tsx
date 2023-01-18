@@ -1,5 +1,6 @@
+import { toast } from "react-toastify"
 import "./newprojectform.sass"
-import {useState} from "react"
+import { useState } from "react"
 
 interface INewProjectFormProps {
     handleOnClose: () => void
@@ -12,32 +13,38 @@ interface Iproject {
     projectName: string
     summary: string
     stages: Istages[]
-  }
-  
-  
-  interface Istages {
+}
+
+
+interface Istages {
     id: number
     stageName: string
     itens: Iitens[]
-  }
-  
-  interface Iitens {
+}
+
+interface Iitens {
     id: number
     itemName: string
-  }
+}
 
 function NewProjectForm({ handleOnClose, btnText, handleSubmit }: INewProjectFormProps) {
 
-    const [project, setProject] = useState<Iproject>({id: 0, projectName: "", summary: "", stages: []})
+    const [project, setProject] = useState<Iproject>({ id: 0, projectName: "", summary: "", stages: [] })
 
-    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>){
+    function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
         setProject({ ...project, [e.target.name]: e.target.value })
     }
 
-    function submit(e: React.FormEvent<HTMLFormElement>){
+    function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        handleSubmit(project)
+        if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
+            handleSubmit(project)
+        } else {
+            toast.warn("Please fill out all fields before proceeding!")
+        }
+
+
     }
 
     return (
@@ -50,15 +57,15 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit }: INewProjectFor
                 <form id="form" onSubmit={submit}>
                     <div>
                         <label>Project name</label>
-                        <input type="text" placeholder="Insert the project name" name="projectName" onChange={handleOnChange}/>
+                        <input type="text" placeholder="Insert the project name" name="projectName" onChange={handleOnChange} />
                     </div>
 
                     <div>
                         <label>Project summary</label>
-                        <input type="text" placeholder="Insert the project summary" name="summary" onChange={handleOnChange}/>
+                        <input type="text" placeholder="Insert the project summary" name="summary" onChange={handleOnChange} />
                     </div>
 
-                    <input type="submit" value = {btnText} id="submit"/>
+                    <input type="submit" value={btnText} id="submit" />
                 </form>
             </div>
         </div>

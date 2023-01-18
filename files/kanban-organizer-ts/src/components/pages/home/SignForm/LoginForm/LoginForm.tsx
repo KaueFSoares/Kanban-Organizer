@@ -64,16 +64,7 @@ function LoginForm() {
 
         if (name === "" || password === "" || name === null || password === null) {
             isNull = true
-            toast.warn("Please fill out all fields before proceeding!", {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            })
+            toast.warn("Please fill out all fields before proceeding!")
         }
 
         return isNull

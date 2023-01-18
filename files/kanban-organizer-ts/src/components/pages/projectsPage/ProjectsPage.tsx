@@ -84,7 +84,7 @@ function ProjectsPage() {
             // after fetch
 
             setUser({ ...user, userData: data })
-            
+
 
 
 
@@ -113,15 +113,30 @@ function ProjectsPage() {
 
     localUserData = user.userData
 
-    project.id = user.userData.projects.length + 1  
+    project.id = user.userData.projects.length + 1
 
     localUserData.projects.push(project)
 
-    //BY NOW, JUST LEFT THE UPLOAD OF THE DATA TO DO
+    fetch(`http://localhost:5001/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(localUserData)
+    })
+      .then((resp) => resp.json())
+      .then(() => {
+        setUser({ ...user, userData: localUserData })
 
+        toast.success(`Projected successfully`, {
+          toastId: '',
+        })
 
-
-
+        changeNewProjectFormVisibility()
+      })
+      .catch(err => {
+        toast.error("Project criation failed due to: " + err.message)
+      })
 
   }
 

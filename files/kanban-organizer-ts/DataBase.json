@@ -160,21 +160,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "teste",
-      "email": "teste@teste.com",
-      "password": "teste"
-    },
-    {
-      "id": "testedois",
-      "email": "testedois@testedois.com",
-      "password": "testedois"
-    },
-    {
-      "id": "testetres",
-      "email": "testetres@testetres.com",
-      "password": "testetres"
     }
   ]
 }
