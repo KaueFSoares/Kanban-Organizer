@@ -8,6 +8,7 @@
         {
           "id": 1,
           "projectName": "test-project",
+          "summary": "Project created for tests",
           "stages": [
             {
               "id": 1,
@@ -54,8 +55,7 @@
           ]
         }
       ]
-    }, 
-
+    },
     {
       "id": "kaue",
       "userEmail": "kaue@kaue.com.br",
@@ -64,6 +64,7 @@
         {
           "id": 1,
           "projectName": "test-project",
+          "summary": "Project created for tests",
           "stages": [
             {
               "id": 1,
@@ -108,10 +109,11 @@
               ]
             }
           ]
-        }, 
+        },
         {
           "id": 2,
           "projectName": "segundo projeto",
+          "summary": "Project created for tests",
           "stages": [
             {
               "id": 1,
@@ -158,6 +160,21 @@
           ]
         }
       ]
+    },
+    {
+      "id": "teste",
+      "email": "teste@teste.com",
+      "password": "teste"
+    },
+    {
+      "id": "testedois",
+      "email": "testedois@testedois.com",
+      "password": "testedois"
+    },
+    {
+      "id": "testetres",
+      "email": "testetres@testetres.com",
+      "password": "testetres"
     }
   ]
 }

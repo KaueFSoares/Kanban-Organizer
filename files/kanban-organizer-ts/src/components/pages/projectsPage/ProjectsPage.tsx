@@ -6,6 +6,7 @@ import MyContext from "../../../context/MyContext"
 import { toast } from "react-toastify"
 import { useLocation } from "react-router-dom"
 import Loading from "../../layout/loading/Loading"
+import NewProjectForm from "../../layout/new-project-form/NewProjectForm"
 
 interface Iprojects {
   id: number
@@ -15,6 +16,8 @@ interface Iprojects {
 function ProjectsPage() {
 
   const [removeLoading, setRemoveLoading] = useState<boolean>(false)
+  const [showProjectForm, setShowProjectForm] = useState<boolean>(false)
+
   var allProjects = []
 
   const [projects, setProjects] = useState<Iprojects[]>([])
@@ -29,8 +32,12 @@ function ProjectsPage() {
     message = location.state.message
   }
 
-  const { user }: any = useContext(MyContext) // chega "logado" e ID
+  const { user, setUser }: any = useContext(MyContext) // chega "logado" e ID
 
+
+
+
+  //LOAD PROJECTS FUNCTION
   useEffect(() => {
     setTimeout(() => {
       setRemoveLoading(true)
@@ -66,27 +73,50 @@ function ProjectsPage() {
     }, 1000)
   }, [])
 
+
+  //CHANGE NEW PROJECT FORM VISIBILITY FUNCION
+  function changeNewProjectFormVisibility(): void {
+
+    setShowProjectForm(!showProjectForm)
+
+    setUser({logged: user.logged, name: user.name, msgCounter: (user.msgCounter + 1)})
+
+  }
+
   return (
     <main id="projects-page-container">
       {user.logged ? (
         <>
           {removeLoading ? (
             <div id="container">
+              {/* MESSAGES */}
               {
-                (message !== "" && message !== null) &&
+                (message !== "" && message !== null && user.msgCounter === 0) &&
                 toast.success(`${message}`, {
                   toastId: '',
                 })
               }
 
-              <header id = "projects-page-header">
+
+              {/* FORMS */}
+              {
+                showProjectForm &&
+                <NewProjectForm 
+                  handleOnClose={changeNewProjectFormVisibility}
+                />
+              }
+
+
+
+              {/* PAGE */}
+              <header id="projects-page-header">
                 <h1>Projects</h1>
-                <button>
+                <button onClick={changeNewProjectFormVisibility}>
                   New <br /> Project
                 </button>
               </header>
 
-              <section id = "projects-page-body">
+              <section id="projects-page-body">
 
               </section>
 

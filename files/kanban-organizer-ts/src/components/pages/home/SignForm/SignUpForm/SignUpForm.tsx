@@ -124,7 +124,7 @@ function SignUpForm() {
               .then(() => {
 
                 //redirect
-                toast.success(`Worked!`, {
+                toast.success(`Signed up successfully, make login to proceed!`, {
                   toastId: '',
                 })
 

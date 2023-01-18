@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 import { AiOutlineHome, AiOutlinePhone, AiOutlineCalendar, AiOutlineProject } from "react-icons/ai"
 import { BsFillKanbanFill } from "react-icons/bs"
@@ -14,6 +15,16 @@ function NavBar() {
 
     function themeChange(){
         setDarkMode(!darkMode)
+        toast.warn("The dark mode is not ready yet!", {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
     }
 
     return (
