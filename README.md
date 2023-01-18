@@ -8,4 +8,4 @@ BR: Um site desenvolvido a partir de uma ideia própria de criar uma plataforma 
 
 EN: You can run the project by downloading it and entering the command "npm run dev" in the terminal and "npm run backend" on another terminal. You can either see the current state of the project interface (without the databases and without almost all the functions) **[here](https://kauesoares.website)**.
 
-BR: Você pode executar o projeto baixando-o e inserindo o comando "npm run dev" no terminal e "npm run backend" em outro terminal. Você também pode ver o estado atual da interface do projeto (sem banco de dados e sem quase todas as funções) **[aqui](https://kauesoares.website)**. 
+BR: Você pode executar o projeto baixando-o e inserindo o comando "npm run dev" no terminal e "npm run backend" em outro terminal. Você também pode ver o estado atual da interface do projeto (sem banco de dados e sem quase todas as funções) **[aqui](https://kauesoares.website)**.
