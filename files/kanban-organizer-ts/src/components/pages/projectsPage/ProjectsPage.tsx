@@ -11,6 +11,12 @@ import NewProjectForm from "../../layout/new-project-form/NewProjectForm"
 interface Iprojects {
   id: number
   projectName: string
+  summary: string
+}
+
+interface InewProject {
+  projectName: string
+  summary: string
 }
 
 function ProjectsPage() {
@@ -83,6 +89,12 @@ function ProjectsPage() {
 
   }
 
+
+  //CREATE NEW PROJECT FUNCTION
+  function createProject(project: InewProject): void{
+    console.log(project)
+  }
+
   return (
     <main id="projects-page-container">
       {user.logged ? (
@@ -103,6 +115,8 @@ function ProjectsPage() {
                 showProjectForm &&
                 <NewProjectForm 
                   handleOnClose={changeNewProjectFormVisibility}
+                  btnText = "Create"
+                  handleSubmit = {createProject}
                 />
               }
 

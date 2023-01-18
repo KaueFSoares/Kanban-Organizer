@@ -18,13 +18,19 @@
         display: flex
         flex-direction: column
         background-color: variables.$bg-color
-        height: 50vh
+        height: 55vh
         width: 30vw
         border-radius: variables.$large-border-radius
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        padding-bottom: 2rem
 
         header
             height: 5rem
             display: flex
+            width: 100%
             align-items: center
             justify-content: space-between
             background-color: variables.$bg-color-focus
@@ -50,15 +56,57 @@
                 justify-content: center
                 cursor: pointer
                 transition: all 200ms ease
-                
+
                 p
                     opacity: .6
-                
+
                 &:hover
                     transform: scale(1.1)
 
                     p
                         opacity: 1
 
-            
-                        
+        #form
+            width: 80%
+            display: flex
+            flex-direction: column
+            align-items: center
+            font-family: variables.$font-main
+
+            div
+                display: flex
+                flex-direction: column
+                margin-bottom: 2rem
+                width: 100%
+
+                label
+                    font-size: 1.3rem
+
+                input
+                    border: none
+                    height: 2.5rem
+                    font-size: 1.2rem
+                    color: variables.$bg-color-focus
+                    padding: 1rem
+                    &:focus
+                        outline: none
+
+                    &::placeholder
+                        opacity: .6
+
+            #submit
+                height: 4.5rem
+                width: 50%
+                border: none
+                background-color: variables.$bg-color-focus
+                color: variables.$bg-color
+                border-radius: variables.$large-border-radius
+                font-family: variables.$font-icon
+                font-size: 1.3rem
+                cursor: pointer
+                transition: all 200ms ease
+                opacity: .8
+
+                &:hover
+                    transform: scale(1.1)
+                    opacity: 1

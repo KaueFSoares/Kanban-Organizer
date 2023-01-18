@@ -54,6 +54,8 @@
                 cursor: pointer
                 transition: all 200ms ease
                 opacity: .7
+                &:focus
+                    outline: none
 
                 &:hover
                     transform: scale(1.05)
@@ -64,6 +66,10 @@
             width: 80%
             background-color: variables.$bg-color-focus
             border-radius: variables.$large-border-radius
+            flex-wrap: wrap
+            display: flex
+            flex-direction: row
+            padding: 2rem
     
 
     #back-to-home-box
