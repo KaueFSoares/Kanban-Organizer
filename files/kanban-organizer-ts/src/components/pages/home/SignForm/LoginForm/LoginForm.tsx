@@ -11,7 +11,7 @@ function LoginForm() {
 
     const navigate = useNavigate()
 
-    const { setUser }: any = useContext(MyContext)
+    const { user, setUser }: any = useContext(MyContext)
 
     const [name, setName] = useState<string>("")
     const [inputType, setInputType] = useState<string>("password")
@@ -45,7 +45,7 @@ function LoginForm() {
                     if (Object.keys(resp).length === 0) {
                         toast.error("Incorrect e-mail, if you don't have an account, sign up!")
                     } else if (resp.password === password) {
-                        setUser({ logged: true, id: resp.id})
+                        setUser({ ...user, logged: true, id: resp.id})
                         navigate("/projects", {state: {message: `Hello, ${resp.id}`}})
                     } else {
                         toast.error("Incorrect password!")

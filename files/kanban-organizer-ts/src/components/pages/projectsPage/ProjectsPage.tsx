@@ -68,7 +68,7 @@ function ProjectsPage() {
     setTimeout(() => {
       setRemoveLoading(true)
 
-      if (run === false) {
+      if (run === false && user.logged === true) {
         run = true
         // where the get request begins
 
@@ -83,7 +83,7 @@ function ProjectsPage() {
 
             // after fetch
 
-            setUser({ ...user, userData: data })
+            setUser({ ...user, userData: data, logged: true })
 
 
 
