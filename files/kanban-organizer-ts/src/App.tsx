@@ -42,7 +42,7 @@ interface IuserData {
 
 function App() {
 
-  const [user, setUser] = useState<IUser>({logged: false, id: "kaue", msgCounter: 0, userData: {id: "", userEmail: "", password: "", projects: [{id: 0, projectName: "", summary: "", stages: [{id: 0, stageName: "", itens: [{id: 0, itemName: ""}]}]}]}})
+  const [user, setUser] = useState<IUser>({logged: true, id: "kaue", msgCounter: 0, userData: {id: "", userEmail: "", password: "", projects: [{id: 0, projectName: "", summary: "", stages: [{id: 0, stageName: "", itens: [{id: 0, itemName: ""}]}]}]}})
 
   return (
     <div id="App">
