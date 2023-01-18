@@ -11,11 +11,38 @@ interface IUser {
   logged: boolean
   id: string
   msgCounter: number
+  userData: IuserData
+}
+
+interface Iproject {
+  id: number
+  projectName: string
+  summary: string
+  stages: Istages[]
+}
+
+
+interface Istages {
+  id: number
+  stageName: string
+  itens: Iitens[]
+}
+
+interface Iitens {
+  id: number
+  itemName: string
+}
+
+interface IuserData {
+  id: string
+  userEmail: string
+  password: string
+  projects: Iproject[]
 }
 
 function App() {
 
-  const [user, setUser] = useState<IUser>({logged: true, id: "kaue", msgCounter: 0})
+  const [user, setUser] = useState<IUser>({logged: true, id: "kaue", msgCounter: 0, userData: {id: "", userEmail: "", password: "", projects: [{id: 0, projectName: "", summary: "", stages: [{id: 0, stageName: "", itens: [{id: 0, itemName: ""}]}]}]}})
 
   return (
     <div id="App">

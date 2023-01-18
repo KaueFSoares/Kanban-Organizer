@@ -4,17 +4,31 @@ import {useState} from "react"
 interface INewProjectFormProps {
     handleOnClose: () => void
     btnText: string
-    handleSubmit: (project: InewProject) => void
+    handleSubmit: (project: Iproject) => void
 }
 
-interface InewProject {
+interface Iproject {
+    id: number
     projectName: string
     summary: string
+    stages: Istages[]
+  }
+  
+  
+  interface Istages {
+    id: number
+    stageName: string
+    itens: Iitens[]
+  }
+  
+  interface Iitens {
+    id: number
+    itemName: string
   }
 
 function NewProjectForm({ handleOnClose, btnText, handleSubmit }: INewProjectFormProps) {
 
-    const [project, setProject] = useState<InewProject>({projectName: "", summary: ""})
+    const [project, setProject] = useState<Iproject>({id: 0, projectName: "", summary: "", stages: []})
 
     function handleOnChange(e: React.ChangeEvent<HTMLInputElement>){
         setProject({ ...project, [e.target.name]: e.target.value })

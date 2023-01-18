@@ -8,25 +8,45 @@ import { useLocation } from "react-router-dom"
 import Loading from "../../layout/loading/Loading"
 import NewProjectForm from "../../layout/new-project-form/NewProjectForm"
 
-interface Iprojects {
+interface Iproject {
   id: number
   projectName: string
   summary: string
+  stages: Istages[]
 }
 
-interface InewProject {
-  projectName: string
-  summary: string
+
+interface Istages {
+  id: number
+  stageName: string
+  itens: Iitens[]
+}
+
+interface Iitens {
+  id: number
+  itemName: string
+}
+
+interface IuserData {
+  id: string
+  userEmail: string
+  password: string
+  projects: Iproject[]
 }
 
 function ProjectsPage() {
 
+  //variable for set if the loading is visible or not (used on LOAD PROJECTS FUNCTION)
   const [removeLoading, setRemoveLoading] = useState<boolean>(false)
+
+  //variable for set if the form for creating or editing project is visible (used on the CHANGE PROJECT FORM VISIBILITY FUNCION)
   const [showProjectForm, setShowProjectForm] = useState<boolean>(false)
 
-  var allProjects = []
+  //variable for storage all the logged user data
+  var localUserData: IuserData = { id: "batata", userEmail: "", password: "", projects: [{ id: 0, projectName: "", summary: "", stages: [{ id: 0, stageName: "", itens: [{ id: 0, itemName: "" }] }] }] }
 
-  const [projects, setProjects] = useState<Iprojects[]>([])
+
+  //const [projects, setProjects] = useState<Iproject[]>([])
 
   var run: boolean = false
 
@@ -63,11 +83,9 @@ function ProjectsPage() {
 
             // after fetch
 
+            setUser({ ...user, userData: data })
+            
 
-            allProjects = data.projects
-
-
-            console.log(allProjects)
 
 
           })
@@ -80,19 +98,31 @@ function ProjectsPage() {
   }, [])
 
 
-  //CHANGE NEW PROJECT FORM VISIBILITY FUNCION
+  //CHANGE PROJECT FORM VISIBILITY FUNCION
   function changeNewProjectFormVisibility(): void {
 
     setShowProjectForm(!showProjectForm)
 
-    setUser({logged: user.logged, name: user.name, msgCounter: (user.msgCounter + 1)})
+    setUser({ ...user, msgCounter: (user.msgCounter + 1) })
 
   }
 
 
   //CREATE NEW PROJECT FUNCTION
-  function createProject(project: InewProject): void{
-    console.log(project)
+  function createProject(project: Iproject): void {
+
+    localUserData = user.userData
+
+    project.id = user.userData.projects.length + 1  
+
+    localUserData.projects.push(project)
+
+    //BY NOW, JUST LEFT THE UPLOAD OF THE DATA TO DO
+
+
+
+
+
   }
 
   return (
@@ -113,10 +143,10 @@ function ProjectsPage() {
               {/* FORMS */}
               {
                 showProjectForm &&
-                <NewProjectForm 
+                <NewProjectForm
                   handleOnClose={changeNewProjectFormVisibility}
-                  btnText = "Create"
-                  handleSubmit = {createProject}
+                  btnText="Create"
+                  handleSubmit={createProject}
                 />
               }
 
