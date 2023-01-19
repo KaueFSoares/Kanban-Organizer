@@ -7,6 +7,7 @@ import { toast } from "react-toastify"
 import { useLocation } from "react-router-dom"
 import Loading from "../../layout/loading/Loading"
 import NewProjectForm from "../../layout/new-project-form/NewProjectForm"
+import ProjectCard from "./project-card/ProjectCard"
 
 interface Iproject {
   id: number
@@ -46,7 +47,7 @@ function ProjectsPage() {
   var localUserData: IuserData = { id: "batata", userEmail: "", password: "", projects: [{ id: 0, projectName: "", summary: "", stages: [{ id: 0, stageName: "", itens: [{ id: 0, itemName: "" }] }] }] }
 
 
-  //const [projects, setProjects] = useState<Iproject[]>([])
+  const [projects, setProjects] = useState<Iproject[]>([])
 
   var run: boolean = false
 
@@ -84,7 +85,7 @@ function ProjectsPage() {
             // after fetch
 
             setUser({ ...user, userData: data, logged: true })
-
+            setProjects(data.projects)
 
 
 
@@ -128,7 +129,7 @@ function ProjectsPage() {
       .then(() => {
         setUser({ ...user, userData: localUserData })
 
-        toast.success(`Projected successfully`, {
+        toast.success(`Project created successfully`, {
           toastId: '',
         })
 
@@ -176,6 +177,20 @@ function ProjectsPage() {
               </header>
 
               <section id="projects-page-body">
+
+                {
+                  projects.length > 0 ? (
+                    projects.map((project) => (
+                      <ProjectCard 
+                        projectName={project.projectName}
+                        summary = {project.summary}
+                        key={project.id}
+                      />
+                    ))
+                  ) : (
+                    <></>
+                  )
+                }
 
               </section>
 
