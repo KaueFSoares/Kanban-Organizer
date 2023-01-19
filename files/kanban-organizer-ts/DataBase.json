@@ -111,64 +111,15 @@
           ]
         },
         {
-          "id": 2,
-          "projectName": "segundo projeto",
-          "summary": "Project created for tests",
-          "stages": [
-            {
-              "id": 1,
-              "stageName": "To-do",
-              "itens": [
-                {
-                  "id": 1,
-                  "itemName": "Start Diagramming"
-                },
-                {
-                  "id": 2,
-                  "itemName": "Talk to the boss"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "stageName": "Doing",
-              "itens": [
-                {
-                  "id": 3,
-                  "itemName": "Pick programing languages"
-                },
-                {
-                  "id": 4,
-                  "itemName": "Talk to the client"
-                }
-              ]
-            },
-            {
-              "id": 3,
-              "stageName": "Done",
-              "itens": [
-                {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "projectName": "terceiro projeto",
-          "summary": "mais um teste",
+          "id": 0.887615479826021,
+          "projectName": "teste de criação de projeto",
+          "summary": "asddas",
           "stages": []
         },
         {
-          "id": 4,
-          "projectName": "outro teste",
-          "summary": "mais uma vez testando",
+          "id": 0.6144939992927316,
+          "projectName": "teste de criação de projeto",
+          "summary": "asddas",
           "stages": []
         }
       ]

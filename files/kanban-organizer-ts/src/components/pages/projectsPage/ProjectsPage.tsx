@@ -86,6 +86,7 @@ function ProjectsPage() {
 
             setUser({ ...user, userData: data, logged: true })
             setProjects(data.projects)
+            localUserData = data
 
 
 
@@ -114,7 +115,7 @@ function ProjectsPage() {
 
     localUserData = user.userData
 
-    project.id = user.userData.projects.length + 1
+    project.id = Math.random()
 
     localUserData.projects.push(project)
 
@@ -141,6 +142,41 @@ function ProjectsPage() {
 
   }
 
+  //REMOVE PROJECT FUNCTION
+  function removeProject(projectId: number): void{
+
+    user.userData.projects = user.userData.projects.filter(
+      (project: Iproject) => project.id !== projectId
+    )
+
+    localUserData = user.userData
+
+    fetch(`http://localhost:5001/users/${user.userData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(localUserData)
+    })
+      .then((resp) => resp.json())
+      .then(() => {
+        toast.success(`Project removed successfully`, {
+          toastId: '',
+        })
+      })
+      .catch(err => {
+        toast.error("Project criation failed due to: " + err.message)
+      })
+
+      setProjects(localUserData.projects)
+  }
+
+
+
+
+
+
+  //PAGE
   return (
     <main id="projects-page-container">
       {user.logged ? (
@@ -185,6 +221,8 @@ function ProjectsPage() {
                         projectName={project.projectName}
                         summary = {project.summary}
                         key={project.id}
+                        handleOnRemove={removeProject}
+                        projectId={project.id}
                       />
                     ))
                   ) : (
