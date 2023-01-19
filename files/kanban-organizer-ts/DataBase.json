@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "admin",
-      "userEmail": "admin@admin.com.br",
-      "password": "admin",
+      "userEmail": "kaue@kaue.com.br",
+      "password": "kaue",
       "projects": [
         {
           "id": 1,
@@ -53,6 +53,24 @@
               ]
             }
           ]
+        },
+        {
+          "id": 0.887615479826021,
+          "projectName": "teste de criação de projeto",
+          "summary": "asddas",
+          "stages": []
+        },
+        {
+          "id": 0.6144939992927316,
+          "projectName": "teste de criação de projeto",
+          "summary": "asddas",
+          "stages": []
+        },
+        {
+          "id": 0.4926680381536823,
+          "projectName": "mais um projeto no admin",
+          "summary": "adsadwads",
+          "stages": []
         }
       ]
     },
