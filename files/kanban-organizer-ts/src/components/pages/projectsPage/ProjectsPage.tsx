@@ -49,7 +49,7 @@ function ProjectsPage() {
 
   const [projects, setProjects] = useState<Iproject[]>([])
 
-  var run: boolean = false
+  const [run, setRun] = useState<boolean>(false)
 
   const location = useLocation()
 
@@ -69,8 +69,8 @@ function ProjectsPage() {
     setTimeout(() => {
       setRemoveLoading(true)
 
-      if (run === false && user.logged === true) {
-        run = true
+      if (!run && user.logged === true) {
+        setRun(true)
         // where the get request begins
 
         fetch(`http://localhost:5001/users/${user.id}`, {
@@ -87,7 +87,8 @@ function ProjectsPage() {
             setUser({ ...user, userData: data, logged: true })
             setProjects(data.projects)
             localUserData = data
-
+            
+            console.log("ta rodando")
 
 
           })
@@ -97,7 +98,7 @@ function ProjectsPage() {
       }
 
     }, 1000)
-  }, [])
+  }, [user]) /* SE BOTAR USER AQUI FUNCIONA MAS FICA EM LOOP INFINITO */
 
 
   //CHANGE PROJECT FORM VISIBILITY FUNCION
