@@ -22,8 +22,8 @@ function ProjectCard({ projectName, summary, handleOnRemove, projectId }: Iproje
             <header>
                 <h3>{projectName}</h3>
             </header>
-            <section>
-                <p>{summary}</p>
+            <section id = "projectcardsection">
+                <p id = "batata">{summary}</p>
             </section>
             <footer>
                 <div>

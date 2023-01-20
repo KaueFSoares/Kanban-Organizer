@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "admin",
-      "userEmail": "kaue@kaue.com.br",
-      "password": "kaue",
+      "userEmail": "admin@admin.com.br",
+      "password": "admin",
       "projects": [
         {
           "id": 1,
@@ -53,24 +53,6 @@
               ]
             }
           ]
-        },
-        {
-          "id": 0.887615479826021,
-          "projectName": "teste de criação de projeto",
-          "summary": "asddas",
-          "stages": []
-        },
-        {
-          "id": 0.6144939992927316,
-          "projectName": "teste de criação de projeto",
-          "summary": "asddas",
-          "stages": []
-        },
-        {
-          "id": 0.4926680381536823,
-          "projectName": "mais um projeto no admin",
-          "summary": "adsadwads",
-          "stages": []
         }
       ]
     },
@@ -80,55 +62,6 @@
       "password": "kaue",
       "projects": [
         {
-          "id": 1,
-          "projectName": "test-project",
-          "summary": "Project created for tests",
-          "stages": [
-            {
-              "id": 1,
-              "stageName": "To-do",
-              "itens": [
-                {
-                  "id": 1,
-                  "itemName": "Start Diagramming"
-                },
-                {
-                  "id": 2,
-                  "itemName": "Talk to the boss"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "stageName": "Doing",
-              "itens": [
-                {
-                  "id": 3,
-                  "itemName": "Pick programing languages"
-                },
-                {
-                  "id": 4,
-                  "itemName": "Talk to the client"
-                }
-              ]
-            },
-            {
-              "id": 3,
-              "stageName": "Done",
-              "itens": [
-                {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
-                }
-              ]
-            }
-          ]
-        },
-        {
           "id": 0.887615479826021,
           "projectName": "teste de criação de projeto",
           "summary": "asddas",
@@ -138,6 +71,18 @@
           "id": 0.6144939992927316,
           "projectName": "teste de criação de projeto",
           "summary": "asddas",
+          "stages": []
+        },
+        {
+          "id": 0.5469512191346833,
+          "projectName": "fasdfadsf",
+          "summary": "fadsfasdf",
+          "stages": []
+        },
+        {
+          "id": 0.4944336973372727,
+          "projectName": "fdsfadsf",
+          "summary": "fadsfasd",
           "stages": []
         }
       ]

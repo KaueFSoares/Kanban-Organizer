@@ -35,6 +35,8 @@ function LoginForm() {
     function login(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
 
+        setUser({logged: false, name: "", msgCounter: 0})
+
         if (checkNull() === false) {
             fetch("http://localhost:5001/users/" + name)
                 .then((res) => {

@@ -13,7 +13,7 @@ interface Iproject {
   id: number
   projectName: string
   summary: string
-  stages?: Istages[]
+  stages: Istages[]
 }
 
 
@@ -47,7 +47,9 @@ function ProjectsPage() {
   var localUserData: IuserData = { id: "batata", userEmail: "", password: "", projects: [{ id: 0, projectName: "", summary: "", stages: [{ id: 0, stageName: "", itens: [{ id: 0, itemName: "" }] }] }] }
 
 
-  var projects: Iproject[] = []
+  const [projects, setProjects] = useState<Iproject[]>([])
+
+  var run: boolean = false
 
   const location = useLocation()
 
@@ -59,16 +61,16 @@ function ProjectsPage() {
 
   const { user, setUser }: any = useContext(MyContext) // chega "logado" e ID
 
-  
+
 
 
   //LOAD PROJECTS FUNCTION
   useEffect(() => {
     setTimeout(() => {
       setRemoveLoading(true)
-      
-      if (user.logged === true) {
 
+      if (run === false && user.logged === true) {
+        run = true
         // where the get request begins
 
         fetch(`http://localhost:5001/users/${user.id}`, {
@@ -83,10 +85,10 @@ function ProjectsPage() {
             // after fetch
 
             setUser({ ...user, userData: data, logged: true })
-            projects = data.projects
+            setProjects(data.projects)
             localUserData = data
 
-            
+
 
           })
           .catch(err => {
@@ -141,7 +143,7 @@ function ProjectsPage() {
   }
 
   //REMOVE PROJECT FUNCTION
-  function removeProject(projectId: number): void {
+  function removeProject(projectId: number): void{
 
     user.userData.projects = user.userData.projects.filter(
       (project: Iproject) => project.id !== projectId
@@ -166,7 +168,7 @@ function ProjectsPage() {
         toast.error("Project criation failed due to: " + err.message)
       })
 
-    projects = localUserData.projects
+      setProjects(localUserData.projects)
   }
 
 
@@ -213,18 +215,18 @@ function ProjectsPage() {
               <section id="projects-page-body">
 
                 {
-                  user.userData.projects.length > 0 ? (
-                    user.userData.projects.map((project: Iproject) => (
-                      <ProjectCard
+                  projects.length > 0 ? (
+                    projects.map((project) => (
+                      <ProjectCard 
                         projectName={project.projectName}
-                        summary={project.summary}
+                        summary = {project.summary}
                         key={project.id}
                         handleOnRemove={removeProject}
                         projectId={project.id}
                       />
                     ))
                   ) : (
-                    <><p>No projects</p></>
+                    <><p id = "noprojects">No porjects yet</p></>
                   )
                 }
 
