@@ -5,7 +5,7 @@ import { useState } from "react"
 interface INewProjectFormProps {
     handleOnClose: () => void
     btnText: string
-    handleSubmit: (project: Iproject, isNew: boolean) => void
+    handleSubmit: (project: Iproject, isNew: boolean, projectId?: number) => void
     labelText: string
     projectId: number | undefined
 }
