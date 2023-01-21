@@ -93,8 +93,6 @@ function ProjectsPage() {
             setProjects(data.projects)
             localUserData = data
 
-            console.log("ta rodando")
-
 
           })
           .catch(err => {

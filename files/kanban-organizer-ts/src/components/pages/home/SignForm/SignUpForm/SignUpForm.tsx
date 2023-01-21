@@ -10,12 +10,32 @@ interface InewUser {
   id: string
   email: string
   password: string
+  projects: Iproject
+}
+
+interface Iproject {
+  id: number
+  projectName: string
+  summary: string
+  stages: Istages[]
+}
+
+
+interface Istages {
+  id: number
+  stageName: string
+  itens: Iitens[]
+}
+
+interface Iitens {
+  id: number
+  itemName: string
 }
 
 
 function SignUpForm() {
 
-  var newUser: InewUser= { id: "", email: "", password: "" }
+  var newUser: InewUser= { id: "", email: "", password: "", projects: {id: 0, projectName: "", summary: "", stages: []}}
   const [email, setEmail] = useState<string>("")
   const [id, setId] = useState<string>("")
   const [inputType, setInputType] = useState<string>("password")
@@ -91,7 +111,7 @@ function SignUpForm() {
         theme: "light",
       })
     } else {
-      newUser = { id: id, email: email, password: password }
+      newUser = { id: id, email: email, password: password, projects: {id: 0, projectName: "", summary: "", stages: []} }
     }
 
     return isValid
