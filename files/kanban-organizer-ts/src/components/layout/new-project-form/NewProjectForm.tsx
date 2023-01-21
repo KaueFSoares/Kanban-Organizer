@@ -6,6 +6,7 @@ interface INewProjectFormProps {
     handleOnClose: () => void
     btnText: string
     handleSubmit: (project: Iproject) => void
+    labelText: string
 }
 
 interface Iproject {
@@ -27,7 +28,7 @@ interface Iitens {
     itemName: string
 }
 
-function NewProjectForm({ handleOnClose, btnText, handleSubmit }: INewProjectFormProps) {
+function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText }: INewProjectFormProps) {
 
     const [project, setProject] = useState<Iproject>({ id: 0, projectName: "", summary: "", stages: [] })
 
@@ -51,7 +52,7 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit }: INewProjectFor
         <div id="overlay">
             <div id="new-project-box">
                 <header>
-                    <h3>New Project</h3>
+                    <h3>{labelText}</h3>
                     <button onClick={handleOnClose}><p>X</p></button>
                 </header>
                 <form id="form" onSubmit={submit}>

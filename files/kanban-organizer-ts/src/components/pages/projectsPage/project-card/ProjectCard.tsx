@@ -6,9 +6,10 @@ interface IprojectCardProps {
     summary: string
     handleOnRemove: (projectId: number) => void
     projectId: number
+    handleOnEdit: (projectId: number) => void
 }
 
-function ProjectCard({ projectName, summary, handleOnRemove, projectId }: IprojectCardProps) {
+function ProjectCard({ projectName, summary, handleOnRemove, projectId, handleOnEdit }: IprojectCardProps) {
 
     function remove(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
@@ -27,7 +28,7 @@ function ProjectCard({ projectName, summary, handleOnRemove, projectId }: Iproje
             </section>
             <footer>
                 <div>
-                    <button>Edit</button>
+                    <button onClick={() => handleOnEdit(projectId)}>Edit</button>
                     <button onClick={remove}>Delete</button>
                 </div>
                 <button>Go to</button>

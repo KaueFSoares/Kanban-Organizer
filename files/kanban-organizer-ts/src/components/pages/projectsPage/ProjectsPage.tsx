@@ -46,6 +46,8 @@ function ProjectsPage() {
   //variable for storage all the logged user data
   var localUserData: IuserData = { id: "batata", userEmail: "", password: "", projects: [{ id: 0, projectName: "", summary: "", stages: [{ id: 0, stageName: "", itens: [{ id: 0, itemName: "" }] }] }] }
 
+  const [btnText, setBtnText] = useState<string>("Create")
+  const [labelText, setLabelText] = useState<string>("New project")
 
   const [projects, setProjects] = useState<Iproject[]>([])
 
@@ -87,7 +89,7 @@ function ProjectsPage() {
             setUser({ ...user, userData: data, logged: true })
             setProjects(data.projects)
             localUserData = data
-            
+
             console.log("ta rodando")
 
 
@@ -102,16 +104,30 @@ function ProjectsPage() {
 
 
   //CHANGE PROJECT FORM VISIBILITY FUNCION
-  function changeNewProjectFormVisibility(): void {
+  function changeProjectFormVisibility(projectId?: number): void {
 
-    setShowProjectForm(!showProjectForm)
+    if (projectId === undefined) {
+      setShowProjectForm(!showProjectForm)
 
-    setUser({ ...user, msgCounter: (user.msgCounter + 1) })
+      setUser({ ...user, msgCounter: (user.msgCounter + 1) })
+
+      setBtnText("Create")
+
+      setLabelText("New project")
+    } else {
+      setShowProjectForm(!showProjectForm)
+
+      setUser({ ...user, msgCounter: (user.msgCounter + 1) })
+
+      setBtnText("Update")
+
+      setLabelText("Edit project")
+    }
 
   }
 
 
-  //CREATE NEW PROJECT FUNCTION
+  //CREATE  PROJECT FUNCTION
   function createProject(project: Iproject): void {
 
     localUserData = user.userData
@@ -135,7 +151,7 @@ function ProjectsPage() {
           toastId: '',
         })
 
-        changeNewProjectFormVisibility()
+        changeProjectFormVisibility()
       })
       .catch(err => {
         toast.error("Project criation failed due to: " + err.message)
@@ -144,7 +160,7 @@ function ProjectsPage() {
   }
 
   //REMOVE PROJECT FUNCTION
-  function removeProject(projectId: number): void{
+  function removeProject(projectId: number): void {
 
     user.userData.projects = user.userData.projects.filter(
       (project: Iproject) => project.id !== projectId
@@ -169,7 +185,7 @@ function ProjectsPage() {
         toast.error("Project criation failed due to: " + err.message)
       })
 
-      setProjects(localUserData.projects)
+    setProjects(localUserData.projects)
   }
 
 
@@ -197,8 +213,9 @@ function ProjectsPage() {
               {
                 showProjectForm &&
                 <NewProjectForm
-                  handleOnClose={changeNewProjectFormVisibility}
-                  btnText="Create"
+                labelText={labelText}
+                  handleOnClose={changeProjectFormVisibility}
+                  btnText={btnText}
                   handleSubmit={createProject}
                 />
               }
@@ -208,8 +225,8 @@ function ProjectsPage() {
               {/* PAGE */}
               <header id="projects-page-header">
                 <h1>Projects</h1>
-                <button onClick={changeNewProjectFormVisibility}>
-                  New <br /> Project
+                <button onClick={() => changeProjectFormVisibility()}>
+                  New<br /> Project
                 </button>
               </header>
 
@@ -218,16 +235,17 @@ function ProjectsPage() {
                 {
                   projects.length > 0 ? (
                     projects.map((project) => (
-                      <ProjectCard 
+                      <ProjectCard
                         projectName={project.projectName}
-                        summary = {project.summary}
+                        summary={project.summary}
                         key={project.id}
                         handleOnRemove={removeProject}
                         projectId={project.id}
+                        handleOnEdit={changeProjectFormVisibility}
                       />
                     ))
                   ) : (
-                    <><p id = "noprojects">No porjects yet</p></>
+                    <><p id="noprojects">No porjects yet</p></>
                   )
                 }
 
