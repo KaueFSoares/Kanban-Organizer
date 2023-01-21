@@ -5,8 +5,9 @@ import { useState } from "react"
 interface INewProjectFormProps {
     handleOnClose: () => void
     btnText: string
-    handleSubmit: (project: Iproject) => void
+    handleSubmit: (project: Iproject, isNew: boolean) => void
     labelText: string
+    projectId: number | undefined
 }
 
 interface Iproject {
@@ -28,7 +29,7 @@ interface Iitens {
     itemName: string
 }
 
-function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText }: INewProjectFormProps) {
+function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, projectId }: INewProjectFormProps) {
 
     const [project, setProject] = useState<Iproject>({ id: 0, projectName: "", summary: "", stages: [] })
 
@@ -40,7 +41,11 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText }: INe
         e.preventDefault()
 
         if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
-            handleSubmit(project)
+            if (labelText === "New project"){
+                handleSubmit(project, true) 
+            } else {
+                handleSubmit(project, false, projectId) 
+            }
         } else {
             toast.warn("Please fill out all fields before proceeding!")
         }

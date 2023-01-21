@@ -47,7 +47,10 @@ function ProjectsPage() {
   var localUserData: IuserData = { id: "batata", userEmail: "", password: "", projects: [{ id: 0, projectName: "", summary: "", stages: [{ id: 0, stageName: "", itens: [{ id: 0, itemName: "" }] }] }] }
 
   const [btnText, setBtnText] = useState<string>("Create")
+
   const [labelText, setLabelText] = useState<string>("New project")
+
+  const [updateProjectId, setUpdateProjectId] = useState<number | undefined>()
 
   const [projects, setProjects] = useState<Iproject[]>([])
 
@@ -122,40 +125,84 @@ function ProjectsPage() {
       setBtnText("Update")
 
       setLabelText("Edit project")
+
+      setUpdateProjectId(projectId)
     }
 
   }
 
 
   //CREATE  PROJECT FUNCTION
-  function createProject(project: Iproject): void {
+  function createProject(project: Iproject, isNew: boolean, projectId?: number): void {
+
+    //SE O PROJETO FOR NOVO, isNew = TRUE, SE NÃO FOR isNew = FALSE
 
     localUserData = user.userData
 
-    project.id = Math.random()
+    if (isNew === true) {
+      project.id = Math.random()
 
-    localUserData.projects.push(project)
+      localUserData.projects.push(project)
 
-    fetch(`http://localhost:5001/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(localUserData)
-    })
-      .then((resp) => resp.json())
-      .then(() => {
-        setUser({ ...user, userData: localUserData })
+      fetch(`http://localhost:5001/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+          setUser({ ...user, userData: localUserData })
 
-        toast.success(`Project created successfully`, {
-          toastId: '',
+          toast.success(`Project created successfully`, {
+            toastId: '',
+          })
+
+          changeProjectFormVisibility()
+        })
+        .catch(err => {
+          toast.error("Project criation failed due to: " + err.message)
+        })
+    } else {
+
+      //  CONSTRUIR O FETCH DO UPDATE
+
+      project.id = projectId || 0
+
+      user.userData.projects = user.userData.projects.filter(
+        (project: Iproject) => project.id !== projectId
+      )
+
+      localUserData = user.userData
+
+      localUserData.projects.push(project)
+
+      fetch(`http://localhost:5001/users/${user.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+          setUser({ ...user, userData: localUserData })
+
+          toast.success(`Project updated successfully`, {
+            toastId: '',
+          })
+
+          setRun(false)
+          setRemoveLoading(false)
+
+          changeProjectFormVisibility()
+        })
+        .catch(err => {
+          toast.error("Project update failed due to: " + err.message)
         })
 
-        changeProjectFormVisibility()
-      })
-      .catch(err => {
-        toast.error("Project criation failed due to: " + err.message)
-      })
+    }
 
   }
 
@@ -213,7 +260,8 @@ function ProjectsPage() {
               {
                 showProjectForm &&
                 <NewProjectForm
-                labelText={labelText}
+                  projectId={updateProjectId}
+                  labelText={labelText}
                   handleOnClose={changeProjectFormVisibility}
                   btnText={btnText}
                   handleSubmit={createProject}
@@ -245,7 +293,7 @@ function ProjectsPage() {
                       />
                     ))
                   ) : (
-                    <><p id="noprojects">No porjects yet</p></>
+                    <><p id="noprojects">No projects yet</p></>
                   )
                 }
 
