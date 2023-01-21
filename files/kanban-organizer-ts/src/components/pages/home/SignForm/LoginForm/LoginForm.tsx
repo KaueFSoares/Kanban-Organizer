@@ -29,6 +29,8 @@ function LoginForm() {
 
     function buttonClick(e: React.MouseEvent<HTMLButtonElement>): void {
         e.preventDefault()
+
+        toast.warn("Not working yet, make login with username and password!")
     }
 
     /* THE FOLLOWING METHOD IS UNSAFE AND NOT RECOMMENDED, IT WAS ONLY USED FOR FRONT-END DEVELOPMENT PURPOSES */

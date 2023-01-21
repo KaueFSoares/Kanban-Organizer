@@ -60,7 +60,14 @@
       "id": "kaue",
       "userEmail": "kaue@kaue.com.br",
       "password": "kaue",
-      "projects": []
+      "projects": [
+        {
+          "id": 0.24188753405582286,
+          "projectName": "testando de novo",
+          "summary": "asd",
+          "stages": []
+        }
+      ]
     }
   ]
 }

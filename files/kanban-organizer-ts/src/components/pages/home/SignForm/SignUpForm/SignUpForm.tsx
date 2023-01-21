@@ -76,6 +76,8 @@ function SignUpForm() {
 
   function buttonClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault()
+    
+    toast.warn("Not working yet, make login with username and password!")
   }
 
   function validation() {

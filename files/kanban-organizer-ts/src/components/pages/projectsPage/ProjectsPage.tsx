@@ -100,7 +100,7 @@ function ProjectsPage() {
           })
       }
 
-    }, 1000)
+    }, 500)
   }, [user]) /* SE BOTAR USER AQUI FUNCIONA MAS FICA EM LOOP INFINITO */
 
 
@@ -118,7 +118,7 @@ function ProjectsPage() {
     } else {
       setShowProjectForm(!showProjectForm)
 
-      setUser({ ...user, msgCounter: (user.msgCounter + 1) })
+      setUser({ ...user, msgCounter: (user.msgCounter + 1) }) // aqui o stages ainda está salvo
 
       setBtnText("Update")
 
@@ -135,7 +135,8 @@ function ProjectsPage() {
 
     //SE O PROJETO FOR NOVO, isNew = TRUE, SE NÃO FOR isNew = FALSE
 
-    localUserData = user.userData
+    localUserData = user.userData //aqui o stages já chega vazio
+
 
     if (isNew === true) {
       project.id = Math.random()

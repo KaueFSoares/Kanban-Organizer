@@ -1,6 +1,7 @@
 import { toast } from "react-toastify"
 import "./newprojectform.sass"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import MyContext from "../../../context/MyContext"
 
 interface INewProjectFormProps {
     handleOnClose: () => void
@@ -31,7 +32,9 @@ interface Iitens {
 
 function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, projectId }: INewProjectFormProps) {
 
-    const [project, setProject] = useState<Iproject>({ id: 0, projectName: "", summary: "", stages: [] })
+    const { user, setUser }: any = useContext(MyContext)
+
+    const [project, setProject] = useState<Iproject>({ id: 0, projectName: "", summary: "", stages: [] }) //O problema está aqui
 
     function handleOnChange(e: React.ChangeEvent<HTMLInputElement>) {
         setProject({ ...project, [e.target.name]: e.target.value })
@@ -42,7 +45,7 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, proje
 
         if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
             if (labelText === "New project"){
-                handleSubmit(project, true) 
+                handleSubmit(project, true)
             } else {
                 handleSubmit(project, false, projectId) 
             }
