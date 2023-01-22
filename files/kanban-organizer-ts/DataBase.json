@@ -7,8 +7,8 @@
       "projects": [
         {
           "id": 1,
-          "projectName": "test-project",
-          "summary": "Project created for tests",
+          "projectName": "admin",
+          "summary": "admin",
           "stages": [
             {
               "id": 1,

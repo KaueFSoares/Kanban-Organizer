@@ -1,6 +1,6 @@
 import { toast } from "react-toastify"
 import "./newprojectform.sass"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import MyContext from "../../../context/MyContext"
 
 interface INewProjectFormProps {
@@ -42,19 +42,33 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, proje
 
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-
+        
         if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
             if (labelText === "New project"){
                 handleSubmit(project, true)
             } else {
                 handleSubmit(project, false, projectId) 
             }
+
         } else {
             toast.warn("Please fill out all fields before proceeding!")
         }
 
 
     }
+
+    useEffect(() => {
+        
+
+        let localProject = user.userData.projects.find(
+            (project: Iproject) => project.id === projectId
+        )
+
+        setProject(localProject)
+        
+
+
+    },[])
 
     return (
         <div id="overlay">
