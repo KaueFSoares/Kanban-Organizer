@@ -239,7 +239,7 @@ function ProjectsPage() {
 
   function goToProject(projectId: number): void{
 
-    navigate("/project", {state: {id: projectId}})
+    navigate("/project", {state: {id: projectId, userId: user.id}})
 
   }
 
