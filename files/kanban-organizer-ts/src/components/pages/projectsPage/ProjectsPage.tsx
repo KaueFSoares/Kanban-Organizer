@@ -4,7 +4,7 @@ import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
 import { useContext, useEffect, useState } from "react"
 import MyContext from "../../../context/MyContext"
 import { toast } from "react-toastify"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import Loading from "../../layout/loading/Loading"
 import NewProjectForm from "../../layout/new-project-form/NewProjectForm"
 import ProjectCard from "./project-card/ProjectCard"
@@ -66,7 +66,7 @@ function ProjectsPage() {
 
   const { user, setUser }: any = useContext(MyContext) // chega "logado" e ID
 
-
+  const navigate = useNavigate()
 
 
   //LOAD PROJECTS FUNCTION
@@ -235,7 +235,13 @@ function ProjectsPage() {
   }
 
 
+  //GO TO PROJECT FUNCION
 
+  function goToProject(projectId: number): void{
+
+    navigate("/project", {state: {id: projectId}})
+
+  }
 
 
 
@@ -289,6 +295,7 @@ function ProjectsPage() {
                         handleOnRemove={removeProject}
                         projectId={project.id}
                         handleOnEdit={changeProjectFormVisibility}
+                        handleOnGoTo = {goToProject}
                       />
                     ))
                   ) : (

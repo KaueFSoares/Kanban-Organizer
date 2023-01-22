@@ -11,6 +11,7 @@ import Home from "./components/pages/home/Home"
 import ProjectsPage from './components/pages/projectsPage/ProjectsPage'
 import Calendar from './components/pages/calendar/Calendar'
 import Contact from './components/pages/contact/Contact'
+import Project from './components/pages/project/Project'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />
+      },
+      {
+        path: "/project",
+        element: <Project />
       }
     ],
   }
