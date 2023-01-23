@@ -137,9 +137,9 @@ function ProjectsPage() {
 
     localUserData = user.userData //aqui o stages já chega vazio
 
-
     if (isNew === true) {
       project.id = Math.random()
+      project.stages = []
 
       localUserData.projects.push(project)
 
@@ -235,7 +235,7 @@ function ProjectsPage() {
   }
 
 
-  //GO TO PROJECT FUNCION
+  //GO TO PROJECT FUNCTION
 
   function goToProject(projectId: number): void{
 

@@ -15,16 +15,7 @@ function NavBar() {
 
     function themeChange(){
         setDarkMode(!darkMode)
-        toast.warn("The dark mode is not ready yet!", {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          })
+        toast.warn("The dark mode is not ready yet!")
     }
 
     return (

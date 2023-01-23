@@ -1,0 +1,113 @@
+@use "../../../styles/variables"
+
+#overlay
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: rgba(0, 0, 0, 0.5)
+    z-index: 999
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+    #stage-form-box
+        position: fixed
+        display: flex
+        flex-direction: column
+        background-color: variables.$bg-color
+        height: 40vh
+        width: 30vw
+        border-radius: variables.$large-border-radius
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        padding-bottom: 2rem
+
+        header
+            height: 5rem
+            display: flex
+            width: 100%
+            align-items: center
+            justify-content: space-between
+            background-color: variables.$bg-color-focus
+            padding: 0 2rem
+            border-radius: 15px 15px 0 0
+
+            h3
+                font-family: variables.$font-main
+                color: variables.$bg-color
+                font-size: 2.5rem
+
+            button
+                height: 3rem
+                width: 3rem
+                border-radius: 50%
+                border: none
+                background-color: variables.$bg-color
+                font-size: 1.6rem
+                font-weight: bold
+                font-family: variables.$font-main
+                display: flex
+                align-items: center
+                justify-content: center
+                cursor: pointer
+                transition: all 200ms ease
+
+                p
+                    opacity: .6
+
+                &:hover
+                    transform: scale(1.1)
+
+                    p
+                        opacity: 1
+
+        #form
+            width: 80%
+            display: flex
+            flex-direction: column
+            align-items: center
+            font-family: variables.$font-main
+
+            div
+                display: flex
+                flex-direction: column
+                margin-bottom: 2rem
+                width: 100%
+
+                label
+                    font-size: 1.3rem
+                    color: variables.$bg-color-focus
+
+                input
+                    border: none
+                    height: 2.5rem
+                    font-size: 1.2rem
+                    color: variables.$bg-color-focus
+                    padding: 1rem
+                    &:focus
+                        outline: none
+
+                    &::placeholder
+                        opacity: .6
+
+            #submit
+                height: 4.5rem
+                width: 50%
+                border: none
+                background-color: variables.$bg-color-focus
+                color: variables.$bg-color
+                border-radius: variables.$large-border-radius
+                font-family: variables.$font-icon
+                font-size: 1.3rem
+                cursor: pointer
+                transition: all 200ms ease
+                opacity: .8
+
+                &:hover
+                    transform: scale(1.1)
+                    opacity: 1

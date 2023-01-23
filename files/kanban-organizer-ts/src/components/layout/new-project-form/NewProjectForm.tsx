@@ -42,33 +42,36 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, proje
 
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        
-        if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
-            if (labelText === "New project"){
-                handleSubmit(project, true)
-            } else {
-                handleSubmit(project, false, projectId) 
-            }
+
+        console.log(project)
+
+        if (project.projectName !== "" || project.projectName !== null || project.summary !== "" || project.summary !== null) {
+
+            toast.warn("Please fill out all fields before proceeding!")
 
         } else {
-            toast.warn("Please fill out all fields before proceeding!")
+            if (labelText === "New project") {
+                handleSubmit(project, true)
+            } else {
+                handleSubmit(project, false, projectId)
+            }
         }
 
 
     }
 
     useEffect(() => {
-        
+
 
         let localProject = user.userData.projects.find(
             (project: Iproject) => project.id === projectId
         )
 
         setProject(localProject)
-        
 
 
-    },[])
+
+    }, [])
 
     return (
         <div id="overlay">
