@@ -1,6 +1,5 @@
 @use "../../../styles/variables"
 
-
 /* SMALL DEVICES < 600 PX */
 @media only screen and (max-width: 768px)
     #aside
@@ -29,7 +28,6 @@
                 justify-content: space-around
                 height: 5rem
                 align-items: center
-                
 
                 li
                     display: flex
@@ -50,12 +48,8 @@
                             display: none
                             color: variables.$text-color-focus
 
-
         #theme-changer-box
             display: none
-
-                
-
 
 @media only screen and (min-width: 768px)
     #aside
@@ -69,7 +63,6 @@
         height: 100vh
         transition: width 200ms ease
         color: variables.$text-color-focus
-        
 
         /* fixing logo position */
         #logo-container
@@ -88,13 +81,12 @@
                 display: flex
                 justify-content: center
                 align-items: center
-                
 
                 p
                     font-size: 3rem
 
             #textBox
-                display: none        
+                display: none
                 justify-content: left
                 align-items: center
                 font-size: .75rem
@@ -114,10 +106,10 @@
                 display: flex
                 flex-direction: column
                 list-style: none
-                
+
                 .buttons
                     display: flex
-                    flex-direction: row 
+                    flex-direction: row
                     padding: 1rem 0
                     margin: .5rem 0
                     justify-content: center
@@ -132,7 +124,6 @@
                         flex-direction: row
                         text-decoration: none
                         align-items: center
-                        
 
                         p
                             display: none
@@ -163,27 +154,24 @@
 
                 p
                     font-size: 2rem
-                    cursor: pointer 
+                    cursor: pointer
                     color: variables.$text-color-focus
-
-
-
 
         /* --- ON HOVER --- */
         &:hover
             width: 14rem
             justify-content: left
+            border-right: 2px solid variables.$text-color-focus
+            border-radius: 0px 10px 10px 0px
 
             /* logo on hover */
             #logo-container
                 justify-content: left
                 padding-left: .5rem
 
-            
                 #textBox
                     display: flex
 
-            
             /* buttons on hover */
             nav
                 justify-content: left
@@ -194,17 +182,12 @@
 
                     .buttons
                         display: flex
-                        flex-direction: row 
+                        flex-direction: row
                         justify-content: left
 
                         .link
                             display: flex
                             flex-direction: row
 
-
                             p
                                 display: flex
-                
-            
-
-

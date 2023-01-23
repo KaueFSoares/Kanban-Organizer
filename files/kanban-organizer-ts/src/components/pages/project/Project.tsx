@@ -10,6 +10,7 @@ import MyContext from "../../../context/MyContext"
 import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
 import Loading from "../../layout/loading/Loading"
 import StageForm from "../../layout/stage-form/StageForm"
+import { toast } from "react-toastify"
 
 
 // INTERFACES
@@ -63,12 +64,40 @@ function Project() {
   //LOADING AND FILTERING THE PROJECT
   const [removeLoading, setRemoveLoading] = useState<boolean>(false)
 
+  const [project, setProject] = useState<Iproject>()
+
+  const [stages, setStages] = useState<Istages>()
+
   useEffect(() => {
     setTimeout(() => {
 
       setRemoveLoading(true)
 
+      if (user.logged === true) {
 
+        fetch(`http://localhost:5001/users/${userId}`, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+          },
+        })
+          .then(resp => resp.json())
+          .then(data => {
+
+            //AFTER FETCH
+
+            let localProjects = data.projects
+
+            setProject(localProjects.find(
+              (project: Iproject) => project.id === projectId
+            ))
+
+            setStages(data.stages)
+
+          })
+          .catch(err => toast.error("Could not load the project due to " + err))
+
+      }
 
     }, 500)
   }, [])
@@ -94,8 +123,8 @@ function Project() {
           {removeLoading ? (
             <>
               {/* FORM */}
-              {showForm && 
-                <StageForm 
+              {showForm &&
+                <StageForm
                   labelText="New stage"
                   btnText="Create"
                   handleOnClose={changeFormVisibility}
@@ -105,6 +134,34 @@ function Project() {
               {/* HERE IS THE PAGE AFTER THE LOAD */}
               <div id="container">
 
+                <header id="project-page-header">
+                  <h1>{project ? project.projectName : "No projects"}</h1>
+                  <div>
+                    <button>
+                      New<br />stage
+                    </button>
+
+                    <button>
+                      New<br />item
+                    </button>
+                  </div>
+                </header>
+
+                <div id="stages-box">
+                  {project &&
+                    <>
+                      {project.stages.length > 0 ? (
+                        <>
+                          {/* PROJECTS */}
+                        </>
+                      ) : (
+                        <>
+                          <p id="nostagess">No stages yet</p>
+                        </>
+                      )}
+                    </>
+                  }
+                </div>
               </div>
             </>
           ) : (
