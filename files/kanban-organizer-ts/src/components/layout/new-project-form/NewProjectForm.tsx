@@ -43,19 +43,19 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, proje
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        console.log(project)
+        if (project) {
+            if (project.projectName !== "" && project.projectName !== null && project.summary !== "" && project.summary !== null) {
+                if (labelText === "New project") {
+                    handleSubmit(project, true)
+                } else {
+                    handleSubmit(project, false, projectId)
+                }
 
-        if (project.projectName !== "" || project.projectName !== null || project.summary !== "" || project.summary !== null) {
-
-            toast.warn("Please fill out all fields before proceeding!")
-
-        } else {
-            if (labelText === "New project") {
-                handleSubmit(project, true)
             } else {
-                handleSubmit(project, false, projectId)
+                toast.warn("Please fill out all fields before proceeding!")
             }
         }
+
 
 
     }
@@ -63,11 +63,14 @@ function NewProjectForm({ handleOnClose, btnText, handleSubmit, labelText, proje
     useEffect(() => {
 
 
-        let localProject = user.userData.projects.find(
-            (project: Iproject) => project.id === projectId
-        )
+        if (projectId) {
+            var localProject = user.userData.projects.find(
+                (project: Iproject) => project.id === projectId
+            )
+            setProject(localProject)
+        }
 
-        setProject(localProject)
+
 
 
 

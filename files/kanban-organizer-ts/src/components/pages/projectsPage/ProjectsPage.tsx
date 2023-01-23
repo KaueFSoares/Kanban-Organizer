@@ -50,7 +50,7 @@ function ProjectsPage() {
 
   const [labelText, setLabelText] = useState<string>("New project")
 
-  const [updateProjectId, setUpdateProjectId] = useState<number | undefined>()
+  const [updateProjectId, setUpdateProjectId] = useState<number | undefined>(undefined)
 
   const [projects, setProjects] = useState<Iproject[]>([])
 
@@ -237,9 +237,9 @@ function ProjectsPage() {
 
   //GO TO PROJECT FUNCTION
 
-  function goToProject(projectId: number): void{
+  function goToProject(projectId: number): void {
 
-    navigate("/project", {state: {id: projectId, userId: user.id}})
+    navigate("/project", { state: { id: projectId, userId: user.id } })
 
   }
 
@@ -286,21 +286,23 @@ function ProjectsPage() {
               <section id="projects-page-body">
 
                 {
-                  projects.length > 0 ? (
-                    projects.map((project) => (
-                      <ProjectCard
-                        projectName={project.projectName}
-                        summary={project.summary}
-                        key={project.id}
-                        handleOnRemove={removeProject}
-                        projectId={project.id}
-                        handleOnEdit={changeProjectFormVisibility}
-                        handleOnGoTo = {goToProject}
-                      />
-                    ))
-                  ) : (
-                    <><p id="noprojects">No projects yet</p></>
-                  )
+                  projects && 
+                    projects.length > 0 ? (
+                      projects.map((project) => (
+                        <ProjectCard
+                          projectName={project.projectName}
+                          summary={project.summary}
+                          key={project.id}
+                          handleOnRemove={removeProject}
+                          projectId={project.id}
+                          handleOnEdit={changeProjectFormVisibility}
+                          handleOnGoTo={goToProject}
+                        />
+                      ))
+                    ) : (
+                      <><p id="noprojects">No projects yet</p></>
+                    )
+                  
                 }
 
               </section>
