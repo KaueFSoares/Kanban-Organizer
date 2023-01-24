@@ -11,6 +11,7 @@ import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
 import Loading from "../../layout/loading/Loading"
 import StageForm from "../../layout/stage-form/StageForm"
 import { toast } from "react-toastify"
+import Stages from "./stages/Stages"
 
 
 // INTERFACES
@@ -153,10 +154,13 @@ function Project() {
                       {project.stages.length > 0 ? (
                         <>
                           {/* PROJECTS */}
+                          <Stages 
+                            stagesData={project.stages}
+                          />
                         </>
                       ) : (
                         <>
-                          <p id="nostagess">No stages yet</p>
+                          <p id="nostages">No stages yet</p>
                         </>
                       )}
                     </>
