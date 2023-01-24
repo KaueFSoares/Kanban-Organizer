@@ -42,19 +42,48 @@
 
             header
                 background-color: variables.$text-color
+                max-width: 100%
                 width: 100%
-                height: 15%
+                min-height: 15%
                 border-radius: 10px 10px 0 0
                 display: flex
-                justify-content: center
                 align-items: center
                 font-family: variables.$font-icon
                 color: variables.$bg-color
                 font-size: 2rem
+                flex-wrap: wrap
+                padding: .5rem 0
+
+                p 
+                    overflow-wrap: wrap
+                    width: 70%
+                    padding-left: 1rem
+                    line-height: 2.5rem
+
+                div
+                    height: 100%
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    width: 30%
+                    padding-right: 1rem
+
+                    button
+                        background-color: variables.$text-color
+                        border: 3px solid variables.$bg-color
+                        margin-left: 1rem
+                        cursor: pointer
+                        border-radius: variables.$small-border-radius
+
+                        .icon
+                            font-size: 2rem
+                            color: variables.$bg-color
+
 
             section
                 height: 90%
                 overflow-y: auto
+                width: 100%
 
     #other-box .single-stage-box:nth-last-child(1)
         margin-right: 0

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
 
 
 import "./stages.sass"
@@ -34,7 +35,13 @@ function Stages({ stagesData }: IstagesProps) {
                 {stages.map(
                     (stage) =>
                         <div className="single-stage-box">
-                            <header>{stage.stageName}</header>
+                            <header>
+                                <p>{stage.stageName}</p>
+                                <div>
+                                    <button><AiOutlineEdit className='icon'/></button>
+                                    <button><AiOutlineDelete className='icon'/></button>
+                                </div>
+                            </header>
                             <section></section>
                         </div>
                 )}
