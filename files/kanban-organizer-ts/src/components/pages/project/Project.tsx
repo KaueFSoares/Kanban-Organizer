@@ -47,6 +47,14 @@ function Project() {
   //GETTING THE GLOBAL USER
   const { user, setUser }: any = useContext(MyContext)
 
+  var fullData: IuserData
+
+  var varStageId: number | undefined
+
+  var labelText: "New project" | "Update project" = "New project"
+
+  var btnText: "Create" | "Update" = "Create"
+
   //---------------------------------------//
 
   //GETTING THE INFO FROM THE LAST PAGE
@@ -66,8 +74,6 @@ function Project() {
   const [removeLoading, setRemoveLoading] = useState<boolean>(false)
 
   const [project, setProject] = useState<Iproject>()
-
-  const [stages, setStages] = useState<Istages>()
 
   useEffect(() => {
     setTimeout(() => {
@@ -93,7 +99,9 @@ function Project() {
               (project: Iproject) => project.id === projectId
             ))
 
-            setStages(data.stages)
+            fullData = data
+
+            console.log(fullData)
 
           })
           .catch(err => toast.error("Could not load the project due to " + err))
@@ -111,11 +119,52 @@ function Project() {
 
   function changeFormVisibility(stageId?: number): void {
 
+    varStageId = stageId
+
     setShowForm(!showForm)
 
   }
 
   //---------------------------------------//
+
+  //CREATE NEW STAGE FUNCTION
+
+  function createNewStage(stageName: { stageName: string }): void {
+
+    if (project) {
+      let stage: Istages = { id: Math.random(), stageName: stageName.stageName, itens: [] }
+
+      let letProject: Iproject = project
+
+      letProject.stages.push(stage) 
+
+      fullData.projects.push(letProject) //FULLDATA ESTÁ CHEGANDO UNDEFINED
+
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(fullData)
+      })
+      .then((resp) => resp.json())
+      .then(() => {
+        console.log("fez o fetch")
+      })
+    }
+
+  }
+
+  //---------------------------------------//
+
+  //UPDATE STAGE FUNCTION
+
+  function updateStage(stageName: { stageName: string }, projectId: number): void {
+
+  }
+
+  //---------------------------------------//
+
 
   return (
     <div id="project-page-container">
@@ -126,9 +175,12 @@ function Project() {
               {/* FORM */}
               {showForm &&
                 <StageForm
-                  labelText="New stage"
-                  btnText="Create"
+                  labelText={labelText}
+                  btnText={btnText}
+                  projectId={varStageId}
                   handleOnClose={changeFormVisibility}
+                  createNewStage={createNewStage}
+                  updateStage={updateStage}
                 />
               }
 
@@ -138,7 +190,7 @@ function Project() {
                 <header id="project-page-header">
                   <h1>{project ? project.projectName : "No projects"}</h1>
                   <div>
-                    <button>
+                    <button onClick={() => changeFormVisibility()}>
                       New<br />stage
                     </button>
 
@@ -154,8 +206,9 @@ function Project() {
                       {project.stages.length > 0 ? (
                         <>
                           {/* PROJECTS */}
-                          <Stages 
+                          <Stages
                             stagesData={project.stages}
+                            handleOnEdit={changeFormVisibility}
                           />
                         </>
                       ) : (
