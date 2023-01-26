@@ -5,12 +5,10 @@ interface IStageFormProps {
     labelText: string
     btnText: string
     projectId: number | undefined
-    handleOnClose: () => void
-    createNewStage: (stageName: {stageName: string}) => void
-    updateStage: (stageName: {stageName: string}, projectId: number) => void
+    handleOnClose: (type: "new" | "update" | "close") => void
 }
 
-function StageForm({ labelText, btnText, projectId, handleOnClose, createNewStage, updateStage }: IStageFormProps) {
+function StageForm({ labelText, btnText, projectId, handleOnClose }: IStageFormProps) {
 
     const [stageName, setStageName] = useState<{ stageName: string }>({ stageName: "" })
 
@@ -21,17 +19,7 @@ function StageForm({ labelText, btnText, projectId, handleOnClose, createNewStag
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (projectId === undefined){
-            //NEW STAGE
-
-            createNewStage(stageName)
-
-        } else {
-            //UPDATE STAGE
-
-            updateStage(stageName, projectId)
-
-        }
+        
 
     }
 
@@ -40,7 +28,7 @@ function StageForm({ labelText, btnText, projectId, handleOnClose, createNewStag
             <div id="stage-form-box">
                 <header>
                     <h3>{labelText}</h3>
-                    <button onClick={handleOnClose}><p>X</p></button>
+                    <button onClick={() => handleOnClose("close")}><p>X</p></button>
                 </header>
 
                 <form id="form" onSubmit={submit} >

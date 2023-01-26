@@ -47,13 +47,17 @@ function Project() {
   //GETTING THE GLOBAL USER
   const { user, setUser }: any = useContext(MyContext)
 
-  var fullData: IuserData
+  const [userData, setUserData] = useState<IuserData>()
 
   var varStageId: number | undefined
 
   var labelText: "New project" | "Update project" = "New project"
 
   var btnText: "Create" | "Update" = "Create"
+
+  var formType: "new" | "update" = "new"
+  
+  const [run, setRun] = useState<boolean>(true)
 
   //---------------------------------------//
 
@@ -78,9 +82,12 @@ function Project() {
   useEffect(() => {
     setTimeout(() => {
 
+      console.log(removeLoading)
       setRemoveLoading(true)
 
-      if (user.logged === true) {
+      if (user.logged === true && run === true) {
+
+        setRun(false)
 
         fetch(`http://localhost:5001/users/${userId}`, {
           method: "GET",
@@ -99,9 +106,7 @@ function Project() {
               (project: Iproject) => project.id === projectId
             ))
 
-            fullData = data
-
-            console.log(fullData)
+            setUserData(data)
 
           })
           .catch(err => toast.error("Could not load the project due to " + err))
@@ -109,7 +114,7 @@ function Project() {
       }
 
     }, 500)
-  }, [])
+  }, [userData])
 
   //---------------------------------------//
 
@@ -117,9 +122,17 @@ function Project() {
 
   const [showForm, setShowForm] = useState<boolean>(false)
 
-  function changeFormVisibility(stageId?: number): void {
+  function changeFormVisibility(type: "new" | "update" | "close"): void {
 
-    varStageId = stageId
+    if (type === "new"){
+      labelText = "New project"
+      btnText = "Create"
+      formType = "new"
+    } else {
+      labelText = "Update project"
+      btnText = "Update"
+      formType = "update"
+    }
 
     setShowForm(!showForm)
 
@@ -129,29 +142,7 @@ function Project() {
 
   //CREATE NEW STAGE FUNCTION
 
-  function createNewStage(stageName: { stageName: string }): void {
-
-    if (project) {
-      let stage: Istages = { id: Math.random(), stageName: stageName.stageName, itens: [] }
-
-      let letProject: Iproject = project
-
-      letProject.stages.push(stage) 
-
-      fullData.projects.push(letProject) //FULLDATA ESTÁ CHEGANDO UNDEFINED
-
-      fetch(`http://localhost:5001/users/${userId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(fullData)
-      })
-      .then((resp) => resp.json())
-      .then(() => {
-        console.log("fez o fetch")
-      })
-    }
+  function createNewStage(): void {
 
   }
 
@@ -159,7 +150,7 @@ function Project() {
 
   //UPDATE STAGE FUNCTION
 
-  function updateStage(stageName: { stageName: string }, projectId: number): void {
+  function updateStage(): void {
 
   }
 
@@ -179,8 +170,6 @@ function Project() {
                   btnText={btnText}
                   projectId={varStageId}
                   handleOnClose={changeFormVisibility}
-                  createNewStage={createNewStage}
-                  updateStage={updateStage}
                 />
               }
 
@@ -190,7 +179,7 @@ function Project() {
                 <header id="project-page-header">
                   <h1>{project ? project.projectName : "No projects"}</h1>
                   <div>
-                    <button onClick={() => changeFormVisibility()}>
+                    <button onClick={() => changeFormVisibility("new")}>
                       New<br />stage
                     </button>
 
@@ -208,7 +197,6 @@ function Project() {
                           {/* PROJECTS */}
                           <Stages
                             stagesData={project.stages}
-                            handleOnEdit={changeFormVisibility}
                           />
                         </>
                       ) : (

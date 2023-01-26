@@ -26,7 +26,7 @@
             },
             {
               "id": 2,
-              "stageName": "Doing",
+              "stageName": "Doingaaaaa",
               "itens": [
                 {
                   "id": 3,
@@ -110,12 +110,6 @@
         },
         {
           "id": 0.14357136351498379,
-          "projectName": "teste de criação de projeto",
-          "summary": "dasd",
-          "stages": []
-        },
-        {
-          "id": 0.7136899384957349,
           "projectName": "teste de criação de projeto",
           "summary": "dasd",
           "stages": []
