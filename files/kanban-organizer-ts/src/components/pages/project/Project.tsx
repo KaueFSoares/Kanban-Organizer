@@ -49,13 +49,13 @@ function Project() {
 
   const [userData, setUserData] = useState<IuserData>()
 
-  var varStageId: number | undefined
+  const [labelText, setLabelText] = useState<"New project" | "Update project">("New project")
 
-  var labelText: "New project" | "Update project" = "New project"
+  const [btnText, setBtnText] = useState<"Create" | "Update">("Create")
 
-  var btnText: "Create" | "Update" = "Create"
+  const [formType, setFormType] = useState<"new" | "update">("new")
 
-  var formType: "new" | "update" = "new"
+  const [stageOnEdit, setStageOnEdit] = useState<Istages>()
 
   const [run, setRun] = useState<boolean>(true)
 
@@ -107,8 +107,6 @@ function Project() {
 
             setUserData(data)
 
-            console.log("a")
-
           })
           .catch(err => toast.error("Could not load the project due to " + err))
 
@@ -123,16 +121,17 @@ function Project() {
 
   const [showForm, setShowForm] = useState<boolean>(false)
 
-  function changeFormVisibility(type: "new" | "update" | "close"): void {
+  function changeFormVisibility(type: "new" | "update" | "close", stageData?: Istages): void {
 
     if (type === "new") {
-      labelText = "New project"
-      btnText = "Create"
-      formType = "new"
+      setLabelText("New project")
+      setBtnText("Create")
+      setFormType("new")
     } else {
-      labelText = "Update project"
-      btnText = "Update"
-      formType = "update"
+      setLabelText("Update project")
+      setBtnText("Update")
+      setFormType("update")
+      setStageOnEdit(stageData)
     }
 
     setShowForm(!showForm)
@@ -190,7 +189,59 @@ function Project() {
 
   //UPDATE STAGE FUNCTION
 
-  function updateStage(): void {
+  function updateStage(stageData: Istages): void {
+
+    if (project && userData) {
+
+      let localProject: Iproject = project
+      let localUserData: IuserData = userData
+      let localStages: Istages[] = project.stages
+
+
+
+      localStages = localStages.map((stage) => {
+        if (stage.id === stageData.id) {
+          return { ...stage, stageName: stageData.stageName, itens: stageData.itens }
+        }
+        return stage
+      })
+
+      localProject.stages = localStages
+
+      localUserData.projects = localUserData.projects.map((project) => {
+
+        if (project.id === localProject.id) {
+          return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+        }
+
+        return project
+      })
+
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+
+          toast.success(`Stage updated successfully!`, {
+            toastId: '',
+          })
+
+          setRemoveLoading(false)
+          setRun(true)
+
+          changeFormVisibility("close")
+
+        })
+        .catch(err => {
+          toast.error("Stage update failed due to: " + err.message)
+        })
+
+    }
 
   }
 
@@ -199,7 +250,7 @@ function Project() {
   //DELETE STAGE FUNCTION
 
   function deleteStage(): void {
-    //LABELTEXT, BTNTEXT E FORMTYPE NÃO ESTÃO SENDO ATUALIZADOS 
+
   }
 
   //---------------------------------------//
@@ -216,7 +267,7 @@ function Project() {
                 <StageForm
                   labelText={labelText}
                   btnText={btnText}
-                  stageId={varStageId}
+                  stageData={stageOnEdit}
                   type={formType}
                   handleOnClose={changeFormVisibility}
                   createNewStage={createNewStage}

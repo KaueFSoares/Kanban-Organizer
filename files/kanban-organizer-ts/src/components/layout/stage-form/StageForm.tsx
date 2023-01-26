@@ -4,11 +4,11 @@ import "./stageform.sass"
 interface IStageFormProps {
     labelText: string
     btnText: string
-    stageId: number | undefined
+    stageData: Istages | undefined
     type: "new" | "update"
     handleOnClose: (type: "new" | "update" | "close") => void
     createNewStage: (stage: Istages) => void
-    updateStage: () => void
+    updateStage: (stage: Istages) => void
 }
 
 interface Istages {
@@ -22,7 +22,7 @@ interface Iitens {
     itemName: string
 }
 
-function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNewStage, updateStage }: IStageFormProps) {
+function StageForm({ labelText, btnText, stageData, type, handleOnClose, createNewStage, updateStage }: IStageFormProps) {
 
     var stage: Istages = { id: 0, stageName: "", itens: [] }
 
@@ -47,8 +47,13 @@ function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNew
         } else {
             //IF THE FORM IS FOR UPDATING A PROJECT
 
+            if (stageData) {
+                stage = stageData
+                stage.stageName = stageName.stageName
 
-            //LABELTEXT, BTNTEXT E FORMTYPE NÃO ESTÃO SENDO ATUALIZADOS 
+                updateStage(stage)
+            }
+
         }
 
     }
