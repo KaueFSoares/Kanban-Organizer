@@ -145,8 +145,6 @@ function Project() {
 
   function createNewStage(stage: Istages): void {
 
-    //CREATING THE LOCAL VARIABLES 
-
     if (project && userData) {
       let localUserData: IuserData = userData
 
@@ -186,8 +184,6 @@ function Project() {
         })
     }
 
-
-
   }
 
   //---------------------------------------//
@@ -196,6 +192,14 @@ function Project() {
 
   function updateStage(): void {
 
+  }
+
+  //---------------------------------------//
+
+  //DELETE STAGE FUNCTION
+
+  function deleteStage(): void {
+    //LABELTEXT, BTNTEXT E FORMTYPE NÃO ESTÃO SENDO ATUALIZADOS 
   }
 
   //---------------------------------------//
@@ -216,6 +220,7 @@ function Project() {
                   type={formType}
                   handleOnClose={changeFormVisibility}
                   createNewStage={createNewStage}
+                  updateStage={updateStage}
                 />
               }
 
@@ -243,6 +248,7 @@ function Project() {
                           {/* PROJECTS */}
                           <Stages
                             stagesData={project.stages}
+                            handleOnEdit={changeFormVisibility}
                           />
                         </>
                       ) : (

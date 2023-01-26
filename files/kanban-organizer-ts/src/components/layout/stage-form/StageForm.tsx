@@ -8,22 +8,23 @@ interface IStageFormProps {
     type: "new" | "update"
     handleOnClose: (type: "new" | "update" | "close") => void
     createNewStage: (stage: Istages) => void
+    updateStage: () => void
 }
 
 interface Istages {
     id: number
     stageName: string
     itens: Iitens[]
-  }
-  
-  interface Iitens {
+}
+
+interface Iitens {
     id: number
     itemName: string
-  }
+}
 
-function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNewStage }: IStageFormProps) {
+function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNewStage, updateStage }: IStageFormProps) {
 
-    var stage: Istages = {id: 0, stageName: "", itens: []}
+    var stage: Istages = { id: 0, stageName: "", itens: [] }
 
     const [stageName, setStageName] = useState<{ stageName: string }>({ stageName: "" })
 
@@ -34,7 +35,7 @@ function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNew
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if (type === "new"){
+        if (type === "new") {
             //IF THE FORM IS FOR A NEW PROJECT
 
             stage.id = Math.random()
@@ -46,7 +47,8 @@ function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNew
         } else {
             //IF THE FORM IS FOR UPDATING A PROJECT
 
-            
+
+            //LABELTEXT, BTNTEXT E FORMTYPE NÃO ESTÃO SENDO ATUALIZADOS 
         }
 
     }

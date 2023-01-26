@@ -7,6 +7,7 @@ import "./stages.sass"
 //interfaces
 interface IstagesProps {
     stagesData: Istages[]
+    handleOnEdit: (type: "new" | "update" | "close") => void
 }
 
 interface Istages {
@@ -20,7 +21,7 @@ interface Iitens {
     itemName: string
 }
 
-function Stages({ stagesData }: IstagesProps) {
+function Stages({ stagesData, handleOnEdit }: IstagesProps) {
 
     //SETTING THE STAGES DATA
 
@@ -38,7 +39,7 @@ function Stages({ stagesData }: IstagesProps) {
                             <header>
                                 <p>{stage.stageName}</p>
                                 <div>
-                                    <button><AiOutlineEdit className='icon' /></button>
+                                    <button onClick={() => handleOnEdit("update")}><AiOutlineEdit className='icon' /></button>
                                     <button><AiOutlineDelete className='icon' /></button>
                                 </div>
                             </header>
