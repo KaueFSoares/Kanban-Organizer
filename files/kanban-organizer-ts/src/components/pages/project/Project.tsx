@@ -249,7 +249,49 @@ function Project() {
 
   //DELETE STAGE FUNCTION
 
-  function deleteStage(): void {
+  function deleteStage(stageId: number): void {
+
+    if (project && userData) {
+
+      let localProject: Iproject = project
+      let localUserData: IuserData = userData
+
+      localProject.stages = localProject.stages.filter(
+        (stage: Istages) => stage.id !== stageId
+      )
+
+      localUserData.projects = localUserData.projects.map((project) => {
+
+        if (project.id === localProject.id) {
+          return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+        }
+
+        return project
+      })
+
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+
+          toast.success(`Stage deleted successfully!`, {
+            toastId: '',
+          })
+
+          setRemoveLoading(false)
+          setRun(true)
+
+        })
+        .catch(err => {
+          toast.error("Stage delete failed due to: " + err.message)
+        })
+
+    }
 
   }
 
@@ -300,6 +342,7 @@ function Project() {
                           <Stages
                             stagesData={project.stages}
                             handleOnEdit={changeFormVisibility}
+                            handleOnDelete={deleteStage}
                           />
                         </>
                       ) : (

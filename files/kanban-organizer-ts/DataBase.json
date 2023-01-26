@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "id": "admin",
+      "id": "Admin3213@3123.",
       "userEmail": "admin@admin.com.br",
-      "password": "admin",
+      "password": "Admin3213@3123.",
       "projects": [
         {
           "id": 1,
@@ -51,16 +51,6 @@
                   "itemName": "Design the home page"
                 }
               ]
-            },
-            {
-              "id": 0.9962357000977551,
-              "stageName": "batata",
-              "itens": []
-            },
-            {
-              "id": 0.3514761510786091,
-              "stageName": "asdad",
-              "itens": []
             }
           ]
         }
