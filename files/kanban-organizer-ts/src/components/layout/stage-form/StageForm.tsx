@@ -4,11 +4,26 @@ import "./stageform.sass"
 interface IStageFormProps {
     labelText: string
     btnText: string
-    projectId: number | undefined
+    stageId: number | undefined
+    type: "new" | "update"
     handleOnClose: (type: "new" | "update" | "close") => void
+    createNewStage: (stage: Istages) => void
 }
 
-function StageForm({ labelText, btnText, projectId, handleOnClose }: IStageFormProps) {
+interface Istages {
+    id: number
+    stageName: string
+    itens: Iitens[]
+  }
+  
+  interface Iitens {
+    id: number
+    itemName: string
+  }
+
+function StageForm({ labelText, btnText, stageId, type, handleOnClose, createNewStage }: IStageFormProps) {
+
+    var stage: Istages = {id: 0, stageName: "", itens: []}
 
     const [stageName, setStageName] = useState<{ stageName: string }>({ stageName: "" })
 
@@ -19,7 +34,20 @@ function StageForm({ labelText, btnText, projectId, handleOnClose }: IStageFormP
     function submit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        
+        if (type === "new"){
+            //IF THE FORM IS FOR A NEW PROJECT
+
+            stage.id = Math.random()
+            stage.stageName = stageName.stageName
+            stage.itens = []
+
+            createNewStage(stage)
+
+        } else {
+            //IF THE FORM IS FOR UPDATING A PROJECT
+
+            
+        }
 
     }
 

@@ -188,7 +188,7 @@ function ProjectsPage() {
         .then(() => {
           setUser({ ...user, userData: localUserData })
 
-          toast.success(`Project updated successfully`, {
+          toast.success(`Project updated successfully!`, {
             toastId: '',
           })
 

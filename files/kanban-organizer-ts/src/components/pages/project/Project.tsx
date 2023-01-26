@@ -44,7 +44,7 @@ interface IuserData {
 
 function Project() {
 
-  //GETTING THE GLOBAL USER
+  //GETTING THE GLOBAL USER AND OTHER VARIABLES
   const { user, setUser }: any = useContext(MyContext)
 
   const [userData, setUserData] = useState<IuserData>()
@@ -56,7 +56,7 @@ function Project() {
   var btnText: "Create" | "Update" = "Create"
 
   var formType: "new" | "update" = "new"
-  
+
   const [run, setRun] = useState<boolean>(true)
 
   //---------------------------------------//
@@ -82,7 +82,6 @@ function Project() {
   useEffect(() => {
     setTimeout(() => {
 
-      console.log(removeLoading)
       setRemoveLoading(true)
 
       if (user.logged === true && run === true) {
@@ -108,13 +107,15 @@ function Project() {
 
             setUserData(data)
 
+            console.log("a")
+
           })
           .catch(err => toast.error("Could not load the project due to " + err))
 
       }
 
     }, 500)
-  }, [userData])
+  }, [run])
 
   //---------------------------------------//
 
@@ -124,7 +125,7 @@ function Project() {
 
   function changeFormVisibility(type: "new" | "update" | "close"): void {
 
-    if (type === "new"){
+    if (type === "new") {
       labelText = "New project"
       btnText = "Create"
       formType = "new"
@@ -142,7 +143,50 @@ function Project() {
 
   //CREATE NEW STAGE FUNCTION
 
-  function createNewStage(): void {
+  function createNewStage(stage: Istages): void {
+
+    //CREATING THE LOCAL VARIABLES 
+
+    if (project && userData) {
+      let localUserData: IuserData = userData
+
+      let localProject: Iproject = project
+
+      localUserData.projects = localUserData?.projects.filter(
+        (filterProject) => filterProject.id !== localProject?.id
+      )
+
+      localProject?.stages.push(stage)
+
+
+      localUserData?.projects.push(localProject)
+
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+
+          toast.success(`Stage created successfully!`, {
+            toastId: '',
+          })
+
+          setRemoveLoading(false)
+          setRun(true)
+
+          changeFormVisibility("close")
+
+        })
+        .catch(err => {
+          toast.error("Stage creation failed due to: " + err.message)
+        })
+    }
+
+
 
   }
 
@@ -168,8 +212,10 @@ function Project() {
                 <StageForm
                   labelText={labelText}
                   btnText={btnText}
-                  projectId={varStageId}
+                  stageId={varStageId}
+                  type={formType}
                   handleOnClose={changeFormVisibility}
+                  createNewStage={createNewStage}
                 />
               }
 

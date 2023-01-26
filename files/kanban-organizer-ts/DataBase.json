@@ -6,6 +6,12 @@
       "password": "admin",
       "projects": [
         {
+          "id": 0.22484954062569207,
+          "projectName": "--------------------",
+          "summary": "----------------------------",
+          "stages": []
+        },
+        {
           "id": 1,
           "projectName": "First project",
           "summary": "admin",
@@ -53,66 +59,11 @@
               ]
             },
             {
-              "id": 4,
-              "stageName": "Done two",
-              "itens": [
-                {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
-                }
-              ]
-            },
-            {
-              "id": 5,
-              "stageName": "Done three",
-              "itens": [
-                {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
-                }
-              ]
-            },
-            {
-              "id": 6,
-              "stageName": "Done four",
-              "itens": [
-                {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
-                }
-              ]
+              "id": 0.9962357000977551,
+              "stageName": "batata",
+              "itens": []
             }
           ]
-        },
-        {
-          "id": 0.22484954062569207,
-          "projectName": "Novo projeto",
-          "summary": "asddas",
-          "stages": []
-        },
-        {
-          "id": 0.4925155582398417,
-          "projectName": "fasdfaf saf dsf asdfafdsaf  afdsf ",
-          "summary": "sfd",
-          "stages": []
-        },
-        {
-          "id": 0.14357136351498379,
-          "projectName": "teste de criação de projeto",
-          "summary": "dasd",
-          "stages": []
         }
       ]
     },
