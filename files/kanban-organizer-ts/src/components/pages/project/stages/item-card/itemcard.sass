@@ -1,0 +1,44 @@
+@use "../../../../../styles/variables"
+
+#item-card
+    background-color: rgba(variables.$bg-color-focus, .8)
+    width: 100%
+    max-width: 100%
+    min-height: 20%
+    margin-bottom: 1rem
+    display: flex
+    justify-content: space-between
+    padding: 1rem
+    align-items: center
+    font-family: variables.$font-main
+    color: variables.$bg-color
+    border-radius: variables.$medium-border-radius
+    font-size: 1.3rem
+    word-wrap: break-word
+    transition: all 200ms ease
+
+    &:hover
+        color: variables.$text-color-focus
+        background-color: rgba(variables.$bg-color-focus, 1)
+        cursor: pointer
+        transform: scale(1.05)
+
+    h3
+        max-width: 90%
+
+    button
+        background-color: rgba(variables.$bg-color-focus, .8)
+        border: 3px solid variables.$bg-color
+        cursor: pointer
+        border-radius: variables.$small-border-radius
+
+        &:hover
+            background-color: rgba(variables.$bg-color-focus, 1)
+            border: 3px solid variables.$text-color-focus
+
+            #icon
+                color: variables.$text-color-focus
+
+        #icon
+            font-size: 2rem
+            color: variables.$bg-color

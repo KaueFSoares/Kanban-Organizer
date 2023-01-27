@@ -3,6 +3,7 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
 
 
 import "./stages.sass"
+import ItemCard from './item-card/ItemCard'
 
 //interfaces
 interface IstagesProps {
@@ -45,7 +46,15 @@ function Stages({ stagesData, handleOnEdit, handleOnDelete }: IstagesProps) {
                                 </div>
                             </header>
                             <section>
-
+                                {stage.itens.length > 0 ? (
+                                    <>
+                                        {stage.itens.map(
+                                            (item) => <ItemCard itemName={item.itemName} />
+                                        )}
+                                    </>
+                                ) : (
+                                    <p id="ppp">No itens yet</p>
+                                )}
                             </section>
                         </div>
                 )}
