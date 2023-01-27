@@ -1,6 +1,6 @@
 @use "../../../../../styles/variables"
 
-#item-card
+.item-card
     background-color: rgba(variables.$bg-color-focus, .8)
     width: 100%
     max-width: 100%
@@ -16,6 +16,8 @@
     font-size: 1.3rem
     word-wrap: break-word
     transition: all 200ms ease
+
+    
 
     &:hover
         color: variables.$text-color-focus
@@ -36,9 +38,9 @@
             background-color: rgba(variables.$bg-color-focus, 1)
             border: 3px solid variables.$text-color-focus
 
-            #icon
+            .icon
                 color: variables.$text-color-focus
 
-        #icon
+        .icon
             font-size: 2rem
             color: variables.$bg-color

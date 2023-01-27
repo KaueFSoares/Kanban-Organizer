@@ -1,6 +1,7 @@
 // HOOKS
 import { useLocation } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
+import { toast } from "react-toastify"
 
 // STYLE
 import "./project.sass"
@@ -10,8 +11,8 @@ import MyContext from "../../../context/MyContext"
 import BackToHomeButton from "../../layout/back-to-home-button/BackToHomeButton"
 import Loading from "../../layout/loading/Loading"
 import StageForm from "../../layout/stage-form/StageForm"
-import { toast } from "react-toastify"
 import Stages from "./stages/Stages"
+import ItemForm from "../../layout/item-form/ItemForm"
 
 
 // INTERFACES
@@ -297,6 +298,128 @@ function Project() {
 
   //---------------------------------------//
 
+  //SHOW ITEM FORM FUNCTION
+
+  const [showItemForm, setShowItemForm] = useState<boolean>(false)
+  function changeItemFormVisibility() {
+    setShowItemForm(!showItemForm)
+  }
+
+  //---------------------------------------//
+
+  //CREATE ITEM FUNCTION
+
+  function createItem(item: Iitens) {
+    if (project && userData) {
+
+      let localUserData = userData
+      let localProject = project
+      let localStage = localProject.stages[0]
+
+      localStage.itens.push(item)
+
+      localProject.stages[0] = localStage
+
+      localUserData.projects.map((project) => {
+
+        if (project.id === localProject.id) {
+          return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+        }
+
+        return project
+      })
+
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(localUserData)
+      })
+        .then((resp) => resp.json())
+        .then(() => {
+
+          toast.success(`Item created successfully!`, {
+            toastId: '',
+          })
+
+          setRemoveLoading(false)
+          setRun(true)
+
+          changeItemFormVisibility()
+
+        })
+        .catch(err => {
+          toast.error("Item creation failed due to: " + err.message)
+        })
+
+    }
+  }
+
+  //---------------------------------------//
+
+  //DELETE ITEM FUNCTION
+
+  function deleteItem(stageId: number, itemId: number) {
+    if (project && userData) {
+      let localUserData = userData
+      let localProject = project
+      let localStage: Istages | undefined = localProject.stages.find(
+        (stage: Istages) => stage.id === stageId
+      )
+
+      if (localStage) {
+
+        localStage.itens = localStage.itens.filter(
+          (item: Iitens) => item.id !== itemId
+        )
+
+        localProject.stages.map((stage: Istages) => {
+
+          if (stage.id === stageId) {
+            return { ...stage, stageName: localStage?.stageName, id: localStage?.id, itens: localStage?.itens }
+          }
+
+          return stage
+        })
+
+        localUserData.projects.map((project) => {
+
+          if (project.id === localProject.id) {
+            return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+          }
+
+          return project
+        })
+
+        fetch(`http://localhost:5001/users/${userId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(localUserData)
+        })
+          .then((resp) => resp.json())
+          .then(() => {
+
+            toast.success(`Item deleted successfully!`, {
+              toastId: '',
+            })
+
+            setRemoveLoading(false)
+            setRun(true)
+
+          })
+          .catch(err => {
+            toast.error("Item delete failed due to: " + err.message)
+          })
+
+      }
+
+    }
+  }
+
+  //---------------------------------------//
 
   return (
     <div id="project-page-container">
@@ -317,6 +440,14 @@ function Project() {
                 />
               }
 
+              {showItemForm &&
+                <ItemForm
+                  handleOnClose={changeItemFormVisibility}
+                  handleOnSubmit={createItem}
+                />
+              }
+
+
               {/* HERE IS THE PAGE AFTER THE LOAD */}
               <div id="container">
 
@@ -327,7 +458,7 @@ function Project() {
                       New<br />stage
                     </button>
 
-                    <button>
+                    <button onClick={() => changeItemFormVisibility()}>
                       New<br />item
                     </button>
                   </div>
@@ -343,6 +474,7 @@ function Project() {
                             stagesData={project.stages}
                             handleOnEdit={changeFormVisibility}
                             handleOnDelete={deleteStage}
+                            handleOnDeleteItem={deleteItem}
                           />
                         </>
                       ) : (

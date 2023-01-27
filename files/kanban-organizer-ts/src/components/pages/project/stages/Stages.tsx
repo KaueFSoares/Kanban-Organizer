@@ -10,6 +10,7 @@ interface IstagesProps {
     stagesData: Istages[]
     handleOnEdit: (type: "new" | "update" | "close", stageData?: Istages) => void
     handleOnDelete: (stageId: number) => void
+    handleOnDeleteItem: (stageId: number, itemId: number) => void
 }
 
 interface Istages {
@@ -23,7 +24,7 @@ interface Iitens {
     itemName: string
 }
 
-function Stages({ stagesData, handleOnEdit, handleOnDelete }: IstagesProps) {
+function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem }: IstagesProps) {
 
     //SETTING THE STAGES DATA
 
@@ -49,7 +50,7 @@ function Stages({ stagesData, handleOnEdit, handleOnDelete }: IstagesProps) {
                                 {stage.itens.length > 0 ? (
                                     <>
                                         {stage.itens.map(
-                                            (item) => <ItemCard itemName={item.itemName} />
+                                            (item) => <ItemCard itemId={item.id} itemName={item.itemName} stageId={stage.id} handleOnDelete={handleOnDeleteItem} key={item.id}/>
                                         )}
                                     </>
                                 ) : (
