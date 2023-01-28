@@ -46,7 +46,7 @@ interface IuserData {
 function Project() {
 
   //GETTING THE GLOBAL USER AND OTHER VARIABLES
-  const { user, setUser }: any = useContext(MyContext)
+  const { user }: any = useContext(MyContext)
 
   const [userData, setUserData] = useState<IuserData>()
 
@@ -113,7 +113,7 @@ function Project() {
 
       }
 
-    }, 500)
+    }, 200)
   }, [run])
 
   //---------------------------------------//
