@@ -3,7 +3,7 @@ import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai"
 
 
 import "./stages.sass"
-import ItemCard from './item-card/ItemCard'
+import SectionComp from './SectionComp'
 
 //interfaces
 interface IstagesProps {
@@ -32,6 +32,8 @@ function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem }
 
     //-------------------------
 
+    
+
 
     return (
         <div id="stages-component-box">
@@ -46,17 +48,7 @@ function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem }
                                     <button onClick={() => handleOnDelete(stage.id)}><AiOutlineDelete className='icon' /></button>
                                 </div>
                             </header>
-                            <section>
-                                {stage.itens.length > 0 ? (
-                                    <>
-                                        {stage.itens.map(
-                                            (item) => <ItemCard itemId={item.id} itemName={item.itemName} stageId={stage.id} handleOnDelete={handleOnDeleteItem} key={item.id}/>
-                                        )}
-                                    </>
-                                ) : (
-                                    <p id="ppp">No itens yet</p>
-                                )}
-                            </section>
+                            <SectionComp stageData={stage} handleOnDeleteItem={handleOnDeleteItem} />
                         </div>
                 )}
             </div>
