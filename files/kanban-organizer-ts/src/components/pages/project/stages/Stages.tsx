@@ -11,6 +11,7 @@ interface IstagesProps {
     handleOnEdit: (type: "new" | "update" | "close", stageData?: Istages) => void
     handleOnDelete: (stageId: number) => void
     handleOnDeleteItem: (stageId: number, itemId: number) => void
+    moveItemOverTheStages: (itemId: number, itemName: string, atualStageId: number, nextStageId: number) => void
 }
 
 interface Istages {
@@ -24,7 +25,7 @@ interface Iitens {
     itemName: string
 }
 
-function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem }: IstagesProps) {
+function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem, moveItemOverTheStages }: IstagesProps) {
 
     //SETTING THE STAGES DATA
 
@@ -48,7 +49,7 @@ function Stages({ stagesData, handleOnEdit, handleOnDelete, handleOnDeleteItem }
                                     <button onClick={() => handleOnDelete(stage.id)}><AiOutlineDelete className='icon' /></button>
                                 </div>
                             </header>
-                            <SectionComp stageData={stage} handleOnDeleteItem={handleOnDeleteItem} />
+                            <SectionComp stageData={stage} handleOnDeleteItem={handleOnDeleteItem} moveItemOverTheStages={moveItemOverTheStages} />
                         </div>
                 )}
             </div>

@@ -6,6 +6,7 @@ import { useState } from "react"
 interface ISectionCompProps {
     stageData: Istages
     handleOnDeleteItem: (stageId: number, itemId: number) => void
+    moveItemOverTheStages: (itemId: number, itemName: string, atualStageId: number, nextStageId: number) => void
 }
 
 interface Istages {
@@ -19,7 +20,7 @@ interface Iitens {
     itemName: string
 }
 
-function SectionComp({ stageData, handleOnDeleteItem }: ISectionCompProps) {
+function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages }: ISectionCompProps) {
 
     var nextStageId: number = 0
 
@@ -35,7 +36,7 @@ function SectionComp({ stageData, handleOnDeleteItem }: ISectionCompProps) {
 
     function moveItem(itemId: number, itemName: string, atualStageId: number, nextStageId: number) {
         if (atualStageId !== nextStageId) {
-            // aqui vai o código pra fazer o fetch
+            moveItemOverTheStages(itemId, itemName, atualStageId, nextStageId)
         }
     }
 

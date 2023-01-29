@@ -421,7 +421,82 @@ function Project() {
 
   //MOVING ITEM BY THE STAGES FUNCTION
 
+  function moveItemOverTheStages(itemId: number, itemName: string, atualStageId: number, nextStageId: number): void {
 
+    if (project && userData) {
+
+      let localUserData = userData
+      let localProject = project
+
+      let localAtualStage = project.stages.find(
+        (stage: Istages) => stage.id = atualStageId
+      )
+
+      let localNextStage = project.stages.find(
+        (stage: Istages) => stage.id === nextStageId
+      )
+
+      if (localAtualStage && localNextStage) {
+
+        let itemOnChange = localAtualStage.itens.find(
+          (item: Iitens) => item.id === itemId
+        )
+
+        localAtualStage.itens = localAtualStage.itens.filter(
+          (item: Iitens) => item.id !== itemId
+        )
+
+        if (itemOnChange) {
+
+          localNextStage.itens.push(itemOnChange)
+
+          localProject.stages.map((stage) => {
+
+            if (stage.id === localAtualStage?.id) {
+              return { ...stage, itens: localAtualStage?.itens }
+            }
+
+            if (stage.id === localNextStage?.id) {
+              return { ...stage, itens: localNextStage?.itens }
+            }
+
+            return stage
+          })
+
+          localUserData.projects.map((project) => {
+
+            if (project.id === localProject.id) {
+              return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+            }
+
+            return project
+          })
+
+          fetch(`http://localhost:5001/users/${userId}`, {
+            method: "PATCH",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(localUserData)
+          })
+            .then((resp) => resp.json())
+            .then(() => {
+
+              setRemoveLoading(false)
+              setRun(true)
+
+            })
+            .catch(err => {
+              toast.error("Item moving failed due to: " + err.message)
+            })
+
+        }
+
+      }
+
+    }
+
+  }
 
   //---------------------------------------//
 
@@ -482,6 +557,7 @@ function Project() {
                             handleOnEdit={changeFormVisibility}
                             handleOnDelete={deleteStage}
                             handleOnDeleteItem={deleteItem}
+                            moveItemOverTheStages={moveItemOverTheStages}
                           />
                         </>
                       ) : (
