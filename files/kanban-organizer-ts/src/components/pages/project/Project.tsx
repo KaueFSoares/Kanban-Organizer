@@ -81,39 +81,37 @@ function Project() {
   const [project, setProject] = useState<Iproject>()
 
   useEffect(() => {
-    setTimeout(() => {
 
-      setRemoveLoading(true)
+    setRemoveLoading(true)
 
-      if (user.logged === true && run === true) {
+    if (user.logged === true && run === true) {
 
-        setRun(false)
+      setRun(false)
 
-        fetch(`http://localhost:5001/users/${userId}`, {
-          method: "GET",
-          headers: {
-            "Content-type": "application/json",
-          },
+      fetch(`http://localhost:5001/users/${userId}`, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then(resp => resp.json())
+        .then(data => {
+
+          //AFTER FETCH
+
+          let localProjects = data.projects
+
+          setProject(localProjects.find(
+            (project: Iproject) => project.id === projectId
+          ))
+
+          setUserData(data)
+
         })
-          .then(resp => resp.json())
-          .then(data => {
+        .catch(err => toast.error("Could not load the project due to " + err))
 
-            //AFTER FETCH
+    }
 
-            let localProjects = data.projects
-
-            setProject(localProjects.find(
-              (project: Iproject) => project.id === projectId
-            ))
-
-            setUserData(data)
-
-          })
-          .catch(err => toast.error("Could not load the project due to " + err))
-
-      }
-
-    }, 200)
   }, [run])
 
   //---------------------------------------//
@@ -421,6 +419,15 @@ function Project() {
 
   //---------------------------------------//
 
+  //MOVING ITEM BY THE STAGES FUNCTION
+
+
+
+  //---------------------------------------//
+
+
+
+  // ----- THE PAGE -----
   return (
     <div id="project-page-container">
       {user.logged ? (

@@ -1,6 +1,7 @@
 import "./sectioncomp.sass"
 import ItemCard from "./item-card/ItemCard"
 import { useDrop } from "react-dnd/dist/hooks"
+import { useState } from "react"
 
 interface ISectionCompProps {
     stageData: Istages
@@ -20,20 +21,26 @@ interface Iitens {
 
 function SectionComp({ stageData, handleOnDeleteItem }: ISectionCompProps) {
 
-    const [{ isOver }, dropRef] = useDrop(() => ({
+    var nextStageId: number = 0
+
+    const [, dropRef] = useDrop(() => ({
         accept: "item",
-        drop: (item: { id: number }) => addItem(item.id),
-        collect: (monitor) => ({
-            isOver: monitor.isOver()
-        })
+
+        drop: (item: { itemId: number, itemName: string, atualStageId: number }) => moveItem(item.itemId, item.itemName, item.atualStageId, nextStageId),
+
+        hover() {
+            nextStageId = stageData.id
+        }
     }))
 
-    const addItem = (id: number) => {
-        console.log("id")
+    function moveItem(itemId: number, itemName: string, atualStageId: number, nextStageId: number) {
+        if (atualStageId !== nextStageId) {
+            // aqui vai o código pra fazer o fetch
+        }
     }
 
     return (
-        <section id="SectionComp"  ref={dropRef}>
+        <section id="SectionComp" ref={dropRef}>
             {stageData.itens.length > 0 ? (
                 <>
                     {stageData.itens.map(

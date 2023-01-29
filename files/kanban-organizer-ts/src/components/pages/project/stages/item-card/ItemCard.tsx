@@ -14,7 +14,7 @@ function ItemCard({ itemName, itemId, stageId, handleOnDelete }: IitemCardProps)
 
   const [{ isDragging }, dragRef] = useDrag(() => ({
     type: "item",
-    item: {id: itemId},
+    item: {itemId: itemId, itemName: itemName, atualStageId: stageId},
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
