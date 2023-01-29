@@ -423,7 +423,15 @@ function Project() {
 
   function moveItemOverTheStages(itemId: number, itemName: string, atualStageId: number, nextStageId: number): void {
 
-    if (project && userData) {
+    /* ---------------------------------------- */
+
+              //CHEGOU AQUI SEM DELAY
+              
+    /* ---------------------------------------- */
+
+
+
+    /* if (project && userData) {
 
       let localUserData = userData
       let localProject = project
@@ -494,7 +502,7 @@ function Project() {
 
       }
 
-    }
+    } */
 
   }
 

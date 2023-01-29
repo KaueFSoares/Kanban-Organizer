@@ -35,9 +35,8 @@ function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages }: I
     }))
 
     function moveItem(itemId: number, itemName: string, atualStageId: number, nextStageId: number) {
-        if (atualStageId !== nextStageId) {
-            moveItemOverTheStages(itemId, itemName, atualStageId, nextStageId)
-        }
+        moveItemOverTheStages(itemId, itemName, atualStageId, nextStageId)
+
     }
 
     return (
