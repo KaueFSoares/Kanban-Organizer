@@ -82,8 +82,6 @@ function Project() {
 
   useEffect(() => {
 
-    setTimeout(() => {
-
       setRemoveLoading(true)
 
       if(user.logged === true && run === true) {
@@ -113,8 +111,6 @@ function Project() {
         .catch(err => toast.error("Could not load the project due to " + err))
 
     }
-
-  }, 500)
 
 }, [run])
 
@@ -448,7 +444,7 @@ function moveItemOverTheStages(itemId: number, atualStageId: number, nextStageId
       if (itemOnChange !== undefined) {
 
         atualStage.itens = atualStage.itens.filter(
-          (item: Iitens) => item.id === itemId
+          (item: Iitens) => item.id !== itemId
         )
 
         nextStage.itens.push(itemOnChange)
@@ -477,8 +473,6 @@ function moveItemOverTheStages(itemId: number, atualStageId: number, nextStageId
             return project
           })
 
-          //TUDO CERTO ATÉ AQUI
-
           fetch(`http://localhost:5001/users/${userId}`, {
             method: "PATCH",
             headers: {
@@ -488,6 +482,9 @@ function moveItemOverTheStages(itemId: number, atualStageId: number, nextStageId
           })
             .then((resp) => resp.json())
             .then(() => {
+
+              setUserData(localUserData)
+              setProject(localProject)
 
               setRemoveLoading(false)
               setRun(true)

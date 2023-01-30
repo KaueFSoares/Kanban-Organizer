@@ -15,12 +15,12 @@
               "stageName": "To-do",
               "itens": [
                 {
-                  "id": 1,
-                  "itemName": "Start Diagramming"
-                },
-                {
                   "id": 2,
                   "itemName": "Talk to the boss"
+                },
+                {
+                  "id": 1,
+                  "itemName": "Start Diagramming"
                 }
               ]
             },
@@ -33,8 +33,12 @@
                   "itemName": "Pick programing languages"
                 },
                 {
-                  "id": 4,
-                  "itemName": "Talk to the client"
+                  "id": 6,
+                  "itemName": "Design the home page"
+                },
+                {
+                  "id": 5,
+                  "itemName": "Choose the project name"
                 }
               ]
             },
@@ -43,12 +47,8 @@
               "stageName": "Done",
               "itens": [
                 {
-                  "id": 5,
-                  "itemName": "Choose the project name"
-                },
-                {
-                  "id": 6,
-                  "itemName": "Design the home page"
+                  "id": 4,
+                  "itemName": "Talk to the client"
                 }
               ]
             }
