@@ -10,7 +10,7 @@ interface InewUser {
   id: string
   email: string
   password: string
-  projects: Iproject
+  projects: Iproject[]
 }
 
 interface Iproject {
@@ -35,7 +35,7 @@ interface Iitens {
 
 function SignUpForm() {
 
-  var newUser: InewUser= { id: "", email: "", password: "", projects: {id: 0, projectName: "", summary: "", stages: []}}
+  var newUser: InewUser= { id: "", email: "", password: "", projects: []}
   const [email, setEmail] = useState<string>("")
   const [id, setId] = useState<string>("")
   const [inputType, setInputType] = useState<string>("password")
@@ -113,7 +113,7 @@ function SignUpForm() {
         theme: "light",
       })
     } else {
-      newUser = { id: id, email: email, password: password, projects: {id: 0, projectName: "", summary: "", stages: []} }
+      newUser = { id: id, email: email, password: password, projects: [] }
     }
 
     return isValid
