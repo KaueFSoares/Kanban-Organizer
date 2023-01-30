@@ -11,7 +11,7 @@ interface IstagesProps {
     handleOnEdit: (type: "new" | "update" | "close", stageData?: Istages) => void
     handleOnDelete: (stageId: number) => void
     handleOnDeleteItem: (stageId: number, itemId: number) => void
-    moveItemOverTheStages: (itemId: number, itemName: string, atualStageId: number, nextStageId: number) => void
+    moveItemOverTheStages: (itemId: number, atualStageId: number, nextStageId: number) => void
 }
 
 interface Istages {

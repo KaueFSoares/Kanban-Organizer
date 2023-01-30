@@ -6,7 +6,7 @@ import { useState } from "react"
 interface ISectionCompProps {
     stageData: Istages
     handleOnDeleteItem: (stageId: number, itemId: number) => void
-    moveItemOverTheStages: (itemId: number, itemName: string, atualStageId: number, nextStageId: number) => void
+    moveItemOverTheStages: (itemId: number, atualStageId: number, nextStageId: number) => void
 }
 
 interface Istages {
@@ -27,15 +27,15 @@ function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages }: I
     const [, dropRef] = useDrop(() => ({
         accept: "item",
 
-        drop: (item: { itemId: number, itemName: string, atualStageId: number }) => moveItem(item.itemId, item.itemName, item.atualStageId, nextStageId),
+        drop: (item: { itemId: number, itemName: string, atualStageId: number }) => moveItem(item.itemId, item.atualStageId, nextStageId),
 
         hover() {
             nextStageId = stageData.id
         }
     }))
 
-    function moveItem(itemId: number, itemName: string, atualStageId: number, nextStageId: number) {
-        moveItemOverTheStages(itemId, itemName, atualStageId, nextStageId)
+    function moveItem(itemId: number, atualStageId: number, nextStageId: number) {
+        moveItemOverTheStages(itemId, atualStageId, nextStageId)
 
     }
 
