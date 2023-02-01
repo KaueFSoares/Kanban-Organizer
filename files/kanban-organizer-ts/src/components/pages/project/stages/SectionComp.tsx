@@ -1,12 +1,13 @@
 import "./sectioncomp.sass"
 import ItemCard from "./item-card/ItemCard"
 import { useDrop } from "react-dnd/dist/hooks"
-import { useState } from "react"
 
 interface ISectionCompProps {
     stageData: Istages
     handleOnDeleteItem: (stageId: number, itemId: number) => void
     moveItemOverTheStages: (itemId: number, atualStageId: number, nextStageId: number) => void
+    moveItemUp: (itemId: number, stageId: number, index: number) => void
+    moveItemDown: (itemId: number, stageId: number, index: number) => void
 }
 
 interface Istages {
@@ -20,7 +21,7 @@ interface Iitens {
     itemName: string
 }
 
-function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages }: ISectionCompProps) {
+function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages, moveItemUp, moveItemDown }: ISectionCompProps) {
 
     var nextStageId: number = 0
 
@@ -44,7 +45,18 @@ function SectionComp({ stageData, handleOnDeleteItem, moveItemOverTheStages }: I
             {stageData.itens.length > 0 ? (
                 <>
                     {stageData.itens.map(
-                        (item) => <ItemCard itemId={item.id} itemName={item.itemName} stageId={stageData.id} handleOnDelete={handleOnDeleteItem} key={item.id} />
+                        (item, index) => <ItemCard
+                            itemId={item.id}
+                            itemName={item.itemName}
+                            stageId={stageData.id}
+                            handleOnDelete={handleOnDeleteItem}
+                            key={item.id}
+                            index={index}
+                            isLast={index === stageData.itens.length - 1 ? true : false}
+                            biggerThanOne={stageData.itens.length > 1 ? true : false}
+                            moveItemUp={moveItemUp}
+                            moveItemDown={moveItemDown}
+                        />
                     )}
                 </>
             ) : (

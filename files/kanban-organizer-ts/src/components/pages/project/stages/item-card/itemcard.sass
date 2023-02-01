@@ -4,7 +4,7 @@
     background-color: rgba(variables.$bg-color-focus, .8)
     width: 100%
     max-width: 100%
-    min-height: 20%
+    min-height: 25%
     margin-bottom: 1rem
     display: flex
     justify-content: space-between
@@ -17,15 +17,43 @@
     word-wrap: break-word
     transition: all 200ms ease
 
-    
-
     &:hover
         color: variables.$text-color-focus
         background-color: rgba(variables.$bg-color-focus, 1)
         cursor: grab
 
     h3
-        max-width: 90%
+        max-width: 75%
+        width: 75%
+
+    #up-down-buttons-box
+        background-color: rgba(variables.$bg-color-focus, .8)
+        border: 3px solid variables.$bg-color
+        cursor: pointer
+        border-radius: variables.$small-border-radius
+        padding: .1rem .2rem
+        margin: 0 .8rem
+
+        #icon
+            font-size: 1.70rem
+            color: variables.$bg-color
+
+        .up-down-buttons
+            display: none
+
+        &:hover
+            #icon
+                display: none
+
+            .up-down-buttons
+                display: flex
+                flex-direction: column
+                font-size: 1.70rem
+                color: variables.$bg-color
+                margin: .1rem 0rem
+
+                &:hover
+                    color: variables.$text-color-focus
 
     button
         background-color: rgba(variables.$bg-color-focus, .8)
@@ -58,5 +86,3 @@
 
     button
         opacity: 0
-
-        

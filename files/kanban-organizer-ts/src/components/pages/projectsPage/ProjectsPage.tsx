@@ -130,12 +130,10 @@ function ProjectsPage() {
   }
 
 
-  //CREATE  PROJECT FUNCTION
+  //CREATE AND UPDATE PROJECT FUNCTION
   function createProject(project: Iproject, isNew: boolean, projectId?: number): void {
 
-    //SE O PROJETO FOR NOVO, isNew = TRUE, SE NÃO FOR isNew = FALSE
-
-    localUserData = user.userData //aqui o stages já chega vazio
+    localUserData = user.userData
 
     if (isNew === true) {
       project.id = Math.random()
@@ -165,17 +163,22 @@ function ProjectsPage() {
         })
     } else {
 
-      //  CONSTRUIR O FETCH DO UPDATE
+      //UPDATE FETCH
 
       project.id = projectId || 0
 
-      user.userData.projects = user.userData.projects.filter(
-        (project: Iproject) => project.id !== projectId
-      )
+      let localProject = project
 
       localUserData = user.userData
 
-      localUserData.projects.push(project)
+      localUserData.projects = localUserData.projects.map((project: Iproject) => {
+
+        if (project.id === projectId) {
+          return { ...project, id: localProject.id, projectName: localProject.projectName, summary: localProject.summary, stages: localProject.stages }
+        }
+
+        return project
+      })
 
       fetch(`http://localhost:5001/users/${user.id}`, {
         method: "PATCH",
@@ -261,7 +264,7 @@ function ProjectsPage() {
               }
 
 
-              {/* FORMS */}
+              {/* FORM */}
               {
                 showProjectForm &&
                 <NewProjectForm
@@ -286,23 +289,23 @@ function ProjectsPage() {
               <section id="projects-page-body">
 
                 {
-                  projects && 
+                  projects &&
                     projects.length > 0 ? (
-                      projects.map((project) => (
-                        <ProjectCard
-                          projectName={project.projectName}
-                          summary={project.summary}
-                          key={project.id}
-                          handleOnRemove={removeProject}
-                          projectId={project.id}
-                          handleOnEdit={changeProjectFormVisibility}
-                          handleOnGoTo={goToProject}
-                        />
-                      ))
-                    ) : (
-                      <><p id="noprojects">No projects yet</p></>
-                    )
-                  
+                    projects.map((project) => (
+                      <ProjectCard
+                        projectName={project.projectName}
+                        summary={project.summary}
+                        key={project.id}
+                        handleOnRemove={removeProject}
+                        projectId={project.id}
+                        handleOnEdit={changeProjectFormVisibility}
+                        handleOnGoTo={goToProject}
+                      />
+                    ))
+                  ) : (
+                    <><p id="noprojects">No projects yet</p></>
+                  )
+
                 }
 
               </section>

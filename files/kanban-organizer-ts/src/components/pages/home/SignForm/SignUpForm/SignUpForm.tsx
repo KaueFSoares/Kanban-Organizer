@@ -102,16 +102,7 @@ function SignUpForm() {
       })
     } else if (rightPassword === false) {
       isValid = false
-      toast.warn("The password confirmation most be equal to the password!", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })
+      toast.warn("The password confirmation most be equal to the password!")
     } else {
       newUser = { id: id, email: email, password: password, projects: [] }
     }
